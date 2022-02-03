@@ -13,3 +13,10 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+*.log
+*.sqlite
+.htaccess
+/storage
+/config
+/public/img
