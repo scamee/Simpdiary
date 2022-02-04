@@ -1,5 +1,5 @@
 /*------------------------------------
-- COLOR primary
+- COLOR primary #EE827D
 ------------------------------------*/
 .alert-primary {
     color: #d4241b;
@@ -139,4 +139,8 @@ button.bg-primary:focus {
 
 a.text-primary:hover, a.text-primary:focus {
     color: #e8564f !important;
+}
+
+.link-primary{
+    color:#EE827D;
 }
