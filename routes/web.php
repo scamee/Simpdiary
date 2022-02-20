@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FullCalendarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/create', [HomeController::class, 'create'])->name('create');
+
+Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
+
+Route::post('/store', [HomeController::class, 'store'])->name('store');
+
+/* Route::get('full-calender', [FullCalendarController::class, 'index']); */

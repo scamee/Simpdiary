@@ -1,0 +1,53 @@
+/* calendar */
+/* td {
+    height: 100px;
+} */
+.card-header {
+    text-align: center;
+}
+
+th {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+
+td {
+    height: 50px;
+    width: 50px;
+}
+
+td a {
+    height: 100%;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color:inherit;
+}
+
+th:nth-of-type(1),
+td:nth-of-type(1) {
+    color: red;
+}
+
+th:nth-of-type(7),
+td:nth-of-type(7) {
+    color: blue;
+}
+
+.month {
+    font-size: large;
+    font-weight: bolder;
+    width: 120px;
+    display: inline-block;
+}
+
+.table .today {
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+/* modal */
+
+.btn-edit {
+    text-align: right;
+}
