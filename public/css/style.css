@@ -1,16 +1,5 @@
 @import url(color.css);
-
-/* header */
-.navbar {
-    /* position: sticky;
-    top:0;
-    z-index:10; */
-    background-color: rgba(201, 177, 112, 0.4);
-
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
+@import url(header.css);
 
 
 .bg-image{
@@ -35,5 +24,4 @@
 .slideshow p {
     color: #ffff;
 }
-
 
