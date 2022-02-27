@@ -10,36 +10,29 @@
                 の日記
             </div>
             <div class="card-body">
-                <form method='POST' action="/store">
-                    @csrf
-                    <input type='hidden' name='user_id' value="{{ $user['id'] }}">
-                    <div class="form-group">
-                        <label for="titleform" class="form-label">タイトル</label>
-                        <input type="text" class="form-control" id="titleform" name="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="selectform" class='form-label'>体調</label>
-                        <select id='selectform' class='form-control' name='select'>
-                            <option value="">
-                                --選択してください--
-                            </option>
-                            <option value="good">
-                                良い
-                            </option>
-                            <option value="normal">
-                                普通
-                            </option>
-                            <option value="bad">
-                                悪い
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="content" class="form-label">本文</label>
-                        <textarea name='content' class="form-control" rows="10" id="content"></textarea>
-                    </div>
-                    <button type='submit' class="btn btn-primary btn-lg">保存</button>
-                </form>
+                @if($diaries)
+                    if
+                @else
+                    <p>{{ $diaries[0]['title'] }}</p>
+                @endif
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 p-0">
+            <div class="card-header">
+                header
+            </div>
+            <div class="card-body">
+                body
+            </div>
+        </div>
+        <div class="col-md-6 p-0">
+            <div class="card-header">
+                header
+            </div>
+            <div class="card-body">
+                body
             </div>
         </div>
     </div>
