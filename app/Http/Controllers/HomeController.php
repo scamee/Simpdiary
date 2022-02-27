@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Calendar;
-use app\Services\CalendarService;
 use Illuminate\Http\Request;
-
+use App\Models\Diary;
 
 class HomeController extends Controller
 {
@@ -44,20 +43,38 @@ class HomeController extends Controller
         return view('create', compact('user'));
     }
 
-    public function show($id)
+    public function show($date)
     {
         $user = \Auth::user();
+        $diaries = Diary::where('user_id', $user['id'])->where('diary_date', $date)->get();
+
+
 
         return view(
             'show',
-            compact('user'),
+            compact('user', 'diaries'),
             [
                 'weeks'         => Calendar::getWeeks(),
                 'month'         => Calendar::getMonth(),
                 'prev'          => Calendar::getPrev(),
                 'next'          => Calendar::getNext(),
-                'date'          => Calendar::getDay($id),
+                'date'          => Calendar::getDay($date)
+            ]
+        );
+    }
 
+    public function edit($date)
+    {
+        $user = \Auth::user();
+
+        return view(
+            'edit',
+            compact('user', 'date'),
+            [
+                'weeks'         => Calendar::getWeeks(),
+                'month'         => Calendar::getMonth(),
+                'prev'          => Calendar::getPrev(),
+                'next'          => Calendar::getNext(),
             ]
         );
     }
@@ -66,19 +83,15 @@ class HomeController extends Controller
     {
         $data = $request->all();
 
-        dd($data);
-        $user = \Auth::user();
+        $Diary_test = Diary::insertGetId([
+            "diary_date" => $data["diary_date"],
+            "user_id" => $data["user_id"],
+            "title" => $data["title"],
+            "health" => $data["select"],
+            "content" => $data["content"],
+        ]);
 
-
-        return view(
-            'show',
-            compact('user'),
-            [
-                'weeks'         => Calendar::getWeeks(),
-                'month'         => Calendar::getMonth(),
-                'prev'          => Calendar::getPrev(),
-                'next'          => Calendar::getNext(),
-            ]
-        );
+        // リダイレクト処理
+        return redirect()->route('home');
     }
 }

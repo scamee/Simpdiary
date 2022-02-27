@@ -20,12 +20,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::get('/create', [HomeController::class, 'create'])->name('create');
-
-Route::get('/show/{id}', [HomeController::class, 'show'])->name('show');
-
-Route::post('/store', [HomeController::class, 'store'])->name('store');
+Route::group(
+    ['middleware' => 'auth'],
+    function () {
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/edit/{date}', [HomeController::class, 'edit'])->name('edit');
+        Route::get('/show/{date}', [HomeController::class, 'show'])->name('show');
+        Route::post('/store', [HomeController::class, 'store'])->name('store');
+    }
+);
 
 /* Route::get('full-calender', [FullCalendarController::class, 'index']); */

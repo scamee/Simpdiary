@@ -34,3 +34,5 @@ class CreateCalendarsTable extends Migration
         Schema::dropIfExists('calendars');
     }
 }
+
+//不要ファイル
