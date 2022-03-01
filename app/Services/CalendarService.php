@@ -29,9 +29,9 @@ class CalendarService
             $date = self::getYm() . '-' . $day;
             $getym = self::getYm();
             if (Carbon::now()->format('Y-m-j') === $date) {
-                $week .= '<td class="today"><a href="/show/' . $date . '?ym=' . $getym . '">' . $day;
+                $week .= '<td class="today"><a href="/' . $date . '?ym=' . $getym . '">' . $day;
             } else {
-                $week .= '<td><a href="/show/' . $date . '?ym=' . $getym . '">' . $day;
+                $week .= '<td><a href="/' . $date . '?ym=' . $getym . '">' . $day;
                 /* $week .= '<td><a data-bs-toggle="modal" data-bs-target="#MyListModel" href="/show/' . $date . '">' . $day; */
             }
             $week .= '</a></td>';

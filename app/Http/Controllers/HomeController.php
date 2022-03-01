@@ -43,16 +43,16 @@ class HomeController extends Controller
         return view('create', compact('user'));
     }
 
+    //一覧表示
     public function show($date)
     {
         $user = \Auth::user();
-        $diaries = Diary::where('user_id', $user['id'])->where('diary_date', $date)->get();
-
+        $diary = Diary::where('user_id', $user['id'])->where('diary_date', $date)->first();
 
 
         return view(
             'show',
-            compact('user', 'diaries'),
+            compact('user', 'diary'),
             [
                 'weeks'         => Calendar::getWeeks(),
                 'month'         => Calendar::getMonth(),
@@ -63,13 +63,18 @@ class HomeController extends Controller
         );
     }
 
+
+    //編集画面
     public function edit($date)
     {
         $user = \Auth::user();
 
+        //消す
+        $diary = Diary::select('title', 'health', 'content')->where('user_id', $user['id'])->where('diary_date', $date)->first();
+
         return view(
             'edit',
-            compact('user', 'date'),
+            compact('user', 'date', 'diary'),
             [
                 'weeks'         => Calendar::getWeeks(),
                 'month'         => Calendar::getMonth(),
@@ -79,6 +84,7 @@ class HomeController extends Controller
         );
     }
 
+    //編集アクション
     public function store(Request $request)
     {
         $data = $request->all();
