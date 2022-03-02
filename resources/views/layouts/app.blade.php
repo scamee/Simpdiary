@@ -71,12 +71,12 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                         アカウント設定
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -98,7 +98,7 @@
                 </div>
             @endif --}}
             <div class="row" {{-- style='height: 92vh;' --}}>
-                <div class="col-md-6 p-0">
+                <div class="card-group">
                     <div class="card">
                         <div class="card-header">
                             <a href="{{ $prev }}">&lt;</a>
@@ -120,10 +120,13 @@
                                     {!! $week !!}
                                 @endforeach
                             </table>
+                            <div class="card-footer bg-transparent border-success">記念日まで後●日</div>
                         </div>
                     </div>
+                    <div class="card">
+                        @yield('content')
+                    </div>
                 </div>
-                @yield('content')
             </div>
         </main>
     </div>
