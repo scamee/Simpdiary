@@ -14,7 +14,7 @@
 
             <div class="card-body">
                 {{-- url("{{$diaries->diary_date}}/edit") --}}
-                dd({{ $date }});
+                dd({{ url()->current() }});
                 <button href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">編集</button>
 
                 {{-- 現在のURL取得 --}}

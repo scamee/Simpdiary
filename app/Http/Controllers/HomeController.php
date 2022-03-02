@@ -37,15 +37,22 @@ class HomeController extends Controller
         );
     }
 
-    public function create()
+    /* public function create()
     {
         $user = \Auth::user();
         return view('create', compact('user'));
-    }
+    } */
 
-    //一覧表示
+
+    //showメソッド
     public function show($date)
     {
+        //URL正規表現確認 -> 一致しなければ404notfound
+        $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/';
+        if (!preg_match($preg, $date)) {
+            abort(404);
+        }
+
         $user = \Auth::user();
         $diary = Diary::where('user_id', $user['id'])->where('diary_date', $date)->first();
 
@@ -68,6 +75,12 @@ class HomeController extends Controller
     public function edit($date)
     {
         $user = \Auth::user();
+
+        /* //正規表現確認
+        $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/';
+        if (!preg_match($preg, $date)) {
+            $error = "正しくありません";
+        } */
 
         //消す
         $diary = Diary::select('title', 'health', 'content')->where('user_id', $user['id'])->where('diary_date', $date)->first();

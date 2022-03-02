@@ -1,0 +1,19 @@
+URL変更
+例）/?ym=2021-01 & ?d=01
+   /edit/?ym=2021-01 & ?d=01
+=> href="'/?ym=' . $getym . '?d=' . $day . '">' . $day;
+$week .= '<td class="today"><a href="/show/?ym=' . $getym . '&?d=' . $day . '">' . $day;
+
+
+// home
+
+next
+prev
+
+
+// show 試し
+href="route('show',$date)"
+href="{{ route('show',.$date.) }}"
+
+href="{{ route('show',['ym' => $getym],['d'=>$day]) }}"
+$week .= '<td class="today"><a href="/show/?ym=' . $getym . '&?d=' . $day . '">' . $day;
