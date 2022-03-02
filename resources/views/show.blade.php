@@ -6,16 +6,18 @@
         <div class="card">
 
             <div class="card-header">
-                <span class="fw-bold">
+                <span class="month" style="width:150px;">
                     {{ $date }}
                 </span>
-                の日記
             </div>
 
-            <div class="card-body">
+            <div class="card-body py-2 px-4">
                 {{-- url("{{$diaries->diary_date}}/edit") --}}
-                dd({{ url()->current() }});
-                <button href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">編集</button>
+                {{-- dd({{ url()->current() }}); --}}
+                <div class="d-block">
+                    <button href="{{ route('edit', ['date' => $date]) }}"
+                        class="btn btn-outline-primary btn-lg float-end">編集</button>
+                </div>
 
                 {{-- 現在のURL取得 --}}
                 {{-- @php
@@ -25,20 +27,26 @@
 
                 {{-- 日記が登録されていれば表示。そうでなければ「日記書こう」 --}}
                 @if (!empty($diary))
-                    <h3 class="m-0">タイトル</h3>
-                    <p>{{ $diary->title }}</p>
-
-                    <h3 class="m-0">体調</h3>
-                    @if ($diary->health === 1)
-                        <p>良い</p>
-                    @elseif ($diary->health === 2)
-                        <p>普通</p>
-                    @else
-                        <p>悪い</p>
-                    @endif
-
-                    <h3 class="m-0">日記本文</h3>
-                    <p>{{ $diary->content }}</p>
+                    <div class="mx-auto col-10">
+                        <div class="border-bottom border-primary mb-3">
+                            <h4 class="m-0">タイトル</h4>
+                            <h3 class="col-8 mx-auto text-center">{{ $diary->title }}</h3>
+                        </div>
+                        <div class="border-bottom border-primary mb-3">
+                            <h4 class="m-0">体調</h4>
+                            @if ($diary->health === 1)
+                                <h3 class="col-8 mx-auto text-center">良い</h3>
+                            @elseif ($diary->health === 2)
+                                <h3 class="col-8 mx-auto text-center">普通</h3>
+                            @else
+                                <h3 class="col-8 mx-auto text-center">悪い</h3>
+                            @endif
+                        </div>
+                        <div class="border-bottom border-primary mb-3">
+                            <h4 class="m-0">日記本文</h4>
+                            <h3 class="col-8 mx-auto text-center">{{ $diary->content }}</h3>
+                        </div>
+                    </div>
                 @else
                     <p>日記書こう</p>
                 @endif
