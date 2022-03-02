@@ -24,7 +24,7 @@ Route::group(
     ['middleware' => 'auth'],
     function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
-        Route::get('/{date}', [HomeController::class, 'show'])->name('show');
+        Route::get('/show/{date}', [HomeController::class, 'show'])->name('show');
         Route::get('/{date}/edit', [HomeController::class, 'edit'])->name('edit');
         Route::post('/store', [HomeController::class, 'store'])->name('store');
     }

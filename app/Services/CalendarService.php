@@ -29,9 +29,9 @@ class CalendarService
             $date = self::getYm() . '-' . $day;
             $getym = self::getYm();
             if (Carbon::now()->format('Y-m-j') === $date) {
-                $week .= '<td class="today"><a href="/' . $date . '?ym=' . $getym . '">' . $day;
+                $week .= '<td class="today"><a href="/show/' . $date . '">' . $day;
             } else {
-                $week .= '<td><a href="/' . $date . '?ym=' . $getym . '">' . $day;
+                $week .= '<td><a href="/show/' . $date . '">' . $day;
                 /* $week .= '<td><a data-bs-toggle="modal" data-bs-target="#MyListModel" href="/show/' . $date . '">' . $day; */
             }
             $week .= '</a></td>';
@@ -65,7 +65,7 @@ class CalendarService
      */
     public function getPrev()
     {
-        return Carbon::parse(self::getYm_firstday())->subMonthsNoOverflow()->format('Y-m');
+        return Carbon::parse(self::getYm_firstday())->subMonthsNoOverflow()->format('Y-m-j');
     }
 
     /**
@@ -75,7 +75,7 @@ class CalendarService
      */
     public function getNext()
     {
-        return Carbon::parse(self::getYm_firstday())->addMonthNoOverflow()->format('Y-m');
+        return Carbon::parse(self::getYm_firstday())->addMonthNoOverflow()->format('Y-m-j');
     }
 
     /**
@@ -95,8 +95,14 @@ class CalendarService
      */
     private static function getYm()
     {
-        if (isset($_GET['ym'])) {
-            return $_GET['ym'];
+        if (\Route::currentRouteName() === 'show') {
+            $url = $_SERVER['REQUEST_URI'];
+            //urlから日記の日付を取得
+            $url = rtrim($url, '/');
+            $date = substr($url, strrpos($url, '/') + 1);
+            //日付($date)から年・月のみ取得
+            //2021-04-1 -> 2021-04
+            return substr($date, 0, 7);
         }
         return Carbon::now()->format('Y-m');
     }
