@@ -95,16 +95,26 @@ class CalendarService
      */
     private static function getYm()
     {
-        if (\Route::currentRouteName() === 'show') {
-            $url = $_SERVER['REQUEST_URI'];
-            //urlから日記の日付を取得
-            $url = rtrim($url, '/');
-            $date = substr($url, strrpos($url, '/') + 1);
-            //日付($date)から年・月のみ取得
-            //2021-04-1 -> 2021-04
-            return substr($date, 0, 7);
+        $currentroute = \Route::currentRouteName();
+        $setroutes = self::set_routes();
+
+        foreach ($setroutes as $setroute) {
+            if ($currentroute === $setroute) {
+                $url = $_SERVER['REQUEST_URI'];
+                //urlから日記の日付を取得
+                $url = rtrim($url, '/');
+                $date = substr($url, strrpos($url, '/') + 1);
+                //日付($date)から年・月のみ取得
+                //2021-04-1 -> 2021-04
+                return substr($date, 0, 7);
+            }
         }
         return Carbon::now()->format('Y-m');
+    }
+
+    private static function set_routes()
+    {
+        return ['create', 'show', 'edit'];
     }
 
     /**
