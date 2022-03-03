@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\FullCalendarController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,8 @@ Route::group(
     function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         Route::get('/show/{date}', [HomeController::class, 'show'])->name('show');
-        Route::get('/{date}/edit', [HomeController::class, 'edit'])->name('edit');
+        Route::get('/create/{date}', [HomeController::class, 'create'])->name('create');
+        Route::get('/edit/{date}', [HomeController::class, 'edit'])->name('edit');
         Route::post('/store', [HomeController::class, 'store'])->name('store');
     }
 );

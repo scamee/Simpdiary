@@ -1,23 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row justify-content-center ml-0 mr-0 h-100">
-        <div class="card w-100">
-            <div class="card-header">新規メモ作成</div>
-            <div class="card-body">
-                <form method='POST' action="/store">
-                    @csrf
-                    <input type='hidden' name='user_id' value="{{ $user['id'] }}">
-                    <div class="form-group">
-                        <textarea name='content' class="form-control" rows="10"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="tag">タグ</label>
-                        <input name='tag' type="text" class="form-control" id="tag" placeholder="タグを入力">
-                    </div>
-                    <button type='submit' class="btn btn-primary btn-lg">保存</button>
-                </form>
+    <div class="card-header">
+        <span class="month" style="width:150px;">
+            {{ $date }}
+        </span>
+    </div>
+    <div class="card-body">
+        <form method='POST' action="/store">
+            @csrf
+            <input type='hidden' name='diary_date' value="{{ $date }}">
+            <input type='hidden' name='user_id' value="{{ $user['id'] }}">
+            <div class="form-group">
+                <label for="titleform" class="form-label">タイトル</label>
+                <input type="text" class="form-control" id="titleform" name="title">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="selectform" class='form-label'>体調</label>
+                <select id='selectform' class='form-control' name='select'>
+                    <option value="" style="display: none;">
+                        --選択してください--
+                    </option>
+                    <option value="1">
+                        良い
+                    </option>
+                    <option value="2">
+                        普通
+                    </option>
+                    <option value="3">
+                        悪い
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="content" class="form-label">本文</label>
+                <textarea name='content' class="form-control" rows="10" id="content"></textarea>
+            </div>
+            <button type='submit' class="btn btn-outline-primary btn-lg">保存</button>
+        </form>
     </div>
 @endsection

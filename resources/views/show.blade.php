@@ -11,8 +11,7 @@
     @if (!empty($diary))
         <div class="card-body py-2 px-4">
             <div class="d-block">
-                <button href="{{ route('edit', ['date' => $date]) }}"
-                    class="btn btn-outline-primary btn-lg float-end">編集</button>
+                <a href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg float-end">編集</a>
             </div>
             <div class="mx-auto col-10">
                 <div class="border-bottom border-primary mb-3">
@@ -52,8 +51,7 @@
         <div class="card-body py-2 px-4 mx-auto text-center align-middle">
             <h3 class="mx-auto text-center align-middle">日記の記載がありません。日記書こう!!</h3>
             <div class="d-block">
-                <button href="{{ route('edit', ['date' => $date]) }}"
-                    class="btn btn-outline-primary btn-lg">日記を書く</button>
+                <a href="{{ route('create', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">日記を書く</a>
             </div>
         </div>
     @endif
