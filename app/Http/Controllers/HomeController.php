@@ -37,11 +37,6 @@ class HomeController extends Controller
         );
     }
 
-    /* public function create()
-    {
-        $user = \Auth::user();
-        return view('create', compact('user'));
-    } */
 
 
     //showメソッド
@@ -59,13 +54,29 @@ class HomeController extends Controller
 
         return view(
             'show',
-            compact('user', 'diary'),
+            compact('user', 'date', 'diary'),
             [
                 'weeks'         => Calendar::getWeeks(),
                 'month'         => Calendar::getMonth(),
                 'prev'          => Calendar::getPrev(),
                 'next'          => Calendar::getNext(),
-                'date'          => Calendar::getDay($date)
+            ]
+        );
+    }
+
+    //createメソッド
+    public function create($date)
+    {
+        $user = \Auth::user();
+
+        return view(
+            'create',
+            compact('user', 'date'),
+            [
+                'weeks'         => Calendar::getWeeks(),
+                'month'         => Calendar::getMonth(),
+                'prev'          => Calendar::getPrev(),
+                'next'          => Calendar::getNext(),
             ]
         );
     }
