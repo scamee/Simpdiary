@@ -21,11 +21,14 @@
                 <div class="form-group">
                     <label for="selectform" class='form-label'>体調</label>
                     <select id='selectform' class='form-control' name='select'>
-                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 1 ? 'selected' : '' }}>良い
+                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 1 ? 'selected' : '' }}>
+                            良い
                         </option>
-                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 2 ? 'selected' : '' }}>普通
+                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 2 ? 'selected' : '' }}>
+                            普通
                         </option>
-                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 3 ? 'selected' : '' }}>悪い
+                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 3 ? 'selected' : '' }}>
+                            悪い
                         </option>
                     </select>
                 </div>
