@@ -112,8 +112,9 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $diary_date = $data["diary_date"];
 
-        $Diary_test = Diary::insertGetId([
+        $Diary_data = Diary::insertGetId([
             "diary_date" => $data["diary_date"],
             "user_id" => $data["user_id"],
             "title" => $data["title"],
@@ -122,6 +123,6 @@ class HomeController extends Controller
         ]);
 
         // リダイレクト処理
-        return redirect()->route('home');
+        return redirect()->route('show', ['date' => $diary_date]);
     }
 }
