@@ -20,9 +20,9 @@
                 </div>
                 <div class="border-bottom border-primary mb-3">
                     <h4 class="m-0 text-primary">体調</h4>
-                    @if ($diary->health === 1)
+                    @if ($diary->health_id === 1)
                         <h3 class="col-8 mx-auto text-center">良い</h3>
-                    @elseif ($diary->health === 2)
+                    @elseif ($diary->health_id === 2)
                         <h3 class="col-8 mx-auto text-center">普通</h3>
                     @else
                         <h3 class="col-8 mx-auto text-center">悪い</h3>
@@ -30,20 +30,7 @@
                 </div>
                 <div class="border-bottom border-primary mb-3">
                     <h4 class="m-0 text-primary">日記本文</h4>
-                    <h3 class="col-12 mx-auto text-center">{{ $diary->content }}
-                        昨日ローソンに行ったんだよね。
-                        で、俺の前の40歳くらいの女性が三井住友VISAアミティエを出したんだよ。
-                        そしたらバイト店員が
-                        「し、少々お待ち下さい！すぐに店長を呼びつけます！」
-                        って店の奥に走って行ったんだよ。
-                        すぐさま店長が出てきて、その女性の前で土下座して
-                        「誠に失礼いたしました！まさかステータスカードである三井住友VISAアミティエをお持ちのお客様だとは知らずに・・」
-                        って汚い床に額を擦りつけてんだよ。するとその女性はハイヒールで店長の頭を踏んで
-                        「本当、失礼だわ。私は三井住友VISAアミティエホルダーよ？その私がわざわざ汚いこの店に買い物に来てあげたのにバイト風情に接客させるなんて」
-                        とか言いながらハイヒールを舐めさせてたよ。
-                        後でセゾンVISAを持って並んでた俺は恥ずかしくてサイフにコッソリ戻したよ。
-                        それにしても三井住友VISAカードのステータスって凄いよな～。
-                        社会的地位の高い選ばれた人しか持てないらしいもんな。</h3>
+                    <h3 class="col-12 mx-auto text-center">{{ $diary->content }}</h3>
                 </div>
             </div>
         </div>
