@@ -94,7 +94,7 @@ class HomeController extends Controller
         } */
 
         //消す
-        $diary = Diary::select('title', 'health', 'content')->where('user_id', $user['id'])->where('diary_date', $date)->first();
+        $diary = Diary::select('title', 'health_id', 'content')->where('user_id', $user['id'])->where('diary_date', $date)->first();
 
         return view(
             'edit',
@@ -118,11 +118,32 @@ class HomeController extends Controller
             "diary_date" => $data["diary_date"],
             "user_id" => $data["user_id"],
             "title" => $data["title"],
-            "health" => $data["select"],
+            "health_id" => $data["select"],
             "content" => $data["content"],
         ]);
 
         // リダイレクト処理
         return redirect()->route('show', ['date' => $diary_date]);
+    }
+
+    //更新
+    public function update(Request $request)
+    {
+        $inputs = $request->all();
+        $diary_date = $inputs["diary_date"];
+
+        $Diary_data = Diary::where("diary_date", $diary_date)
+            ->update([
+                "title" => $inputs["title"],
+                "health_id" => $inputs["select"],
+                "content" => $inputs["content"],
+            ]);
+
+        return redirect()->route('show', ['date' => $diary_date]);
+    }
+
+    //削除
+    public function delete(Request $request)
+    {
     }
 }

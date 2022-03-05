@@ -28,6 +28,8 @@ Route::group(
         Route::get('/create/{date}', [HomeController::class, 'create'])->name('create');
         Route::get('/edit/{date}', [HomeController::class, 'edit'])->name('edit');
         Route::post('/store', [HomeController::class, 'store'])->name('store');
+        Route::post('/update', [HomeController::class, 'update'])->name('update');
+        Route::post('/delete', [HomeController::class, 'delete'])->name('delete');
     }
 );
 

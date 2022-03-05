@@ -10,7 +10,7 @@
     {{-- 日記が登録されていれば表示。そうでなければ「日記書こう」 --}}
     @if (!empty($diary))
         <div class="card-body py-2 px-4">
-            <form method='POST' action="/store">
+            <form method='POST' action="/update">
                 @csrf
                 <input type='hidden' name='diary_date' value="{{ $date }}">
                 <input type='hidden' name='user_id' value="{{ $user['id'] }}">
@@ -21,9 +21,12 @@
                 <div class="form-group">
                     <label for="selectform" class='form-label'>体調</label>
                     <select id='selectform' class='form-control' name='select'>
-                        <option value="{{ $diary->health }}" {{ $diary->health == 1 ? 'selected' : '' }}>良い</option>
-                        <option value="{{ $diary->health }}" {{ $diary->health == 2 ? 'selected' : '' }}>普通</option>
-                        <option value="{{ $diary->health }}" {{ $diary->health == 3 ? 'selected' : '' }}>悪い</option>
+                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 1 ? 'selected' : '' }}>良い
+                        </option>
+                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 2 ? 'selected' : '' }}>普通
+                        </option>
+                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 3 ? 'selected' : '' }}>悪い
+                        </option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -31,7 +34,7 @@
                     <textarea name='content' class="form-control" rows="10"
                         id="content">{{ $diary->content }}</textarea>
                 </div>
-                <a class="btn btn-outline-primary btn-lg">保存</a>
+                <button type="submit" class="btn btn-outline-primary btn-lg">保存</button>
             </form>
         </div>
     @else
