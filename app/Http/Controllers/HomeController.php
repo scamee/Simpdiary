@@ -114,7 +114,7 @@ class HomeController extends Controller
         $data = $request->all();
         $diary_date = $data["diary_date"];
 
-        $Diary_data = Diary::insertGetId([
+        Diary::insertGetId([
             "diary_date" => $data["diary_date"],
             "user_id" => $data["user_id"],
             "title" => $data["title"],
@@ -132,7 +132,7 @@ class HomeController extends Controller
         $inputs = $request->all();
         $diary_date = $inputs["diary_date"];
 
-        $Diary_data = Diary::where("diary_date", $diary_date)
+        Diary::where("diary_date", $diary_date)
             ->update([
                 "title" => $inputs["title"],
                 "health_id" => $inputs["select"],
@@ -145,5 +145,11 @@ class HomeController extends Controller
     //削除
     public function delete(Request $request)
     {
+        $inputs = $request->all();
+        $diary_date = $inputs["diary_date"];
+
+        Diary::where("diary_date", $diary_date)->delete();
+
+        return redirect()->route('show', ['date' => $diary_date]);
     }
 }

@@ -13,6 +13,12 @@
             <div class="d-block">
                 <a href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg float-end">編集</a>
             </div>
+            <form method='POST' action="/delete" id='delete-form'>
+                @csrf
+                <input type="hidden" name='diary_date' value="{{ $date }}">
+                <button type="submit" class="btn btn-outline-primary btn-lg float-end"><i id='delete-button'
+                        class="fas fa-trash"></i>削除</button>
+            </form>
             <div class="mx-auto col-10">
                 <div class="border-bottom border-primary mb-3">
                     <h4 class="m-0 text-primary">タイトル</h4>
