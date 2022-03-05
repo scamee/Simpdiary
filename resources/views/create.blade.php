@@ -36,7 +36,7 @@
                 <label for="content" class="form-label fs-4 text-primary m-0">本文</label>
                 <textarea name='content' class="form-control m-2" rows="10" id="content"></textarea>
             </div>
-            <a type='submit' class="btn btn-outline-primary btn-lg">保存</a>
+            <input type='submit' class="btn btn-outline-primary btn-lg" value="保存">
         </form>
     </div>
 @endsection
