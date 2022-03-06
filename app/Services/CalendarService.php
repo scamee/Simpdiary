@@ -126,4 +126,17 @@ class CalendarService
     {
         return self::getYm() . '-01';
     }
+
+    /**
+     *
+     *
+     * @return string
+     */
+    public function diffDay()
+    {
+        $dt1 = new Carbon('2016-05-01');
+        $today = Carbon::now()->format('Y-m-j');
+
+        return $dt1->diffInDays($today);
+    }
 }
