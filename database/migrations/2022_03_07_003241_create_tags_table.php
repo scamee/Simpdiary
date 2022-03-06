@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCalendarsTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateCalendarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('calendars', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->longText('content');
-            $table->date('date');
-            $table->dateTime('start');
-            $table->dateTime('end');
+            $table->integer('user_id')->comment('ユーザーID');
+            $table->string('title')->comment('タイトル');
+            $table->date('set_day')->comment('設定日時');
             $table->timestamps();
         });
     }
@@ -31,8 +29,6 @@ class CreateCalendarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calendars');
+        Schema::dropIfExists('tags');
     }
 }
-
-//不要ファイル

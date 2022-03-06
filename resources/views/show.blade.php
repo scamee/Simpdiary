@@ -45,9 +45,11 @@
             </div>
         </div>
     @else
-        <div class="card-body py-2 px-4 mx-auto text-center align-middle">
-            <h3 class="mx-auto text-center align-middle">日記の記載がありません。日記書こう!!</h3>
-            <div class="d-block">
+        <div class="card-body py-2 px-4 m-auto">
+            <div class="m-auto align-items-center">
+                <h3 class="d-block mx-auto text-center">日記の記載がありません。日記書こう!!</h3>
+            </div>
+            <div class="d-block m-auto align-items-center">
                 <a href="{{ route('create', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">
                     <i class="me-1 fa-solid fa-pen"></i>日記を書く
                 </a>

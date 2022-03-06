@@ -118,7 +118,7 @@ class HomeController extends Controller
         $data = $request->all();
         $diary_date = $data["diary_date"];
 
-        Diary::insertGetId([
+        Diary::create([
             "diary_date" => $data["diary_date"],
             "user_id" => $data["user_id"],
             "title" => $data["title"],
