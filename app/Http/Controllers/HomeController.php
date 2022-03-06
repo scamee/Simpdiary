@@ -33,6 +33,7 @@ class HomeController extends Controller
                 'month'         => Calendar::getMonth(),
                 'prev'          => Calendar::getPrev(),
                 'next'          => Calendar::getNext(),
+                'diff'          => Calendar::diffDay()
             ]
         );
     }
@@ -60,6 +61,7 @@ class HomeController extends Controller
                 'month'         => Calendar::getMonth(),
                 'prev'          => Calendar::getPrev(),
                 'next'          => Calendar::getNext(),
+                'diff'          => Calendar::diffDay()
             ]
         );
     }
@@ -77,6 +79,7 @@ class HomeController extends Controller
                 'month'         => Calendar::getMonth(),
                 'prev'          => Calendar::getPrev(),
                 'next'          => Calendar::getNext(),
+                'diff'          => Calendar::diffDay()
             ]
         );
     }
@@ -104,6 +107,7 @@ class HomeController extends Controller
                 'month'         => Calendar::getMonth(),
                 'prev'          => Calendar::getPrev(),
                 'next'          => Calendar::getNext(),
+                'diff'          => Calendar::diffDay()
             ]
         );
     }
