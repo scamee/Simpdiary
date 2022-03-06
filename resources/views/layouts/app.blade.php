@@ -13,6 +13,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
+    {{-- fontawesome --}}
+    <script src="https://kit.fontawesome.com/ac133b1636.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -71,12 +73,12 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                         アカウント設定
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -122,7 +124,6 @@
                             </table>
                             <div class="card-footer bg-transparent border-primary">
                                 <div class="row">
-                                    {{-- foreach --}}
                                     <div class="col-sm-6">
                                         <div class="card">
                                             <div class="card-header"
@@ -134,7 +135,18 @@
                                                 あと<span style="font-size:35px;">{{ $diff }}</span>日
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="card">
+                                            <div class="card-header"
+                                                style="background: linear-gradient(-135deg, #9941D8,#E4A972);color:white; font-size:20px;">
+                                                記念日まで
+                                            </div>
+                                            <div class="card-body"
+                                                style="background: linear-gradient(-135deg, #9941D8,#E4A972);color:white; font-size:20px; text-align:center;">
+                                                あと<span style="font-size:35px;">{{ $diff }}</span>日
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
