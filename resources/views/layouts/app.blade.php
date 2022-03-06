@@ -73,12 +73,12 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                         アカウント設定
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -128,10 +128,14 @@
                                         <div class="card">
                                             <div class="card-header"
                                                 style="background: linear-gradient(-135deg, #E4A972, #9941D8);color:white; font-size:20px;">
-                                                記念日まで
+                                                <a href="{{ route('edit', ['date' => $date]) }}"
+                                                    class="float-end">
+                                                    <i class="me-1 fa-solid fa-pen"></i>
+                                                </a>
                                             </div>
                                             <div class="card-body"
                                                 style="background: linear-gradient(-135deg, #E4A972, #9941D8);color:white; font-size:20px; text-align:center;">
+                                                記念日まで<br>
                                                 あと<span style="font-size:35px;">{{ $diff }}</span>日
                                             </div>
                                         </div>
@@ -140,14 +144,19 @@
                                         <div class="card">
                                             <div class="card-header"
                                                 style="background: linear-gradient(-135deg, #9941D8,#E4A972);color:white; font-size:20px;">
-                                                記念日まで
+                                                <a href="{{ route('edit', ['date' => $date]) }}"
+                                                    class="float-end">
+                                                    <i class="me-1 fa-solid fa-pen"></i>
+                                                </a>
                                             </div>
                                             <div class="card-body"
                                                 style="background: linear-gradient(-135deg, #9941D8,#E4A972);color:white; font-size:20px; text-align:center;">
+                                                記念日まで<br>
                                                 あと<span style="font-size:35px;">{{ $diff }}</span>日
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -161,15 +170,14 @@
     </div>
 </body>
 
-
 </html>
 
-{{-- {{-- 日記確認画面 自分
+{{-- 日記確認画面 自分 --}}
 <div class="modal fade" id="MyListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="Title">自分の日記</h5>
+                <h5 class="modal-title" id="Title">自分の日記{{ $date }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -289,4 +297,4 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MyListModel">
         日記を見る
     </button>
-</div> --}}
+</div>
