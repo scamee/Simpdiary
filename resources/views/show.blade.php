@@ -45,15 +45,10 @@
             </div>
         </div>
     @else
-        <div class="card-body py-2 px-4 m-auto">
-            <div class="m-auto align-items-center">
-                <h3 class="d-block mx-auto text-center">日記の記載がありません。日記書こう!!</h3>
-            </div>
-            <div class="d-block m-auto align-items-center">
-                <a href="{{ route('create', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">
-                    <i class="me-1 fa-solid fa-pen"></i>日記を書く
-                </a>
-            </div>
+        <div class="card-body py-2 px-4 mx-auto align-items-center d-flex flex-wrap">
+            <a href="{{ route('create', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">
+                <i class="me-1 fa-solid fa-pen"></i>日記を書く
+            </a>
         </div>
     @endif
     </div>
