@@ -24,3 +24,17 @@
 .slideshow p {
     color: #ffff;
 }
+
+
+/* modal */
+
+.setting-list li{
+    list-style: none;
+    position: relative;
+}
+
+.setting-list li a {
+    position: absolute;
+    top:0;
+    right:0;
+}
