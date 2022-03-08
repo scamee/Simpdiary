@@ -24,9 +24,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -71,15 +72,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <button type="button" class="dropdown-item" data-bs-target="#MyListModel"
-                                        data-bs-toggle="modal"
-                                        onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
+                                    <button type="button" class="dropdown-item" data-bs-target="#UserSettingModel"
+                                        data-bs-toggle="modal">
                                         アカウント設定
                                     </button>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -169,133 +167,233 @@
             </div>
         </main>
     </div>
-</body>
 
-</html>
-
-{{-- 日記確認画面 自分 --}}
-<div class="modal fade" id="MyListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Title">自分の日記{{ $date }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    {{-- 日記確認画面 自分 --}}
+    <div class="modal fade" id="UserSettingModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="Title">アカウント設定</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="setting-list p-2">
+                        <li>
+                            <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse"
+                                href="#collapseExample" role="button" aria-expanded="false"
+                                aria-controls="collapseExample">
+                                <i class="me-1 fa-solid fa-pen"></i>
+                            </a>
+                            <h4>ユーザー名</h4>
+                            <p>
+                                あなたのユーザー名:
+                                <span class="border-bottom border-primary border-2">{{ $user->name }}</span>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                                <div class="">
+                                    <form action="#">
+                                        @csrf
+                                        <input type="text" class="form-control" id="titleform" name="title"
+                                            value="{{ $user->name }}">
+                                        <button type="submit" class="btn btn-outline-primary">保存</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                        <li>
+                            <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse"
+                                href="#collapseExample2" role="button" aria-expanded="false"
+                                aria-controls="collapseExample2">
+                                <i class="me-1 fa-solid fa-pen"></i>
+                            </a>
+                            <h4>パスワード</h4>
+                            <p>
+                                ログインパスワードを変更します
+                            </p>
+                            <div class="collapse" id="collapseExample2">
+                                <div class="">
+                                    <form action="#">
+                                        @csrf
+                                        <label class="form-label" for="currentPassword">現在のパスワード</label>
+                                        <input type="text" class="form-control" id="currentPassword"
+                                            name="currentpassword" value="{{ $user->name }}">
+                                        <label class="form-label" for="newPassword">新しいパスワード</label>
+                                        <input type="text" class="form-control" id="newPassword" name="newpassword"
+                                            value="{{ $user->name }}">
+                                        <label class="form-label" for="newPasswordAgain">新しいパスワード(再度)</label>
+                                        <input type="text" class="form-control" id="newPasswordAgain"
+                                            name="newpasswordAgain" value="{{ $user->name }}">
+                                        <button type="submit" class="btn btn-outline-primary">保存</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                        <li>
+                            <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse"
+                                href="#collapseExample3" role="button" aria-expanded="false"
+                                aria-controls="collapseExample3">
+                                <i class="me-1 fa-solid fa-pen"></i>
+                            </a>
+                            <h4>記念日</h4>
+                            <p>
+                                現在の記念日:<span class="border-bottom border-primary border-2">{{ $date }}</span>
+                            </p>
+                            <div class="collapse" id="collapseExample3">
+                                <div class="">
+                                    <form action="#">
+                                        @csrf
+                                        <label class="form-label" for="currentPassword">現在のパスワード</label>
+                                        <input type="text" class="form-control" id="currentPassword"
+                                            name="currentpassword" value="{{ $user->name }}">
+                                        <button type="submit" class="btn btn-outline-primary">保存</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button class="btn btn-primary btn-edit" data-bs-target="#EditModel" data-bs-toggle="modal"
-                            data-bs-dismiss="modal">編集</button>
-                        <div class="row">
-                            <div class="col-sm-2 col-4">
-                                <h3 class="m-0">タイトル</h3>
+        </div>
+    </div>
+    </ul>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal" data-bs-dismiss="modal"
+            disabled>自分の日記</button>
+        <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
+            data-bs-dismiss="modal">相手の日記</button>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="MyListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Title">自分の日記{{ $date }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary btn-edit" data-bs-target="#EditModel" data-bs-toggle="modal"
+                                data-bs-dismiss="modal">編集</button>
+                            <div class="row">
+                                <div class="col-sm-2 col-4">
+                                    <h3 class="m-0">タイトル</h3>
+                                </div>
+                                <div class="col-sm-10 col-8">
+                                    <p class="m-0">...</p>
+                                </div>
                             </div>
-                            <div class="col-sm-10 col-8">
-                                <p class="m-0">...</p>
-                            </div>
+                            <hr>
                         </div>
+                    </div>
+                    <div class="row">
+                        <h3>体調</h3>
+                        <p>...</p>
                         <hr>
                     </div>
-                </div>
-                <div class="row">
-                    <h3>体調</h3>
+                    <h3>本文</h3>
                     <p>...</p>
                     <hr>
                 </div>
-                <h3>本文</h3>
-                <p>...</p>
-                <hr>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
-                    data-bs-dismiss="modal" disabled>自分の日記</button>
-                <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
-                    data-bs-dismiss="modal">相手の日記</button>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" disabled>自分の日記</button>
+                    <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">相手の日記</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-{{-- 日記確認画面 相手
-<div class="modal fade" id="PartnerListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Title">相手の日記</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h3>タイトル</h3>
-                <p>...</p>
-                <hr>
-                <h3>体調</h3>
-                <p>...</p>
-                <hr>
-                <h3>本文</h3>
-                <p>...</p>
-                <hr>
-                <br><br><br><br><br><br><br><br><br><br>
-                <p>Just like that.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
-                    data-bs-dismiss="modal">自分の日記</button>
-                <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
-                    data-bs-dismiss="modal" disabled>相手の日記</button>
+    {{-- 日記確認画面 相手 --}}
+    <div class="modal fade" id="PartnerListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Title">相手の日記</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h3>タイトル</h3>
+                    <p>...</p>
+                    <hr>
+                    <h3>体調</h3>
+                    <p>...</p>
+                    <hr>
+                    <h3>本文</h3>
+                    <p>...</p>
+                    <hr>
+                    <br><br><br><br><br><br><br><br><br><br>
+                    <p>Just like that.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">自分の日記</button>
+                    <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" disabled>相手の日記</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-{{-- 編集画面
-<div class="modal fade" id="EditModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="Title">編集画面</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="form" method='POST' action="">
-                    @csrf
-                    <div class="form-group">
-                        <label for="title" class="form-label" name="">タイトル</label>
-                        <input type="text" class="form-control" id="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="select" class='form-label'>体調</label>
-                        <select id='select' class='form-control' name=''>
-                            <option value="">
-                                --選択してください--
-                            </option>
-                            <option value="good">
-                                良い
-                            </option>
-                            <option value="normal">
-                                普通
-                            </option>
-                            <option value="bad">
-                                悪い
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="content" class="form-label">内容</label>
-                        <textarea name="" id="content" rows="10" class="form-control"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
-                    data-bs-dismiss="modal">戻る</button>
-                <button type="submit" class="btn btn-primary" form="form">保存</button>
+    {{-- 編集画面 --}}
+    <div class="modal fade" id="EditModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Title">編集画面</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" method='POST' action="">
+                        @csrf
+                        <div class="form-group">
+                            <label for="title" class="form-label" name="">タイトル</label>
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="select" class='form-label'>体調</label>
+                            <select id='select' class='form-control' name=''>
+                                <option value="">
+                                    --選択してください--
+                                </option>
+                                <option value="good">
+                                    良い
+                                </option>
+                                <option value="normal">
+                                    普通
+                                </option>
+                                <option value="bad">
+                                    悪い
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="form-label">内容</label>
+                            <textarea name="" id="content" rows="10" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">戻る</button>
+                    <button type="submit" class="btn btn-primary" form="form">保存</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-<div class="bd-example">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MyListModel">
-        日記を見る
-    </button>
-</div>
+    </div>
+    <div class="bd-example">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MyListModel">
+            日記を見る
+        </button>
+    </div>
+
+</body>
+
+</html>
