@@ -93,11 +93,12 @@
         </nav>
 
         <main class="main">
-            {{-- @if (session('success'))
-                <div class="alert alert-success" role="alert">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     {{ session('success') }}
                 </div>
-            @endif --}}
+            @endif
             <div class="row" {{-- style='height: 92vh;' --}}>
                 <div class="card-group">
                     <div class="card">
@@ -121,41 +122,22 @@
                                     {!! $week !!}
                                 @endforeach
                             </table>
-                            <div class="card-footer bg-transparent border-primary">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header"
-                                                style="background: linear-gradient(-135deg, #E4A972, #9941D8);color:white; font-size:20px;">
-                                                <a href="{{ route('edit', ['date' => $date]) }}"
-                                                    class="float-end">
-                                                    <i class="me-1 fa-solid fa-pen"></i>
-                                                </a>
-                                            </div>
-                                            <div class="card-body"
-                                                style="background: linear-gradient(-135deg, #E4A972, #9941D8);color:white; font-size:20px; text-align:center;">
-                                                記念日まで<br>
-                                                あと<span style="font-size:35px;">{{ $diff }}</span>日
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="card">
-                                            <div class="card-header"
-                                                style="background: linear-gradient(-135deg, #9941D8,#E4A972);color:white; font-size:20px;">
-                                                <a href="{{ route('edit', ['date' => $date]) }}"
-                                                    class="float-end">
-                                                    <i class="me-1 fa-solid fa-pen"></i>
-                                                </a>
-                                            </div>
-                                            <div class="card-body"
-                                                style="background: linear-gradient(-135deg, #9941D8,#E4A972);color:white; font-size:20px; text-align:center;">
-                                                記念日まで<br>
-                                                あと<span style="font-size:35px;">{{ $diff }}</span>日
-                                            </div>
-                                        </div>
-                                    </div>
 
+                            {{-- タグ --}}
+                            <div class="card-footer bg-transparent p-0">
+                                <div class="row">
+                                    <div class="col-6 px-1">
+                                        <div class="card card-body tag p-0">
+                                            記念日まで<br>
+                                            あと<span style="font-size:35px;">{{ $diff }}</span>日
+                                        </div>
+                                    </div>
+                                    <div class="col-6 px-1">
+                                        <div class="card card-body tag p-0">
+                                            記念日まで<br>
+                                            あと<span style="font-size:35px;">{{ $diff }}</span>日
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -168,15 +150,15 @@
         </main>
     </div>
 
-    {{-- 日記確認画面 自分 --}}
+    {{-- アカウント設定 --}}
     <div class="modal fade" id="UserSettingModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content p-3">
                 <div class="modal-header">
                     <h4 class="modal-title" id="Title">アカウント設定</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body p-0">
                     <ul class="setting-list p-2">
                         <li>
                             <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse"
@@ -185,19 +167,17 @@
                                 <i class="me-1 fa-solid fa-pen"></i>
                             </a>
                             <h4>ユーザー名</h4>
-                            <p>
-                                あなたのユーザー名:
+                            <p>あなたのユーザー名:
                                 <span class="border-bottom border-primary border-2">{{ $user->name }}</span>
                             </p>
                             <div class="collapse" id="collapseExample">
-                                <div class="">
-                                    <form action="#">
-                                        @csrf
-                                        <input type="text" class="form-control" id="titleform" name="title"
-                                            value="{{ $user->name }}">
-                                        <button type="submit" class="btn btn-outline-primary">保存</button>
-                                    </form>
-                                </div>
+                                <form action="#">
+                                    @csrf
+                                    <label class="form-label" for="username">新しいユーザー名</label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        value="{{ $user->name }}">
+                                    <button type="submit" class="btn btn-outline-primary">保存</button>
+                                </form>
                             </div>
                         </li>
                         <hr>
@@ -208,25 +188,21 @@
                                 <i class="me-1 fa-solid fa-pen"></i>
                             </a>
                             <h4>パスワード</h4>
-                            <p>
-                                ログインパスワードを変更します
-                            </p>
+                            <p>ログインパスワードを変更します</p>
                             <div class="collapse" id="collapseExample2">
-                                <div class="">
-                                    <form action="#">
-                                        @csrf
-                                        <label class="form-label" for="currentPassword">現在のパスワード</label>
-                                        <input type="text" class="form-control" id="currentPassword"
-                                            name="currentpassword" value="{{ $user->name }}">
-                                        <label class="form-label" for="newPassword">新しいパスワード</label>
-                                        <input type="text" class="form-control" id="newPassword" name="newpassword"
-                                            value="{{ $user->name }}">
-                                        <label class="form-label" for="newPasswordAgain">新しいパスワード(再度)</label>
-                                        <input type="text" class="form-control" id="newPasswordAgain"
-                                            name="newpasswordAgain" value="{{ $user->name }}">
-                                        <button type="submit" class="btn btn-outline-primary">保存</button>
-                                    </form>
-                                </div>
+                                <form action="#">
+                                    @csrf
+                                    <label class="form-label" for="currentPassword">現在のパスワード</label>
+                                    <input type="text" class="form-control" id="currentPassword"
+                                        name="currentpassword" value="{{ $user->name }}">
+                                    <label class="form-label" for="newPassword">新しいパスワード</label>
+                                    <input type="text" class="form-control" id="newPassword" name="newpassword"
+                                        value="{{ $user->name }}">
+                                    <label class="form-label" for="newPasswordAgain">新しいパスワード(再度)</label>
+                                    <input type="text" class="form-control" id="newPasswordAgain"
+                                        name="newpasswordAgain" value="{{ $user->name }}">
+                                    <button type="submit" class="btn btn-outline-primary">保存</button>
+                                </form>
                             </div>
                         </li>
                         <hr>
@@ -246,26 +222,20 @@
                                         @csrf
                                         <label class="form-label" for="currentPassword">現在のパスワード</label>
                                         <input type="text" class="form-control" id="currentPassword"
-                                            name="currentpassword" value="{{ $user->name }}">
+                                            name="currentpassword" value="{{ $date }}">
                                         <button type="submit" class="btn btn-outline-primary">保存</button>
                                     </form>
                                 </div>
                             </div>
                         </li>
                         <hr>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                 </div>
             </div>
         </div>
-    </div>
-    </ul>
-    <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal" data-bs-dismiss="modal"
-            disabled>自分の日記</button>
-        <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
-            data-bs-dismiss="modal">相手の日記</button>
-    </div>
-    </div>
-    </div>
     </div>
 
     <div class="modal fade" id="MyListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
