@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\Calendar;
 use Illuminate\Http\Request;
 use App\Models\Diary;
 
@@ -27,14 +26,7 @@ class HomeController extends Controller
     {
 
         return view(
-            'home',
-            [
-                'weeks'         => Calendar::getWeeks(),
-                'month'         => Calendar::getMonth(),
-                'prev'          => Calendar::getPrev(),
-                'next'          => Calendar::getNext(),
-                'diff'          => Calendar::diffDay()
-            ]
+            'home'
         );
     }
 
@@ -55,14 +47,7 @@ class HomeController extends Controller
 
         return view(
             'show',
-            compact('user', 'date', 'diary'),
-            [
-                'weeks'         => Calendar::getWeeks(),
-                'month'         => Calendar::getMonth(),
-                'prev'          => Calendar::getPrev(),
-                'next'          => Calendar::getNext(),
-                'diff'          => Calendar::diffDay()
-            ]
+            compact('user', 'date', 'diary')
         );
     }
 
@@ -73,14 +58,7 @@ class HomeController extends Controller
 
         return view(
             'create',
-            compact('user', 'date'),
-            [
-                'weeks'         => Calendar::getWeeks(),
-                'month'         => Calendar::getMonth(),
-                'prev'          => Calendar::getPrev(),
-                'next'          => Calendar::getNext(),
-                'diff'          => Calendar::diffDay()
-            ]
+            compact('user', 'date')
         );
     }
 
@@ -101,14 +79,7 @@ class HomeController extends Controller
 
         return view(
             'edit',
-            compact('user', 'date', 'diary'),
-            [
-                'weeks'         => Calendar::getWeeks(),
-                'month'         => Calendar::getMonth(),
-                'prev'          => Calendar::getPrev(),
-                'next'          => Calendar::getNext(),
-                'diff'          => Calendar::diffDay()
-            ]
+            compact('user', 'date', 'diary')
         );
     }
 

@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Calendar;
+use App\Facades\Calendar;
+use app\Services\CalendarService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            '*',
+            function ($view) {
+                $user = \Auth::user();
+
+                $view->with('user', $user)->with(
+                    [
+                        'weeks'         => Calendar::getWeeks(),
+                        'month'         => Calendar::getMonth(),
+                        'prev'          => Calendar::getPrev(),
+                        'next'          => Calendar::getNext(),
+                        'diff'          => Calendar::diffDay()
+                    ]
+                );
+            }
+        );
     }
 }
