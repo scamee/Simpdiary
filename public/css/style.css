@@ -31,10 +31,27 @@
 .setting-list li{
     list-style: none;
     position: relative;
+    margin:8px;
 }
 
 .setting-list li a {
     position: absolute;
     top:0;
     right:0;
+}
+
+/* tag */
+.tag{
+    display: block;
+    position: relative;
+    text-align: center;
+    background: linear-gradient(-135deg, #9941D8,#E4A972);
+    color:white;
+    font-size:20px;
+}
+
+.tag a{
+    position: absolute;
+    top: 0;
+    right: 0;
 }

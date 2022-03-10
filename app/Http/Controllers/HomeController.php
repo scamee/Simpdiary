@@ -154,6 +154,6 @@ class HomeController extends Controller
 
         Diary::where("diary_date", $diary_date)->delete();
 
-        return redirect()->route('show', ['date' => $diary_date]);
+        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
     }
 }
