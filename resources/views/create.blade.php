@@ -13,28 +13,28 @@
             <input type='hidden' name='user_id' value="{{ $user['id'] }}">
             <div class="form-group col-10 mx-auto">
                 <label for="titleform" class="form-label fs-4 text-primary m-0">タイトル</label>
-                <input type="text" class="form-control m-2" id="titleform" name="title">
+                <input type="text" class="form-control m-2" id="titleform" name="title" value="{{ old('title') }}">
             </div>
             <div class="form-group col-10 mx-auto">
                 <label for="selectform" class='form-label fs-4 text-primary m-0'>体調</label>
                 <select id='selectform' class='form-control m-2' name='select'>
-                    <option value="" style="display: none;">
+                    <option style="display: none;">
                         --選択してください--
                     </option>
-                    <option value="1">
+                    <option value="1" @if (1 === (int) old('select')) selected @endif>
                         良い
                     </option>
-                    <option value="2">
+                    <option value="2" @if (2 === (int) old('select')) selected @endif>
                         普通
                     </option>
-                    <option value="3">
+                    <option value="3" @if (3 === (int) old('select')) selected @endif>
                         悪い
                     </option>
                 </select>
             </div>
             <div class="form-group col-10 mx-auto">
                 <label for="content" class="form-label fs-4 text-primary m-0">本文</label>
-                <textarea name='content' class="form-control m-2" rows="10" id="content"></textarea>
+                <textarea name='content' class="form-control m-2" rows="10" id="content">{{ old('content') }}</textarea>
             </div>
             <input type='submit' class="btn btn-outline-primary btn-lg" value="保存">
         </form>

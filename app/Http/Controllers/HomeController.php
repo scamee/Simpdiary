@@ -42,23 +42,21 @@ class HomeController extends Controller
         }
 
         $user = \Auth::user();
-        $diary = Diary::where('user_id', $user['id'])->where('diary_date', $date)->first();
+        $diary = Diary::where('diary_date', $date)->where('user_id', $user['id'])->first();
 
 
         return view(
             'show',
-            compact('user', 'date', 'diary')
+            compact('date', 'diary')
         );
     }
 
     //createメソッド
     public function create($date)
     {
-        $user = \Auth::user();
-
         return view(
             'create',
-            compact('user', 'date')
+            compact('date')
         );
     }
 
@@ -79,22 +77,30 @@ class HomeController extends Controller
 
         return view(
             'edit',
-            compact('user', 'date', 'diary')
+            compact('date', 'diary')
         );
     }
 
     //編集アクション
     public function store(Request $request)
     {
-        $data = $request->all();
-        $diary_date = $data["diary_date"];
+        /* dd($request); */
+        $validated = $request->validate([
+            'diary_date' => 'required',
+            'user_id' => 'required',
+            'title' => 'required|max:15',
+            'select' => 'required',
+            'content' => 'required'
+        ]);
+
+        $diary_date = $request["diary_date"];
 
         Diary::create([
-            "diary_date" => $data["diary_date"],
-            "user_id" => $data["user_id"],
-            "title" => $data["title"],
-            "health_id" => $data["select"],
-            "content" => $data["content"],
+            "diary_date" => $validated["diary_date"],
+            "user_id" => $validated["user_id"],
+            "title" => $validated["title"],
+            "health_id" => $validated["select"],
+            "content" => $validated["content"],
         ]);
 
         // リダイレクト処理

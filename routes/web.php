@@ -32,5 +32,3 @@ Route::group(
         Route::post('/delete', [HomeController::class, 'delete'])->name('delete');
     }
 );
-
-/* Route::get('full-calender', [FullCalendarController::class, 'index']); */
