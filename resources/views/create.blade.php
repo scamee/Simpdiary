@@ -14,6 +14,9 @@
             <div class="form-group col-10 mx-auto">
                 <label for="titleform" class="form-label fs-4 text-primary m-0">タイトル</label>
                 <input type="text" class="form-control m-2" id="titleform" name="title" value="{{ old('title') }}">
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group col-10 mx-auto">
                 <label for="selectform" class='form-label fs-4 text-primary m-0'>体調</label>
@@ -31,10 +34,16 @@
                         悪い
                     </option>
                 </select>
+                @error('select')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group col-10 mx-auto">
                 <label for="content" class="form-label fs-4 text-primary m-0">本文</label>
                 <textarea name='content' class="form-control m-2" rows="10" id="content">{{ old('content') }}</textarea>
+                @error('content')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <input type='submit' class="btn btn-outline-primary btn-lg" value="保存">
         </form>

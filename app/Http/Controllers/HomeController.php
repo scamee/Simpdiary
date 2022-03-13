@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
 use App\Models\Diary;
 
 class HomeController extends Controller
@@ -82,18 +83,11 @@ class HomeController extends Controller
     }
 
     //編集アクション
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        /* dd($request); */
-        $validated = $request->validate([
-            'diary_date' => 'required',
-            'user_id' => 'required',
-            'title' => 'required|max:15',
-            'select' => 'required',
-            'content' => 'required'
-        ]);
+        $validated = $request->validated();
 
-        $diary_date = $request["diary_date"];
+        $diary_date = $validated["diary_date"];
 
         Diary::create([
             "diary_date" => $validated["diary_date"],
@@ -103,7 +97,6 @@ class HomeController extends Controller
             "content" => $validated["content"],
         ]);
 
-        // リダイレクト処理
         return redirect()->route('show', ['date' => $diary_date]);
     }
 
