@@ -99,6 +99,9 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @error('set_day')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             {{-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -235,7 +238,7 @@
                             </p>
                             <div class="collapse" id="collapseExample3">
                                 <div class="">
-                                    <form action="#">
+                                    <form method='POST' action="#">
                                         @csrf
                                         <label class="form-label" for="currentPassword">現在のパスワード</label>
                                         <input type="text" class="form-control" id="currentPassword"
@@ -278,13 +281,14 @@
                                 <span class="border-bottom border-primary border-2">{{ $tags[0]['set_day'] }}</span>
                             </p>
                             <div class="collapse" id="collapseTag1">
-                                <form action="#">
+                                <form method='POST' action="/tagupdate">
                                     @csrf
+                                    <input type="hidden" name="id" value="{{ $tags[0]['id'] }}">
                                     <label class="form-label" for="tag1-title">タイトル</label>
-                                    <input type="text" class="form-control" id="tag1-title" name="tag1-title"
+                                    <input type="text" class="form-control" id="tag1-title" name="tag-title"
                                         value="{{ $tags[0]['title'] }}">
-                                    <label class="form-label" for="tag1-setday">日付(yyyy-mm-dd:例2000-12-01)</label>
-                                    <input type="text" class="form-control" id="tag1-setday" name="tag1-setday"
+                                    <label class="form-label" for="tag1-setday">日付 (例)2000-12-01[yyyy-mm-dd]</label>
+                                    <input type="text" class="form-control" id="tag1-setday" name="tag-setday"
                                         value="{{ $tags[0]['set_day'] }}">
                                     <button type="submit" class="btn btn-outline-primary">保存</button>
                                 </form>
@@ -304,13 +308,14 @@
                                 <span class="border-bottom border-primary border-2">{{ $tags[1]['set_day'] }}</span>
                             </p>
                             <div class="collapse" id="collapseTag2">
-                                <form action="#">
+                                <form method='POST' action="/tagupdate">
                                     @csrf
+                                    <input type="hidden" name="id" value="{{ $tags[1]['id'] }}">
                                     <label class="form-label" for="tag2-title">タイトル</label>
-                                    <input type="text" class="form-control" id="tag2-title" name="tag2-title"
+                                    <input type="text" class="form-control" id="tag2-title" name="tag-title"
                                         value="{{ $tags[1]['title'] }}">
                                     <label class="form-label" for="tag2-setday">日付(yyyy-mm-dd:例2000-12-01)</label>
-                                    <input type="text" class="form-control" id="tag2-setday" name="tag2-setday"
+                                    <input type="text" class="form-control" id="tag2-setday" name="tag-setday"
                                         value="{{ $tags[1]['set_day'] }}">
                                     <button type="submit" class="btn btn-outline-primary">保存</button>
                                 </form>

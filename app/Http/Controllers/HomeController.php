@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\DiaryValidateRequest;
 use App\Models\Diary;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -85,7 +86,7 @@ class HomeController extends Controller
     }
 
     //編集アクション
-    public function store(StorePostRequest $request)
+    public function store(DiaryValidateRequest $request)
     {
         $validated = $request->validated();
 
@@ -103,16 +104,17 @@ class HomeController extends Controller
     }
 
     //更新
-    public function update(Request $request)
+    public function update(DiaryValidateRequest $request)
     {
-        $inputs = $request->all();
-        $diary_date = $inputs["diary_date"];
+        $validated = $request->validated();
+
+        $diary_date = $validated["diary_date"];
 
         Diary::where("diary_date", $diary_date)
             ->update([
-                "title" => $inputs["title"],
-                "health_id" => $inputs["select"],
-                "content" => $inputs["content"],
+                "title" => $validated["title"],
+                "health_id" => $validated["select"],
+                "content" => $validated["content"],
             ]);
 
         return redirect()->route('show', ['date' => $diary_date]);
@@ -128,4 +130,20 @@ class HomeController extends Controller
 
         return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
     }
+
+    /* public function tagupdate(Request $request)
+    {
+        $request->validated();
+
+
+        $user = \Auth::user();
+
+        Tag::where("user_id", $user['id'])->where("id", $request['id'])
+            ->update([
+                "title" => $validated["tag-title"],
+                "set_day" => $validated["tag-setday"]
+            ]);
+
+        return redirect()->route('show', ['date' => '2022-03-14']);
+    } */
 }

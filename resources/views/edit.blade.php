@@ -10,6 +10,15 @@
     {{-- 日記が登録されていれば表示。そうでなければ「日記書こう」 --}}
     @if (!empty($diary))
         <div class="card-body py-2 px-4">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li style="list-style: none;">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method='POST' action="/update">
                 @csrf
                 <input type='hidden' name='diary_date' value="{{ $date }}">
@@ -34,8 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content" class="form-label">本文</label>
-                    <textarea name='content' class="form-control" rows="10"
-                        id="content">{{ $diary->content }}</textarea>
+                    <textarea name='content' class="form-control" rows="10" id="content">{{ $diary->content }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-outline-primary btn-lg">保存</button>
             </form>
