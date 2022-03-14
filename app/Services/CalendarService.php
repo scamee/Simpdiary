@@ -5,7 +5,6 @@ namespace app\Services;
 
 use Carbon\Carbon;
 
-
 class CalendarService
 {
     /**
@@ -27,8 +26,8 @@ class CalendarService
 
         for ($day = 1; $day <= $days_in_month; $day++, $day_of_week++) {
             $date = self::getYm() . '-' . $day;
-            $getym = self::getYm();
-            if (Carbon::now()->format('Y-m-j') === $date) {
+
+            if (self::getNow() === $date) {
                 $week .= '<td class="today"><a href="/show/' . $date . '">' . $day;
             } else {
                 $week .= '<td><a href="/show/' . $date . '">' . $day;
@@ -83,9 +82,9 @@ class CalendarService
      *
      * @return string
      */
-    public function getDay($id)
+    private static function getNow()
     {
-        return Carbon::parse($id)->format('Y年n月d日');
+        return Carbon::now()->format('Y-m-j');
     }
 
     /**
@@ -128,15 +127,30 @@ class CalendarService
     }
 
     /**
-     *
+     *今日の日付と$set_dayの日数差を取得する
      *
      * @return string
      */
-    public function diffDay()
+    public function diffDay1($set_day)
     {
-        $dt1 = new Carbon('2016-05-01');
-        $today = Carbon::now()->format('Y-m-j');
 
-        return $dt1->diffInDays($today);
+        $set_day = new Carbon($set_day);
+        $today = new Carbon(self::getNow());
+
+        return $set_day->diffInDays($today);
+    }
+
+    /**
+     *今日の日付と$set_dayの日数差を取得する
+     *
+     * @return string
+     */
+    public function diffDay2($set_day)
+    {
+
+        $set_day = new Carbon($set_day);
+        $today = new Carbon(self::getNow());
+
+        return $set_day->diffInDays($today);
     }
 }

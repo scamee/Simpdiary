@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Models\Diary;
+use App\Models\Tag;
 
 class HomeController extends Controller
 {
@@ -45,7 +46,8 @@ class HomeController extends Controller
         $user = \Auth::user();
         $diary = Diary::where('diary_date', $date)->where('user_id', $user['id'])->first();
 
-
+        /* $tags = Tag::where('user_id', $user['id'])->get();
+        dd($tags); */
         return view(
             'show',
             compact('date', 'diary')
@@ -67,11 +69,11 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
 
-        /* //正規表現確認
-        $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/';
+        //URL正規表現確認 -> 一致しなければ404notfound
+        $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/';
         if (!preg_match($preg, $date)) {
-            $error = "正しくありません";
-        } */
+            abort(404);
+        }
 
         //消す
         $diary = Diary::select('title', 'health_id', 'content')->where('user_id', $user['id'])->where('diary_date', $date)->first();

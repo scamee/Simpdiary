@@ -36,11 +36,29 @@
 
 .setting-list li a {
     position: absolute;
-    top:0;
+    top:0px;
     right:0;
 }
 
 /* tag */
+#tags .card-title{
+    border-top:1px solid #EE827D;
+    margin: 0 24px;
+    padding:10px 0;
+    text-align: center;
+}
+
+#tags .card-body{
+    position:relative;
+}
+
+#tags button{
+    position:absolute;
+    top: 0px;
+    margin:10px;
+    right: 0;
+}
+
 .tag{
     display: block;
     position: relative;

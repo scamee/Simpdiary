@@ -18,7 +18,8 @@ class CreateTagsTable extends Migration
             $table->integer('user_id')->comment('ユーザーID');
             $table->string('title')->comment('タイトル');
             $table->date('set_day')->comment('設定日時');
-            $table->timestamps();
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'))->comment('更新日時');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('作成日時');
         });
     }
 

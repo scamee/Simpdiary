@@ -99,7 +99,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -107,7 +107,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
             <div class="row" {{-- style='height: 92vh;' --}}>
                 <div class="card-group">
                     <div class="card">
@@ -131,20 +131,28 @@
                                     {!! $week !!}
                                 @endforeach
                             </table>
-
-                            {{-- タグ --}}
+                        </div>
+                        {{-- タグ --}}
+                        <div id="tags">
+                            <div class="card-body bg-transparent p-0">
+                                <h4 class="card-title">tags</h4>
+                                <button class="btn btn-outline-primary" data-bs-target="#TagSettingModel"
+                                    data-bs-toggle="modal">
+                                    <i class="me-1 fa-solid fa-pen"></i>
+                                </button>
+                            </div>
                             <div class="card-footer bg-transparent p-0">
-                                <div class="row">
+                                <div class="row m-0">
                                     <div class="col-6 px-1">
                                         <div class="card card-body tag p-0">
-                                            記念日まで<br>
-                                            あと<span style="font-size:35px;">{{ $diff }}</span>日
+                                            {{ $tags[0]['title'] }}<br>
+                                            <span style="font-size:35px;">{{ $diff1 }}</span>Days
                                         </div>
                                     </div>
                                     <div class="col-6 px-1">
                                         <div class="card card-body tag p-0">
-                                            記念日まで<br>
-                                            あと<span style="font-size:35px;">{{ $diff }}</span>日
+                                            {{ $tags[1]['title'] }}<br>
+                                            <span style="font-size:35px;">{{ $diff2 }}</span>Days
                                         </div>
                                     </div>
                                 </div>
@@ -235,6 +243,77 @@
                                         <button type="submit" class="btn btn-outline-primary">保存</button>
                                     </form>
                                 </div>
+                            </div>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- タグ設定 --}}
+    <div class="modal fade" id="TagSettingModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="Title">タグ設定</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <ul class="setting-list p-2">
+                        <li>
+                            <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseTag1"
+                                role="button" aria-expanded="false" aria-controls="collapseTag1">
+                                <i class="me-1 fa-solid fa-pen"></i>
+                            </a>
+                            <h4>タグ1</h4>
+                            <p>タイトル:
+                                <span class="border-bottom border-primary border-2">{{ $tags[0]['title'] }}</span>
+                            </p>
+                            <p>日付:
+                                <span class="border-bottom border-primary border-2">{{ $tags[0]['set_day'] }}</span>
+                            </p>
+                            <div class="collapse" id="collapseTag1">
+                                <form action="#">
+                                    @csrf
+                                    <label class="form-label" for="tag1-title">タイトル</label>
+                                    <input type="text" class="form-control" id="tag1-title" name="tag1-title"
+                                        value="{{ $tags[0]['title'] }}">
+                                    <label class="form-label" for="tag1-setday">日付(yyyy-mm-dd:例2000-12-01)</label>
+                                    <input type="text" class="form-control" id="tag1-setday" name="tag1-setday"
+                                        value="{{ $tags[0]['set_day'] }}">
+                                    <button type="submit" class="btn btn-outline-primary">保存</button>
+                                </form>
+                            </div>
+                        </li>
+                        <hr>
+                        <li>
+                            <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseTag2"
+                                role="button" aria-expanded="false" aria-controls="collapseTag2">
+                                <i class="me-1 fa-solid fa-pen"></i>
+                            </a>
+                            <h4>タグ2</h4>
+                            <p>タイトル:
+                                <span class="border-bottom border-primary border-2">{{ $tags[1]['title'] }}</span>
+                            </p>
+                            <p>日付:
+                                <span class="border-bottom border-primary border-2">{{ $tags[1]['set_day'] }}</span>
+                            </p>
+                            <div class="collapse" id="collapseTag2">
+                                <form action="#">
+                                    @csrf
+                                    <label class="form-label" for="tag2-title">タイトル</label>
+                                    <input type="text" class="form-control" id="tag2-title" name="tag2-title"
+                                        value="{{ $tags[1]['title'] }}">
+                                    <label class="form-label" for="tag2-setday">日付(yyyy-mm-dd:例2000-12-01)</label>
+                                    <input type="text" class="form-control" id="tag2-setday" name="tag2-setday"
+                                        value="{{ $tags[1]['set_day'] }}">
+                                    <button type="submit" class="btn btn-outline-primary">保存</button>
+                                </form>
                             </div>
                         </li>
                         <hr>
