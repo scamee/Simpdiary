@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class DiaryValidateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,8 @@ class StorePostRequest extends FormRequest
             'user_id' => ['bail', 'required', 'integer'],
             'title' => ['required', 'max:20'],
             'select' => ['bail', 'required', 'regex:/^[1-3]{1}$/'],
-            'content' => ['required', 'max:1000']
+            'content' => ['required', 'max:1000'],
+            /* 'set_day' => ['required', 'regex:/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/'] */
         ];
     }
 
@@ -42,6 +43,8 @@ class StorePostRequest extends FormRequest
             'title' => 'タイトル',
             'select' => '体調',
             'content' => '本文',
+            /* 'tag_title' => 'タイトル', */
+            /* 'set_day' => '日付' */
         ];
     }
 
@@ -57,7 +60,9 @@ class StorePostRequest extends FormRequest
             'select.required' => ':attributeを選択してください。',
             'select.regex' => ':attributeを正しく選択してください。',
             'content.required' => ':attributeを入力してください。',
-            'content.max' => ':attributeは1000文字以内で入力してください。'
+            'content.max' => ':attributeは1000文字以内で入力してください。',
+            /* 'set_day.required' => ':attributeを入力してください。',
+            'set_day.regex' => ':attributeを入力してください。', */
         ];
     }
 }

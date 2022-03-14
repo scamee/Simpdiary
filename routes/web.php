@@ -30,5 +30,7 @@ Route::group(
         Route::post('/store', [HomeController::class, 'store'])->name('store');
         Route::post('/update', [HomeController::class, 'update'])->name('update');
         Route::post('/delete', [HomeController::class, 'delete'])->name('delete');
+
+        Route::post('/tagupdate', [HomeController::class, 'tagupdate'])->name('tagupdate');
     }
 );
