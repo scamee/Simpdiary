@@ -28,8 +28,7 @@ class DiaryValidateRequest extends FormRequest
             'user_id' => ['bail', 'required', 'integer'],
             'title' => ['required', 'max:20'],
             'select' => ['bail', 'required', 'regex:/^[1-3]{1}$/'],
-            'content' => ['required', 'max:1000'],
-            /* 'set_day' => ['required', 'regex:/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/'] */
+            'content' => ['required', 'max:1000']
         ];
     }
 
@@ -42,9 +41,7 @@ class DiaryValidateRequest extends FormRequest
         return [
             'title' => 'タイトル',
             'select' => '体調',
-            'content' => '本文',
-            /* 'tag_title' => 'タイトル', */
-            /* 'set_day' => '日付' */
+            'content' => '本文'
         ];
     }
 

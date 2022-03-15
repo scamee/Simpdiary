@@ -99,18 +99,18 @@
                     {{ session('success') }}
                 </div>
             @endif
-            @error('set_day')
+            {{-- @error('set_day')
                 <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-            {{-- @if ($errors->any())
+            @enderror --}}
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li style="list-style: none;">{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
-            @endif --}}
+            @endif
             <div class="row" {{-- style='height: 92vh;' --}}>
                 <div class="card-group">
                     <div class="card">
