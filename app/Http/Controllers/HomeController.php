@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\DiaryValidateRequest;
+use App\Http\Requests\TagValidateRequest;
 use App\Models\Diary;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Validator;
@@ -123,18 +124,19 @@ class HomeController extends Controller
     //削除
     public function delete(Request $request)
     {
+        $user = \Auth::user();
         $inputs = $request->all();
         $diary_date = $inputs["diary_date"];
 
-        Diary::where("diary_date", $diary_date)->delete();
+        Diary::where("diary_date", $diary_date)->where("user_id", $user['id'])->delete();
 
         return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
     }
 
-    /* public function tagupdate(Request $request)
+    public function tagupdate(TagValidateRequest $request)
     {
-        $request->validated();
 
+        $validated = $request->validated();
 
         $user = \Auth::user();
 
@@ -145,5 +147,5 @@ class HomeController extends Controller
             ]);
 
         return redirect()->route('show', ['date' => '2022-03-14']);
-    } */
+    }
 }
