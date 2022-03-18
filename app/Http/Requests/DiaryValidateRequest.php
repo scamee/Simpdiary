@@ -28,7 +28,8 @@ class DiaryValidateRequest extends FormRequest
             'user_id' => ['bail', 'required', 'integer'],
             'title' => ['required', 'max:20'],
             'select' => ['bail', 'required', 'regex:/^[1-3]{1}$/'],
-            'content' => ['required', 'max:1000']
+            'content' => ['required', 'max:1000'],
+            'diary_img' => ['file', 'image', 'mimes:png,jpeg']
         ];
     }
 
@@ -57,9 +58,7 @@ class DiaryValidateRequest extends FormRequest
             'select.required' => ':attributeを選択してください。',
             'select.regex' => ':attributeを正しく選択してください。',
             'content.required' => ':attributeを入力してください。',
-            'content.max' => ':attributeは1000文字以内で入力してください。',
-            /* 'set_day.required' => ':attributeを入力してください。',
-            'set_day.regex' => ':attributeを入力してください。', */
+            'content.max' => ':attributeは1000文字以内で入力してください。'
         ];
     }
 }

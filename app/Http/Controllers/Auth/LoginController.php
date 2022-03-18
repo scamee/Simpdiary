@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Facades\Calendar;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * @return string
+     */
+    public function redirectTo()
+    {
+        $date = Carbon::now()->format('Y-m-j');
+        return '/show/' . $date;
     }
 }

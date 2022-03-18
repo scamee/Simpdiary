@@ -4,6 +4,7 @@
 namespace app\Services;
 
 use Carbon\Carbon;
+use App\Models\Tag;
 
 class CalendarService
 {
@@ -82,7 +83,7 @@ class CalendarService
      *
      * @return string
      */
-    private static function getNow()
+    public function getNow()
     {
         return Carbon::now()->format('Y-m-j');
     }
@@ -131,26 +132,32 @@ class CalendarService
      *
      * @return string
      */
-    public function diffDay1($set_day)
+    /* public function diffDay1($set_day)
     {
 
         $set_day = new Carbon($set_day);
         $today = new Carbon(self::getNow());
 
         return $set_day->diffInDays($today);
-    }
+    } */
 
     /**
      *今日の日付と$set_dayの日数差を取得する
      *
      * @return string
      */
-    public function diffDay2($set_day)
+    public function diffDay()
     {
+        $tagModel = new Tag();
+        $tags =  $tagModel->where('user_id', \Auth::id())->first();
 
-        $set_day = new Carbon($set_day);
-        $today = new Carbon(self::getNow());
+        if (isset($tags)) {
+            $set_day = new Carbon($tags['set_day']);
+            $today = new Carbon(self::getNow());
 
-        return $set_day->diffInDays($today);
+            $test[] = $set_day->diffInDays($today);
+
+            return $test;
+        }
     }
 }
