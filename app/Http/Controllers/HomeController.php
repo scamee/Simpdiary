@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DiaryValidateRequest;
 use App\Http\Requests\TagValidateRequest;
 use App\Models\Diary;
+use App\Models\Image;
 use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -60,9 +61,10 @@ class HomeController extends Controller
 
         if (!isset($tags)) {
             $title_01 = '付き合ってから';
-            $title_02 = 'デートまで';
             $now = Carbon::now();
             $now_1 = $now->subDays(100);
+
+            $title_02 = 'デートまで';
             $now = Carbon::now();
             $now_2 = $now->addDays(30);
 
@@ -120,28 +122,23 @@ class HomeController extends Controller
         $validated = $request->validated();
 
         if (isset($validated['diary_img'])) {
-
             $upload_image = $validated['diary_img'];
             $path = $upload_image->store('uploads', "public");
-
-            Diary::create([
-                "diary_date" => $validated["diary_date"],
+            Image::create([
                 "user_id" => $validated["user_id"],
-                "title" => $validated["title"],
-                "health_id" => $validated["select"],
-                "content" => $validated["content"],
+                "diary_date" => $validated["diary_date"],
                 "file_name" => $upload_image->getClientOriginalName(),
                 "file_path" => $path
             ]);
-        } else {
-            Diary::create([
-                "diary_date" => $validated["diary_date"],
-                "user_id" => $validated["user_id"],
-                "title" => $validated["title"],
-                "health_id" => $validated["select"],
-                "content" => $validated["content"],
-            ]);
         }
+
+        Diary::create([
+            "diary_date" => $validated["diary_date"],
+            "user_id" => $validated["user_id"],
+            "title" => $validated["title"],
+            "health_id" => $validated["select"],
+            "content" => $validated["content"],
+        ]);
 
         $diary_date = $validated["diary_date"];
         return redirect()->route('show', ['date' => $diary_date]);
@@ -178,12 +175,12 @@ class HomeController extends Controller
 
     public function tagupdate(TagValidateRequest $request)
     {
-
+        /* dd($request); */
         $validated = $request->validated();
 
-        $user = \Auth::user();
+        /* $user = \Auth::user(); */
 
-        Tag::where("user_id", $user['id'])->where("id", $request['id'])
+        Tag::where("user_id", \Auth::id())->where("id", $request['id'])
             ->update([
                 "title" => $validated["tag-title"],
                 "set_day" => $validated["tag-setday"]
