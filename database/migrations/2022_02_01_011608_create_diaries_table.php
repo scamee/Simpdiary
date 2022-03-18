@@ -15,6 +15,7 @@ class CreateDiariesTable extends Migration
     public function up()
     {
         Schema::create('diaries', function (Blueprint $table) {
+            $table->id();
             $table->date('diary_date')->comment('日記の日付');
             $table->integer('user_id')->comment('ユーザーID');
             $table->text('title')->comment('日記タイトル');

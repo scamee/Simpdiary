@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -17,8 +18,13 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/show/2022-04-04';
 
+    /* public function test()
+    {
+        return '/show' . Carbon::now()->format('Y-m-j');
+    }
+    public $test = test(); */
     /**
      * The controller namespace for the application.
      *
@@ -47,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+        Route::pattern('date', '^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$');
     }
 
     /**

@@ -20,6 +20,6 @@ class Diary extends Model
         "title",
         "health_id",
         "content",
-        "status"
+        "status",
     ];
 }

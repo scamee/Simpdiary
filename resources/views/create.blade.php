@@ -7,7 +7,7 @@
         </span>
     </div>
     <div class="card-body">
-        <form method='POST' action="/store">
+        <form method='POST' action="/store" enctype="multipart/form-data">
             @csrf
             <input type='hidden' name='diary_date' value="{{ $date }}">
             <input type='hidden' name='user_id' value="{{ $user['id'] }}">
@@ -45,7 +45,10 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <input type='submit' class="btn btn-outline-primary btn-lg" value="保存">
+            <div class="form-group col-10 mx-auto">
+                <input type="file" name="diary_img" accept="image/png, image/jpeg">
+            </div>
+            <input type='submit' class=" col-10 mx-auto d-block btn btn-outline-primary btn-lg" value="保存">
         </form>
     </div>
 @endsection

@@ -33,10 +33,8 @@ class AppServiceProvider extends ServiceProvider
 
                 $user = \Auth::user();
 
-                $tags = Tag::where('user_id', $user['id'])->get();
-
-                $set_day1 = $tags[0]['set_day'];
-                $set_day2 = $tags[1]['set_day'];
+                $tagModel = new Tag();
+                $tags =  $tagModel->where('user_id', \Auth::id())->get();
 
                 $view->with('user', $user)->with('tags', $tags)->with(
                     [
@@ -44,8 +42,7 @@ class AppServiceProvider extends ServiceProvider
                         'month'         => Calendar::getMonth(),
                         'prev'          => Calendar::getPrev(),
                         'next'          => Calendar::getNext(),
-                        'diff1'          => Calendar::diffDay1($set_day1),
-                        'diff2'          => Calendar::diffDay2($set_day2)
+                        'diff'          => Calendar::diffDay(),
                     ]
                 );
             }

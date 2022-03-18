@@ -23,8 +23,8 @@ Auth::routes();
 Route::group(
     ['middleware' => 'auth'],
     function () {
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
-        Route::get('/show/{date}', [HomeController::class, 'show'])->name('show');
+        /*  Route::get('/home', [HomeController::class, 'index'])->name('home'); */
+        Route::get('/show/{date?}', [HomeController::class, 'show'])->name('show');
         Route::get('/create/{date}', [HomeController::class, 'create'])->name('create');
         Route::get('/edit/{date}', [HomeController::class, 'edit'])->name('edit');
         Route::post('/store', [HomeController::class, 'store'])->name('store');

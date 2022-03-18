@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Facades\Calendar;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DiaryValidateRequest;
 use App\Http\Requests\TagValidateRequest;
 use App\Models\Diary;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -28,9 +31,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        /* $date = Calendar::getWeeks(); */
+
+        $date = Calendar::getNow();
 
         return view(
-            'home'
+            'home',
+            compact('date')
         );
     }
 
@@ -39,17 +46,34 @@ class HomeController extends Controller
     //showメソッド
     public function show($date)
     {
-        //URL正規表現確認 -> 一致しなければ404notfound
-        $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/';
-        if (!preg_match($preg, $date)) {
-            abort(404);
-        }
+        /* if (!isset($urlpram->date)) {
+            $date = Calendar::getNow();
+        } else {
+            $date = $urlpram->date;
+        } */
 
         $user = \Auth::user();
         $diary = Diary::where('diary_date', $date)->where('user_id', $user['id'])->first();
 
-        /* $tags = Tag::where('user_id', $user['id'])->get();
-        dd($tags); */
+        $tagModel = new Tag();
+        $tags =  $tagModel->where('user_id', \Auth::id())->first();
+
+        if (!isset($tags)) {
+            $title_01 = '付き合ってから';
+            $title_02 = 'デートまで';
+            $now = Calendar::getNow();
+
+            $datum = [
+                ['user_id' => \Auth::id(), 'title' => $title_01, 'set_day' => $now],
+                ['user_id' => \Auth::id(), 'title' => $title_02, 'set_day' => $now],
+            ];
+
+            DB::table('tags')
+                ->insert(
+                    $datum
+                );
+        }
+
         return view(
             'show',
             compact('date', 'diary')
@@ -69,16 +93,16 @@ class HomeController extends Controller
     //編集画面
     public function edit($date)
     {
-        $user = \Auth::user();
+        /* $user = \Auth::user(); */
 
         //URL正規表現確認 -> 一致しなければ404notfound
-        $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/';
+        /* $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/';
         if (!preg_match($preg, $date)) {
             abort(404);
-        }
+        } */
 
         //消す
-        $diary = Diary::select('title', 'health_id', 'content')->where('user_id', $user['id'])->where('diary_date', $date)->first();
+        $diary = Diary::select('title', 'health_id', 'content')->where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
         return view(
             'edit',
@@ -89,18 +113,34 @@ class HomeController extends Controller
     //編集アクション
     public function store(DiaryValidateRequest $request)
     {
+
         $validated = $request->validated();
 
+        if (isset($validated['diary_img'])) {
+
+            $upload_image = $validated['diary_img'];
+            $path = $upload_image->store('uploads', "public");
+
+            Diary::create([
+                "diary_date" => $validated["diary_date"],
+                "user_id" => $validated["user_id"],
+                "title" => $validated["title"],
+                "health_id" => $validated["select"],
+                "content" => $validated["content"],
+                "file_name" => $upload_image->getClientOriginalName(),
+                "file_path" => $path
+            ]);
+        } else {
+            Diary::create([
+                "diary_date" => $validated["diary_date"],
+                "user_id" => $validated["user_id"],
+                "title" => $validated["title"],
+                "health_id" => $validated["select"],
+                "content" => $validated["content"],
+            ]);
+        }
+
         $diary_date = $validated["diary_date"];
-
-        Diary::create([
-            "diary_date" => $validated["diary_date"],
-            "user_id" => $validated["user_id"],
-            "title" => $validated["title"],
-            "health_id" => $validated["select"],
-            "content" => $validated["content"],
-        ]);
-
         return redirect()->route('show', ['date' => $diary_date]);
     }
 

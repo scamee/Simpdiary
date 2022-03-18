@@ -31,6 +31,10 @@
 </head>
 
 <body>
+    @php
+        $tag1 = $tags[0];
+        $tag2 = $tags[1];
+    @endphp
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
@@ -148,14 +152,14 @@
                                 <div class="row m-0">
                                     <div class="col-6 px-1">
                                         <div class="card card-body tag p-0">
-                                            {{ $tags[0]['title'] }}<br>
-                                            <span style="font-size:35px;">{{ $diff1 }}</span>Days
+                                            {{ $tag1->title }}<br>
+                                            <span style="font-size:35px;">{{ $diff[0] }}</span>Days
                                         </div>
                                     </div>
                                     <div class="col-6 px-1">
                                         <div class="card card-body tag p-0">
-                                            {{ $tags[1]['title'] }}<br>
-                                            <span style="font-size:35px;">{{ $diff2 }}</span>Days
+                                            {{ $tag2['title'] }}<br>
+                                            <span style="font-size:35px;">{{-- {{ $diff2 }} --}}</span>Days
                                         </div>
                                     </div>
                                 </div>
@@ -275,21 +279,21 @@
                             </a>
                             <h4>タグ1</h4>
                             <p>タイトル:
-                                <span class="border-bottom border-primary border-2">{{ $tags[0]['title'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag1['title'] }}</span>
                             </p>
                             <p>日付:
-                                <span class="border-bottom border-primary border-2">{{ $tags[0]['set_day'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag1['set_day'] }}</span>
                             </p>
                             <div class="collapse" id="collapseTag1">
                                 <form method='POST' action="/tagupdate">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{ $tags[0]['id'] }}">
+                                    {{-- <input type="hidden" name="id" value="{{ $tags[0]['id'] }}"> --}}
                                     <label class="form-label" for="tag1-title">タイトル</label>
                                     <input type="text" class="form-control" id="tag1-title" name="tag-title"
-                                        value="{{ $tags[0]['title'] }}">
+                                        value="{{ $tag1['title'] }}">
                                     <label class="form-label" for="tag1-setday">日付 (例)2000-12-01[yyyy-mm-dd]</label>
                                     <input type="text" class="form-control" id="tag1-setday" name="tag-setday"
-                                        value="{{ $tags[0]['set_day'] }}">
+                                        value="{{ $tag1['set_day'] }}">
                                     <button type="submit" class="btn btn-outline-primary">保存</button>
                                 </form>
                             </div>
@@ -302,21 +306,21 @@
                             </a>
                             <h4>タグ2</h4>
                             <p>タイトル:
-                                <span class="border-bottom border-primary border-2">{{ $tags[1]['title'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag1['title'] }}</span>
                             </p>
                             <p>日付:
-                                <span class="border-bottom border-primary border-2">{{ $tags[1]['set_day'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag1['set_day'] }}</span>
                             </p>
                             <div class="collapse" id="collapseTag2">
                                 <form method='POST' action="/tagupdate">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{ $tags[1]['id'] }}">
+                                    {{-- <input type="hidden" name="id" value="{{ $tag1[1]['id'] }}"> --}}
                                     <label class="form-label" for="tag2-title">タイトル</label>
                                     <input type="text" class="form-control" id="tag2-title" name="tag-title"
-                                        value="{{ $tags[1]['title'] }}">
+                                        value="{{ $tag1['title'] }}">
                                     <label class="form-label" for="tag2-setday">日付(yyyy-mm-dd:例2000-12-01)</label>
                                     <input type="text" class="form-control" id="tag2-setday" name="tag-setday"
-                                        value="{{ $tags[1]['set_day'] }}">
+                                        value="{{ $tag1['set_day'] }}">
                                     <button type="submit" class="btn btn-outline-primary">保存</button>
                                 </form>
                             </div>
