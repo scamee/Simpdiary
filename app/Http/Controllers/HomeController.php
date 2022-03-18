@@ -61,11 +61,14 @@ class HomeController extends Controller
         if (!isset($tags)) {
             $title_01 = '付き合ってから';
             $title_02 = 'デートまで';
-            $now = Calendar::getNow();
+            $now = Carbon::now();
+            $now_1 = $now->subDays(100);
+            $now = Carbon::now();
+            $now_2 = $now->addDays(30);
 
             $datum = [
-                ['user_id' => \Auth::id(), 'title' => $title_01, 'set_day' => $now],
-                ['user_id' => \Auth::id(), 'title' => $title_02, 'set_day' => $now],
+                ['user_id' => \Auth::id(), 'title' => $title_01, 'set_day' => $now_1],
+                ['user_id' => \Auth::id(), 'title' => $title_02, 'set_day' => $now_2],
             ];
 
             DB::table('tags')
