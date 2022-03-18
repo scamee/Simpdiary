@@ -142,7 +142,7 @@
                         {{-- タグ --}}
                         <div id="tags">
                             <div class="card-body bg-transparent p-0">
-                                <h4 class="card-title">tags</h4>
+                                <h4 class="card-title">ウィジェット</h4>
                                 <button class="btn btn-outline-primary" data-bs-target="#TagSettingModel"
                                     data-bs-toggle="modal">
                                     <i class="me-1 fa-solid fa-pen"></i>
@@ -158,7 +158,7 @@
                                     </div>
                                     <div class="col-6 px-1">
                                         <div class="card card-body tag p-0">
-                                            {{ $tag2['title'] }}<br>
+                                            {{ $tag2->title }}<br>
                                             <span style="font-size:35px;">{{ $diff[1] }}</span>Days
                                         </div>
                                     </div>
@@ -174,6 +174,7 @@
         </main>
     </div>
 
+    {{-- モーダル --}}
     {{-- アカウント設定 --}}
     <div class="modal fade" id="UserSettingModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
@@ -277,23 +278,23 @@
                                 role="button" aria-expanded="false" aria-controls="collapseTag1">
                                 <i class="me-1 fa-solid fa-pen"></i>
                             </a>
-                            <h4>タグ1</h4>
+
                             <p>タイトル:
-                                <span class="border-bottom border-primary border-2">{{ $tag1['title'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag1->title }}</span>
                             </p>
                             <p>日付:
-                                <span class="border-bottom border-primary border-2">{{ $tag1['set_day'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag1->set_day }}</span>
                             </p>
                             <div class="collapse" id="collapseTag1">
                                 <form method='POST' action="/tagupdate">
                                     @csrf
-                                    {{-- <input type="hidden" name="id" value="{{ $tags[0]['id'] }}"> --}}
-                                    <label class="form-label" for="tag1-title">タイトル</label>
+                                    <input type="hidden" name="id" value="{{ $tag1->id }}">
+                                    <label class="form-label" for="tag1-title">タイトル [10文字以内]</label>
                                     <input type="text" class="form-control" id="tag1-title" name="tag-title"
-                                        value="{{ $tag1['title'] }}">
-                                    <label class="form-label" for="tag1-setday">日付 (例)2000-12-01[yyyy-mm-dd]</label>
+                                        value="{{ $tag1->title }}">
+                                    <label class="form-label" for="tag1-setday">日付 [yyyy-mm-dd]</label>
                                     <input type="text" class="form-control" id="tag1-setday" name="tag-setday"
-                                        value="{{ $tag1['set_day'] }}">
+                                        value="{{ $tag1->set_day }}">
                                     <button type="submit" class="btn btn-outline-primary">保存</button>
                                 </form>
                             </div>
@@ -304,23 +305,23 @@
                                 role="button" aria-expanded="false" aria-controls="collapseTag2">
                                 <i class="me-1 fa-solid fa-pen"></i>
                             </a>
-                            <h4>タグ2</h4>
+
                             <p>タイトル:
-                                <span class="border-bottom border-primary border-2">{{ $tag1['title'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag2->title }}</span>
                             </p>
                             <p>日付:
-                                <span class="border-bottom border-primary border-2">{{ $tag1['set_day'] }}</span>
+                                <span class="border-bottom border-primary border-2">{{ $tag2->set_day }}</span>
                             </p>
                             <div class="collapse" id="collapseTag2">
                                 <form method='POST' action="/tagupdate">
                                     @csrf
-                                    {{-- <input type="hidden" name="id" value="{{ $tag1[1]['id'] }}"> --}}
-                                    <label class="form-label" for="tag2-title">タイトル</label>
+                                    {{-- <input type="hidden" name="id" value="{{ $tag2[1]['id'] }}"> --}}
+                                    <label class="form-label" for="tag2-title">タイトル [10文字以内]</label>
                                     <input type="text" class="form-control" id="tag2-title" name="tag-title"
-                                        value="{{ $tag1['title'] }}">
-                                    <label class="form-label" for="tag2-setday">日付(yyyy-mm-dd:例2000-12-01)</label>
+                                        value="{{ $tag2->title }}">
+                                    <label class="form-label" for="tag2-setday">日付 [yyyy-mm-dd]</label>
                                     <input type="text" class="form-control" id="tag2-setday" name="tag-setday"
-                                        value="{{ $tag1['set_day'] }}">
+                                        value="{{ $tag2->set_day }}">
                                     <button type="submit" class="btn btn-outline-primary">保存</button>
                                 </form>
                             </div>
@@ -333,127 +334,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="modal fade" id="MyListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Title">自分の日記{{ $date }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button class="btn btn-primary btn-edit" data-bs-target="#EditModel" data-bs-toggle="modal"
-                                data-bs-dismiss="modal">編集</button>
-                            <div class="row">
-                                <div class="col-sm-2 col-4">
-                                    <h3 class="m-0">タイトル</h3>
-                                </div>
-                                <div class="col-sm-10 col-8">
-                                    <p class="m-0">...</p>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h3>体調</h3>
-                        <p>...</p>
-                        <hr>
-                    </div>
-                    <h3>本文</h3>
-                    <p>...</p>
-                    <hr>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
-                        data-bs-dismiss="modal" disabled>自分の日記</button>
-                    <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">相手の日記</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- 日記確認画面 相手 --}}
-    <div class="modal fade" id="PartnerListModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Title">相手の日記</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3>タイトル</h3>
-                    <p>...</p>
-                    <hr>
-                    <h3>体調</h3>
-                    <p>...</p>
-                    <hr>
-                    <h3>本文</h3>
-                    <p>...</p>
-                    <hr>
-                    <br><br><br><br><br><br><br><br><br><br>
-                    <p>Just like that.</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">自分の日記</button>
-                    <button class="btn btn-primary" data-bs-target="#PartnerListModel" data-bs-toggle="modal"
-                        data-bs-dismiss="modal" disabled>相手の日記</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- 編集画面 --}}
-    <div class="modal fade" id="EditModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="Title">編集画面</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="form" method='POST' action="">
-                        @csrf
-                        <div class="form-group">
-                            <label for="title" class="form-label" name="">タイトル</label>
-                            <input type="text" class="form-control" id="title">
-                        </div>
-                        <div class="form-group">
-                            <label for="select" class='form-label'>体調</label>
-                            <select id='select' class='form-control' name=''>
-                                <option value="">
-                                    --選択してください--
-                                </option>
-                                <option value="good">
-                                    良い
-                                </option>
-                                <option value="normal">
-                                    普通
-                                </option>
-                                <option value="bad">
-                                    悪い
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="content" class="form-label">内容</label>
-                            <textarea name="" id="content" rows="10" class="form-control"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#MyListModel" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">戻る</button>
-                    <button type="submit" class="btn btn-primary" form="form">保存</button>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
     <div class="bd-example">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MyListModel">
