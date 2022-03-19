@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Facades\Calendar;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DiaryValidateRequest;
-use App\Http\Requests\TagValidateRequest;
 use App\Models\Diary;
 use App\Models\Image;
 use App\Models\Tag;
@@ -47,14 +46,7 @@ class HomeController extends Controller
     //showメソッド
     public function show($date)
     {
-        /* if (!isset($urlpram->date)) {
-            $date = Calendar::getNow();
-        } else {
-            $date = $urlpram->date;
-        } */
-
-        $user = \Auth::user();
-        $diary = Diary::where('diary_date', $date)->where('user_id', $user['id'])->first();
+        $diary = Diary::where('diary_date', $date)->where('user_id', \Auth::id())->first();
 
         $tagModel = new Tag();
         $tags =  $tagModel->where('user_id', \Auth::id())->first();
@@ -103,14 +95,6 @@ class HomeController extends Controller
     //編集画面
     public function edit($date)
     {
-        /* $user = \Auth::user(); */
-
-        //URL正規表現確認 -> 一致しなければ404notfound
-        /* $preg = '/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/';
-        if (!preg_match($preg, $date)) {
-            abort(404);
-        } */
-
         //消す
         $diary = Diary::select('title', 'health_id', 'content')->where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
@@ -176,21 +160,5 @@ class HomeController extends Controller
         Diary::where("diary_date", $diary_date)->where("user_id", $user['id'])->delete();
 
         return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
-    }
-
-    public function tagupdate(TagValidateRequest $request)
-    {
-        /* dd($request); */
-        $validated = $request->validated();
-
-        /* $user = \Auth::user(); */
-
-        Tag::where("user_id", \Auth::id())->where("id", $request['id'])
-            ->update([
-                "title" => $validated["tag-title"],
-                "set_day" => $validated["tag-setday"]
-            ]);
-
-        return redirect()->route('show', ['date' => '2022-03-14']);
     }
 }

@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             @endif
-            <form method='POST' action="/update">
+            <form method='POST' action="/update" enctype="multipart/form-data">
                 @csrf
                 <input type='hidden' name='diary_date' value="{{ $date }}">
                 <input type='hidden' name='user_id' value="{{ $user['id'] }}">
@@ -45,6 +45,7 @@
                     <label for="content" class="form-label">本文</label>
                     <textarea name='content' class="form-control" rows="10" id="content">{{ $diary->content }}</textarea>
                 </div>
+                <input type="file" name="image"><br>
                 <button type="submit" class="btn btn-outline-primary btn-lg">保存</button>
             </form>
         </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,6 @@ Route::group(
         Route::post('/update', [HomeController::class, 'update'])->name('update');
         Route::post('/delete', [HomeController::class, 'delete'])->name('delete');
 
-        Route::post('/tagupdate', [HomeController::class, 'tagupdate'])->name('tagupdate');
+        Route::post('/tagupdate', [TagController::class, 'tagupdate'])->name('tagupdate');
     }
 );

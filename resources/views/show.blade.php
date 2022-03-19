@@ -46,7 +46,10 @@
                 <div class="m-0">
                     @foreach ($images as $image)
                         <div class="rounded float-start img-thumbnail" style="width: 50%;">
-                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;" />
+                            <a data-bs-target="#image_Modal" data-bs-toggle="modal">
+                                <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"
+                                    style="cursor:pointer;" />
+                            </a>
                             <p class="m-0 text-center">{{ $image->file_name }}</p>
                         </div>
                     @endforeach
@@ -62,4 +65,37 @@
         </div>
     @endif
     </div>
+    @if (!empty($image))
+        <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg modal-middle">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="Title">タグ設定</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ Storage::url($image->file_path) }}" width="80%" />
+                    </div>
+                    <p class="m-0 text-center">{{ $image->file_name }}</p>
+                    <hr>
+                    <form method='POST' action="#" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <input type="file" name="diary_img" accept="image/png, image/jpeg">
+                        </div>
+                        <input type='submit' class="d-block btn btn-outline-primary" value="画像を変更">
+                    </form>
+                    <form method='POST' action="/delete" id='delete-form'>
+                        @csrf
+                        <input type="hidden" name='diary_date' value="{{ $date }}">
+                        <button type="submit" class="btn btn-outline-primary btn-lg ms-1"><i
+                                class="me-1 fa-solid fa-trash-can"></i>削除</button>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection

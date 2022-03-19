@@ -305,7 +305,6 @@
                                 role="button" aria-expanded="false" aria-controls="collapseTag2">
                                 <i class="me-1 fa-solid fa-pen"></i>
                             </a>
-
                             <p>タイトル:
                                 <span class="border-bottom border-primary border-2">{{ $tag2->title }}</span>
                             </p>
@@ -315,7 +314,7 @@
                             <div class="collapse" id="collapseTag2">
                                 <form method='POST' action="/tagupdate">
                                     @csrf
-                                    {{-- <input type="hidden" name="id" value="{{ $tag2[1]['id'] }}"> --}}
+                                    <input type="hidden" name="id" value="{{ $tag2->id }}">
                                     <label class="form-label" for="tag2-title">タイトル [10文字以内]</label>
                                     <input type="text" class="form-control" id="tag2-title" name="tag-title"
                                         value="{{ $tag2->title }}">
