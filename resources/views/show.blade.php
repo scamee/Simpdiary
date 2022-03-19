@@ -42,6 +42,16 @@
                     <h4 class="m-0 text-primary">日記本文</h4>
                     <h3 class="col-12 mx-auto text-center">{{ $diary->content }}</h3>
                 </div>
+
+                <div class="m-0">
+                    @foreach ($images as $image)
+                        <div class="rounded float-start img-thumbnail" style="width: 50%;">
+                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;" />
+                            <p class="m-0 text-center">{{ $image->file_name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+
             </div>
         </div>
     @else

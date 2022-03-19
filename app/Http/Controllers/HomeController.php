@@ -59,6 +59,8 @@ class HomeController extends Controller
         $tagModel = new Tag();
         $tags =  $tagModel->where('user_id', \Auth::id())->first();
 
+        $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
+
         if (!isset($tags)) {
             $title_01 = '付き合ってから';
             $now = Carbon::now();
@@ -81,6 +83,9 @@ class HomeController extends Controller
 
         return view(
             'show',
+            [
+                "images" => $images
+            ],
             compact('date', 'diary')
         );
     }
