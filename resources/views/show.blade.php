@@ -78,15 +78,20 @@
                     </div>
                     <p class="m-0 text-center">{{ $image->file_name }}</p>
                     <hr>
-                    <form method='POST' action="#" enctype="multipart/form-data">
+                    <form method='POST' action="/imageUpdate" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name='file_path' value="{{ $image->file_path }}">
+                        <input type="hidden" name='diary_date' value="{{ $date }}">
+                        <input type="hidden" name='id' value="{{ $image->id }}">
                         <div class="form-group">
                             <input type="file" name="diary_img" accept="image/png, image/jpeg">
                         </div>
                         <input type='submit' class="d-block btn btn-outline-primary" value="画像を変更">
                     </form>
-                    <form method='POST' action="/delete" id='delete-form'>
+                    <form method='POST' action="/imageDelete">
                         @csrf
+                        <input type="hidden" name='id' value="{{ $image->id }}">
+                        <input type="hidden" name='file_path' value="{{ $image->file_path }}">
                         <input type="hidden" name='diary_date' value="{{ $date }}">
                         <button type="submit" class="btn btn-outline-primary btn-lg ms-1"><i
                                 class="me-1 fa-solid fa-trash-can"></i>削除</button>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::group(
         Route::post('/update', [HomeController::class, 'update'])->name('update');
         Route::post('/delete', [HomeController::class, 'delete'])->name('delete');
 
+        Route::post('/imageUpdate', [ImageController::class, 'imageUpdate'])->name('imageUpdate');
+        Route::post('/imageDelete', [ImageController::class, 'imageDelete'])->name('iamgeDelete');
         Route::post('/tagupdate', [TagController::class, 'tagupdate'])->name('tagupdate');
     }
 );

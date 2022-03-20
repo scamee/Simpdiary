@@ -3,34 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Image;
 
 class ImageController extends Controller
 {
-    public function update(DiaryValidateRequest $request)
+    public function imageUpdate(Request $request)
     {
-        $validated = $request->validated();
+        $inputs = $request->all();
+        $diary_date = $request["diary_date"];
 
-        $diary_date = $validated["diary_date"];
+        if ($request->hasFile('diary_img')) {
+            /* 元画像のstorageファイル削除 */
+            Storage::delete('public/' . $request->file_path);
 
-        Diary::where("diary_date", $diary_date)
-            ->update([
-                "title" => $validated["title"],
-                "health_id" => $validated["select"],
-                "content" => $validated["content"],
-            ]);
+            $upload_image = $inputs['diary_img'];
+            $path = $upload_image->store('uploads', "public");
+
+            Image::where("user_id", \Auth::id())->where("diary_date", $diary_date)->where("id", $inputs['id'])
+                ->update([
+                    "file_name" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path,
+                ]);
+        }
 
         return redirect()->route('show', ['date' => $diary_date]);
     }
 
-    //削除
-    public function delete(Request $request)
+    public function imageDelete(Request $request)
     {
-        $user = \Auth::user();
         $inputs = $request->all();
         $diary_date = $inputs["diary_date"];
 
-        Diary::where("diary_date", $diary_date)->where("user_id", $user['id'])->delete();
+        /* DB削除 */
+        Image::where("user_id", \Auth::id())->where("diary_date", $diary_date)->where("id", $inputs['id'])->delete();
+        /* storageファイル削除 */
+        Storage::delete('public/' . $request->file_path);
 
-        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
+        return redirect()->route('show', ['date' => $diary_date])->with('success', '画像の削除が完了しました。');
     }
 }
