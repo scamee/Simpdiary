@@ -18,4 +18,5 @@
             {!! $week !!}
         @endforeach
     </table>
+    @include('components.tag')
 </div>

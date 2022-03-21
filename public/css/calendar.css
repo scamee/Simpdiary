@@ -13,6 +13,7 @@ th {
 }
 
 td {
+    color: grey;
     height: 50px;
     width: 50px;
 }
@@ -42,8 +43,22 @@ td:nth-of-type(7) {
     display: inline-block;
 }
 
+.card-header {
+    background-color: rgba(255, 232, 236, 0.3);
+}
+
+
+.table {
+    background-color: rgba(255, 232, 236, 0.3);
+    border-color: #FEEEED;
+}
+
 .table .today {
     background-color: rgba(255, 255, 0, 0.3);
+}
+
+.card {
+    color:grey;
 }
 
 /* modal */
