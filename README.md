@@ -1,1 +1,1 @@
-**Prototype of the WebApp(couples_diary)**
+**Prototype of the WebApp**
