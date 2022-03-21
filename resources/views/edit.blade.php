@@ -22,7 +22,6 @@
             <form method='POST' action="/update" enctype="multipart/form-data">
                 @csrf
                 <input type='hidden' name='diary_date' value="{{ $date }}">
-                <input type='hidden' name='user_id' value="{{ $user['id'] }}">
                 <div class="form-group">
                     <label for="titleform" class="form-label">タイトル</label>
                     <input type="text" class="form-control" id="titleform" name="title" value="{{ $diary->title }}">
@@ -45,7 +44,7 @@
                     <label for="content" class="form-label">本文</label>
                     <textarea name='content' class="form-control" rows="10" id="content">{{ $diary->content }}</textarea>
                 </div>
-                <input type="file" name="image"><br>
+                <input type="file" name="diary_img" accept="image/png, image/jpeg">
                 <button type="submit" class="btn btn-outline-primary btn-lg">保存</button>
             </form>
         </div>
