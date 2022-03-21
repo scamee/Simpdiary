@@ -47,9 +47,9 @@
                         {{-- カレンダー --}}
                         @include('components.calendar')
                         {{-- タグ --}}
-                        @include('components.tag')
+                        {{-- @include('components.tag') --}}
                     </div>
-                    <div class=" card">
+                    <div class="card">
                         @yield('content')
                     </div>
                 </div>
