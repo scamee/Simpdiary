@@ -23,8 +23,9 @@
                                 <input type="hidden" name='file_path' value="{{ $image->file_path }}">
                                 <input type="hidden" name='diary_date' value="{{ $date }}">
                                 <input type="hidden" name='id' value="{{ $image->id }}">
-                                <div class="form-group d-inline-block">
-                                    <input type="file" name="diary_img" accept="image/png, image/jpeg">
+                                <div class="form-group col-10 mx-auto">
+                                    <input type="file" class="form-control m-2" name="diary_img"
+                                        accept="image/png, image/jpeg">
                                 </div>
                                 <input type='submit' class="btn btn-outline-primary" value="画像を変更">
                             </form>
@@ -52,8 +53,7 @@
                 </ul>
             </div>
             <div class="modal-footer">
-
-                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
             </div>
         </div>
     </div>

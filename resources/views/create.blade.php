@@ -46,7 +46,8 @@
                 @enderror
             </div>
             <div class="form-group col-10 mx-auto">
-                <input type="file" name="diary_img" accept="image/png, image/jpeg">
+                <label for="imageform" class="form-label fs-4 text-primary m-0">画像を追加</label>
+                <input type="file" id="imageform" class="form-control m-2" name="diary_img" accept="image/png, image/jpeg">
             </div>
             <input type='submit' class=" col-10 mx-auto d-block btn btn-outline-primary btn-lg" value="保存">
         </form>

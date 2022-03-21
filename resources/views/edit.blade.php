@@ -22,30 +22,46 @@
             <form method='POST' action="/update" enctype="multipart/form-data">
                 @csrf
                 <input type='hidden' name='diary_date' value="{{ $date }}">
-                <div class="form-group">
-                    <label for="titleform" class="form-label">タイトル</label>
-                    <input type="text" class="form-control" id="titleform" name="title" value="{{ $diary->title }}">
+                <div class="form-group col-10 mx-auto">
+                    <label for="titleform" class="form-label fs-4 text-primary m-0">タイトル</label>
+                    <input type="text" class="form-control m-2" id="titleform" name="title" value="{{ $diary->title }}">
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="form-group">
-                    <label for="selectform" class='form-label'>体調</label>
-                    <select id='selectform' class='form-control' name='select'>
-                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 1 ? 'selected' : '' }}>
+                <div class="form-group col-10 mx-auto">
+                    <label for="selectform" class='form-label fs-4 text-primary m-0'>体調</label>
+                    <select id='selectform' class='form-control m-2' name='select'>
+                        <option style="display: none;">
+                            --選択してください--
+                        </option>
+                        <option value="1" {{ $diary->health_id == 1 ? 'selected' : '' }}>
                             良い
                         </option>
-                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 2 ? 'selected' : '' }}>
+                        <option value="2" {{ $diary->health_id == 2 ? 'selected' : '' }}>
                             普通
                         </option>
-                        <option value="{{ $diary->health_id }}" {{ $diary->health_id == 3 ? 'selected' : '' }}>
+                        <option value="3" {{ $diary->health_id == 3 ? 'selected' : '' }}>
                             悪い
                         </option>
                     </select>
+                    @error('select')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="form-group">
-                    <label for="content" class="form-label">本文</label>
-                    <textarea name='content' class="form-control" rows="10" id="content">{{ $diary->content }}</textarea>
+                <div class="form-group col-10 mx-auto">
+                    <label for="content" class="form-label fs-4 text-primary m-0">本文</label>
+                    <textarea name='content' class="form-control m-2" rows="10" id="content">{{ $diary->content }}</textarea>
+                    @error('content')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                <input type="file" name="diary_img" accept="image/png, image/jpeg">
-                <button type="submit" class="btn btn-outline-primary btn-lg">保存</button>
+                <div class="form-group col-10 mx-auto">
+                    <label for="imageform" class="form-label fs-4 text-primary m-0">画像を追加</label>
+                    <input type="file" id="imageform" class="form-control m-2" name="diary_img"
+                        accept="image/png, image/jpeg">
+                </div>
+                <input type='submit' class=" col-10 mx-auto d-block btn btn-outline-primary btn-lg" value="保存">
             </form>
         </div>
     @else

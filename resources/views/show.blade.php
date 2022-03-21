@@ -31,11 +31,11 @@
                 <div class="border-bottom border-primary mb-3">
                     <h4 class="m-0 text-primary">体調</h4>
                     @if ($diary->health_id === 1)
-                        <h3 class="col-8 mx-auto text-center">良い</h3>
+                        <h3 class="col-8 mx-auto text-center">良好<i class="fa-solid fa-face-smile-beam"></i></h3>
                     @elseif ($diary->health_id === 2)
-                        <h3 class="col-8 mx-auto text-center">普通</h3>
+                        <h3 class="col-8 mx-auto text-center">いつも通り<i class="fa-solid fa-face-smile"></i></h3>
                     @else
-                        <h3 class="col-8 mx-auto text-center">悪い</h3>
+                        <h3 class="col-8 mx-auto text-center">調子悪かった<i class="fa-solid fa-face-sad-tear"></i></h3>
                     @endif
                 </div>
                 <div class="border-bottom border-primary mb-3">

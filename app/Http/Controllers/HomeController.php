@@ -10,6 +10,7 @@ use App\Models\Diary;
 use App\Models\Image;
 use App\Models\Tag;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Validated;
 
 class HomeController extends Controller
 {
