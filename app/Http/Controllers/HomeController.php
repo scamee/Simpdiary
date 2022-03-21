@@ -10,7 +10,6 @@ use App\Models\Diary;
 use App\Models\Image;
 use App\Models\Tag;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -110,11 +109,11 @@ class HomeController extends Controller
 
         $validated = $request->validated();
 
-        if (isset($validated['diary_img'])) {
+        if ($request->hasFile('diary_img')) {
             $upload_image = $validated['diary_img'];
             $path = $upload_image->store('uploads', "public");
             Image::create([
-                "user_id" => $validated["user_id"],
+                "user_id" => \Auth::id(),
                 "diary_date" => $validated["diary_date"],
                 "file_name" => $upload_image->getClientOriginalName(),
                 "file_path" => $path
@@ -123,7 +122,7 @@ class HomeController extends Controller
 
         Diary::create([
             "diary_date" => $validated["diary_date"],
-            "user_id" => $validated["user_id"],
+            "user_id" => \Auth::id(),
             "title" => $validated["title"],
             "health_id" => $validated["select"],
             "content" => $validated["content"],
@@ -140,7 +139,18 @@ class HomeController extends Controller
 
         $diary_date = $validated["diary_date"];
 
-        Diary::where("diary_date", $diary_date)
+        if ($request->hasFile('diary_img')) {
+            $upload_image = $validated['diary_img'];
+            $path = $upload_image->store('uploads', "public");
+            Image::create([
+                "user_id" => \Auth::id(),
+                "diary_date" => $validated["diary_date"],
+                "file_name" => $upload_image->getClientOriginalName(),
+                "file_path" => $path
+            ]);
+        }
+
+        Diary::where("user_id", \Auth::id())->where("diary_date", $diary_date)
             ->update([
                 "title" => $validated["title"],
                 "health_id" => $validated["select"],
