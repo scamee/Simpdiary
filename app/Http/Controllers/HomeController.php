@@ -164,11 +164,10 @@ class HomeController extends Controller
     //削除
     public function delete(Request $request)
     {
-        $user = \Auth::user();
-        $inputs = $request->all();
-        $diary_date = $inputs["diary_date"];
+        $diary_date = $request->diary_date;
 
-        Diary::where("diary_date", $diary_date)->where("user_id", $user['id'])->delete();
+        Diary::where("diary_date", $diary_date)->where("user_id", \Auth::id())->delete();
+        Image::where("diary_date", $diary_date)->where("user_id", \Auth::id())->delete();
 
         return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
     }
