@@ -42,7 +42,7 @@
 
             <div class="row">
                 <div class="card-group">
-                    <div class="card">
+                    <div class="card" style="min-height: 100vh;">
                         {{-- カレンダー --}}
                         @include('components.calendar')
                         {{-- タグ --}}

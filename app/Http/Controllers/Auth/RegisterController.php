@@ -70,13 +70,4 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
-    /**
-     * @return string
-     */
-    public function redirectTo()
-    {
-        $date = Carbon::now()->format('Y-m-j');
-        return '/show/' . $date;
-    }
 }
