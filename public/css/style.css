@@ -1,90 +1,19 @@
-@import url(calendar.css);
-@import url(color.css);
-@import url(header.css);
+/* カレンダー */
+@import url(components/calendar.css);
 
+/* bootstrap色変更 */
+@import url(components/color.css);
 
-.bg-image{
-    height: 100vh;
-    min-height: 300px;
+/* ヘッダー */
+@import url(components/header.css);
 
-    background-image: url("../img/top-background-pc.jpg");
-    background-color:rgba(200, 180, 110, 0.6);
-    background-size: cover;
-
-    background-blend-mode:lighten;
-}
-
-.bg-image p {
-    color: #ffff;
-}
-
-.slideshow {
-    background-color: #EE827D;
-}
-
-.slideshow p {
-    color: #ffff;
-}
-
+/* トップページ */
+@import url(components/toppage.css);
 
 /* modal */
-
-.setting-list li{
-    list-style: none;
-    position: relative;
-    margin:8px;
-}
-
-.setting-list li a {
-    position: absolute;
-    top:0px;
-    right:0;
-}
+@import url(components/modal.css);
 
 /* tag */
-#tags .card-title{
-    border-top:1px solid #EE827D;
-    margin: 0 24px;
-    padding:10px 0;
-    text-align: center;
-}
+@import url(components/tag.css);
 
-#tags .card-body{
-    position:relative;
-}
-
-#tags button{
-    position:absolute;
-    top: 0px;
-    margin:10px;
-    right: 0;
-}
-
-.tag{
-    display: block;
-    position: relative;
-    text-align: center;
-    background: linear-gradient(-135deg, #9941D8,#E4A972);
-    color:white;
-    font-size:20px;
-}
-
-.tag a{
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-/* .card-body{
-    background-color: #E4A972;
-} */
-/* .image-form {
-    position: relative;
-}
-
-.image-form-btn{
-    position: absolute;
-    top:0;
-    right: 10px;
-} */
 

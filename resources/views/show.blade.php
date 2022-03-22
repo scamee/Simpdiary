@@ -14,11 +14,11 @@
                 <form method='POST' action="/delete" id='delete-form'>
                     @csrf
                     <input type="hidden" name='diary_date' value="{{ $date }}">
-                    <button type="submit" class="btn btn-outline-primary btn-lg ms-1"><i
+                    <button type="submit" class="btn btn-outline-primary ms-1"><i
                             class="me-1 fa-solid fa-trash-can"></i>削除</button>
                 </form>
                 <div>
-                    <a href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">
+                    <a href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary">
                         <i class="me-1 fa-solid fa-pen"></i>編集
                     </a>
                 </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="border-bottom border-primary mb-3">
                     <h4 class="m-0 text-primary">日記本文</h4>
-                    <h3 class="col-12 mx-auto text-center">{{ $diary->content }}</h3>
+                    <h3 class="col-12 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
                 </div>
 
                 <div class="m-0">

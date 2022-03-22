@@ -1,0 +1,12 @@
+.setting-list li{
+    list-style: none;
+    position: relative;
+    margin:12px;
+    padding: 10px 0;
+}
+
+.setting-list li a {
+    position: absolute;
+    top:0px;
+    right:0;
+}
