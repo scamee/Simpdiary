@@ -45,7 +45,7 @@
                                 <input type="hidden" name='id' value="{{ $image->id }}">
                                 <input type="hidden" name='file_path' value="{{ $image->file_path }}">
                                 <input type="hidden" name='diary_date' value="{{ $date }}">
-                                <button type="submit" class="btn btn-outline-primary btn-lg ms-1"><i
+                                <button type="submit" class="btn btn-outline-primary ms-1"><i
                                         class="me-1 fa-solid fa-trash-can"></i>画像を削除</button>
                             </form>
                         </div>

@@ -1,0 +1,36 @@
+#tags {
+    margin-top:10px;
+}
+
+#tags .card-title{
+    border-top:1px solid #EE827D;
+    margin: 0 24px;
+    padding:10px 0;
+    text-align: center;
+}
+
+#tags .card-body{
+    position:relative;
+}
+
+#tags button{
+    position:absolute;
+    top: 0px;
+    margin:10px;
+    right: 0;
+}
+
+.tag{
+    display: block;
+    position: relative;
+    text-align: center;
+    background: linear-gradient(-135deg, #a371c7,#E4A972);
+    color:white;
+    font-size:20px;
+}
+
+.tag a{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

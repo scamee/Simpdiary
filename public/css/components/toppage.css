@@ -1,0 +1,23 @@
+/* top */
+.bg-image{
+    height: 100vh;
+    min-height: 300px;
+
+    background-image: url("../img/top-background-pc.jpg");
+    background-color:rgba(200, 180, 110, 0.6);
+    background-size: cover;
+
+    background-blend-mode:lighten;
+}
+
+.bg-image p {
+    color: #ffff;
+}
+
+.slideshow {
+    background-color: #EE827D;
+}
+
+.slideshow p {
+    color: #ffff;
+}
