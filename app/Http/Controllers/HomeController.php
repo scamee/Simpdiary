@@ -12,6 +12,7 @@ use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Validated;
 
+
 class HomeController extends Controller
 {
     /**
@@ -27,18 +28,13 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return showメソッド(date->now)
      */
     public function index()
     {
-        /* $date = Calendar::getWeeks(); */
-
         $date = Calendar::getNow();
 
-        return view(
-            'home',
-            compact('date')
-        );
+        return redirect()->route('show', ['date' => $date]);
     }
 
 
