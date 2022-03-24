@@ -18,13 +18,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/show/2022-04-04';
+    public const HOME = '/show';
 
-    /* public function test()
-    {
-        return '/show' . Carbon::now()->format('Y-m-j');
-    }
-    public $test = test(); */
     /**
      * The controller namespace for the application.
      *
