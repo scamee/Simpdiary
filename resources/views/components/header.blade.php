@@ -139,7 +139,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" v-pre>
-                            設定
+                            設定<i class="fa-solid fa-gear"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <button type="button" class="dropdown-item" data-bs-target="#UserSettingModel"
@@ -155,7 +155,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Logout') }}<i class="fa-solid fa-right-from-bracket"></i>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
