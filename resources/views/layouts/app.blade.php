@@ -39,6 +39,7 @@
 
         <main class="main">
             @include('components.success_message')
+            @include('components.error_message')
 
             <div class="row">
                 <div class="card-group">

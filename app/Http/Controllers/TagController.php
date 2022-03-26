@@ -7,7 +7,7 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
-    public function tagupdate(TagValidateRequest $request)
+    public function tagUpdate(TagValidateRequest $request)
     {
         $validated = $request->validated();
 
@@ -17,6 +17,6 @@ class TagController extends Controller
                 "set_day" => $validated["tag-setday"]
             ]);
 
-        return redirect()->route('show', ['date' => '2022-03-14']);
+        return redirect()->route('home');
     }
 }
