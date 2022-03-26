@@ -39,5 +39,6 @@ Route::group(
         Route::post('/tagUpdate', [TagController::class, 'tagUpdate'])->name('tagUpdate');
 
         Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
+        Route::post('/passwordUpdate', [UserController::class, 'passwordUpdate'])->name('passwordUpdate');
     }
 );

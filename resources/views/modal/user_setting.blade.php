@@ -38,15 +38,18 @@
                         <h4>パスワード</h4>
                         <p>ログインパスワードを変更します</p>
                         <div class="collapse" id="collapseExample2">
-                            <form action="#">
+                            <form method="POST" action="/passwordUpdate">
                                 @csrf
+                                <input type="hidden" name="date" value="{{ $date }}">
                                 <label class="form-label" for="currentPassword">現在のパスワード</label>
-                                <input type="text" class="form-control" id="currentPassword" name="currentpassword">
+                                <input type="password" class="form-control" id="currentPassword"
+                                    name="current_password">
                                 <label class="form-label" for="newPassword">新しいパスワード</label>
-                                <input type="text" class="form-control" id="newPassword" name="newpassword">
+                                <input type="password" class="form-control" id="newPassword" name="new_password">
                                 <label class="form-label" for="newPasswordAgain">新しいパスワード<span
                                         class="attention">再度入力</span></label>
-                                <input type="text" class="form-control" id="newPasswordAgain" name="newpasswordAgain">
+                                <input type="password" class="form-control" id="newPasswordAgain"
+                                    name="new_password_confirmation">
                                 <button type="submit" class="btn btn-outline-primary">保存</button>
                             </form>
                         </div>

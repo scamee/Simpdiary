@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserValidateRequest;
+use App\Http\Requests\PasswordValidateRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class UserController extends Controller
@@ -16,6 +18,17 @@ class UserController extends Controller
                 'name' => $validated['username']
             ]
         );
+
+        return redirect()->route('show', ['date' => $validated['date']])->with('success', 'アカウント情報を変更しました。');
+    }
+
+    public function passwordUpdate(PasswordValidateRequest $request)
+    {
+        $validated = $request->validated();
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new_password'));
+        $user->save();
 
         return redirect()->route('show', ['date' => $validated['date']])->with('success', 'アカウント情報を変更しました。');
     }
