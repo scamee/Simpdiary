@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::group(
     ['middleware' => 'auth'],
     function () {
         Route::get('/show', [HomeController::class, 'index'])->name('home');
-        Route::get('/show/{date?}', [HomeController::class, 'show'])->name('show');
+        Route::get('/show/{date}', [HomeController::class, 'show'])->name('show');
         Route::get('/create/{date}', [HomeController::class, 'create'])->name('create');
         Route::get('/edit/{date}', [HomeController::class, 'edit'])->name('edit');
         Route::post('/store', [HomeController::class, 'store'])->name('store');
@@ -35,6 +36,8 @@ Route::group(
 
         Route::post('/imageUpdate', [ImageController::class, 'imageUpdate'])->name('imageUpdate');
         Route::post('/imageDelete', [ImageController::class, 'imageDelete'])->name('iamgeDelete');
-        Route::post('/tagupdate', [TagController::class, 'tagupdate'])->name('tagupdate');
+        Route::post('/tagUpdate', [TagController::class, 'tagUpdate'])->name('tagUpdate');
+
+        Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
     }
 );

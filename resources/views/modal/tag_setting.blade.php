@@ -20,13 +20,15 @@
                             <span class="border-bottom border-primary border-2">{{ $tag1->set_day }}</span>
                         </p>
                         <div class="collapse" id="collapseTag1">
-                            <form method='POST' action="/tagupdate">
+                            <form method='POST' action="/tagUpdate">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $tag1->id }}">
-                                <label class="form-label" for="tag1-title">タイトル [10文字以内]</label>
+                                <label class="form-label" for="tag1-title">タイトル <span
+                                        class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="tag1-title" name="tag-title"
                                     value="{{ $tag1->title }}">
-                                <label class="form-label" for="tag1-setday">日付 [yyyy-mm-dd]</label>
+                                <label class="form-label" for="tag1-setday">日付<span
+                                        class="attention">※yyyy-mm-dd</span></label>
                                 <input type="text" class="form-control" id="tag1-setday" name="tag-setday"
                                     value="{{ $tag1->set_day }}">
                                 <button type="submit" class="btn btn-outline-primary">保存</button>
@@ -46,13 +48,15 @@
                             <span class="border-bottom border-primary border-2">{{ $tag2->set_day }}</span>
                         </p>
                         <div class="collapse" id="collapseTag2">
-                            <form method='POST' action="/tagupdate">
+                            <form method='POST' action="/tagUpdate">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $tag2->id }}">
-                                <label class="form-label" for="tag2-title">タイトル [10文字以内]</label>
+                                <label class="form-label" for="tag2-title">タイトル<span
+                                        class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="tag2-title" name="tag-title"
                                     value="{{ $tag2->title }}">
-                                <label class="form-label" for="tag2-setday">日付 [yyyy-mm-dd]</label>
+                                <label class="form-label" for="tag2-setday">日付<span
+                                        class="attention">※yyyy-mm-dd</span></label>
                                 <input type="text" class="form-control" id="tag2-setday" name="tag-setday"
                                     value="{{ $tag2->set_day }}">
                                 <button type="submit" class="btn btn-outline-primary">保存</button>

@@ -17,9 +17,12 @@
                             <span class="border-bottom border-primary border-2">{{ $user->name }}</span>
                         </p>
                         <div class="collapse" id="collapseExample">
-                            <form action="#">
+                            <form method="POST" action="/userUpdate">
                                 @csrf
-                                <label class="form-label" for="username">新しいユーザー名</label>
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                <input type="hidden" name="date" value="{{ $date }}">
+                                <label class="form-label" for="username">新しいユーザー名<span
+                                        class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="username" name="username"
                                     value="{{ $user->name }}">
                                 <button type="submit" class="btn btn-outline-primary">保存</button>
@@ -38,38 +41,14 @@
                             <form action="#">
                                 @csrf
                                 <label class="form-label" for="currentPassword">現在のパスワード</label>
-                                <input type="text" class="form-control" id="currentPassword" name="currentpassword"
-                                    value="{{ $user->name }}">
+                                <input type="text" class="form-control" id="currentPassword" name="currentpassword">
                                 <label class="form-label" for="newPassword">新しいパスワード</label>
-                                <input type="text" class="form-control" id="newPassword" name="newpassword"
-                                    value="{{ $user->name }}">
-                                <label class="form-label" for="newPasswordAgain">新しいパスワード(再度)</label>
-                                <input type="text" class="form-control" id="newPasswordAgain" name="newpasswordAgain"
-                                    value="{{ $user->name }}">
+                                <input type="text" class="form-control" id="newPassword" name="newpassword">
+                                <label class="form-label" for="newPasswordAgain">新しいパスワード<span
+                                        class="attention">再度入力</span></label>
+                                <input type="text" class="form-control" id="newPasswordAgain" name="newpasswordAgain">
                                 <button type="submit" class="btn btn-outline-primary">保存</button>
                             </form>
-                        </div>
-                    </li>
-                    <hr>
-                    <li>
-                        <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseExample3"
-                            role="button" aria-expanded="false" aria-controls="collapseExample3">
-                            <i class="me-1 fa-solid fa-pen"></i>
-                        </a>
-                        <h4>記念日</h4>
-                        <p>
-                            現在の記念日:<span class="border-bottom border-primary border-2">{{ $date }}</span>
-                        </p>
-                        <div class="collapse" id="collapseExample3">
-                            <div class="">
-                                <form method='POST' action="#">
-                                    @csrf
-                                    <label class="form-label" for="currentPassword">現在のパスワード</label>
-                                    <input type="text" class="form-control" id="currentPassword"
-                                        name="currentpassword" value="{{ $date }}">
-                                    <button type="submit" class="btn btn-outline-primary">保存</button>
-                                </form>
-                            </div>
                         </div>
                     </li>
                     <hr>
