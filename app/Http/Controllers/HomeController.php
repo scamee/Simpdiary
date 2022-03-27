@@ -10,13 +10,12 @@ use App\Models\Diary;
 use App\Models\Image;
 use App\Models\Tag;
 use Carbon\Carbon;
-use Illuminate\Auth\Events\Validated;
 
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * このコントローラーはログイン時のみ使用可能
      *
      * @return void
      */
@@ -26,9 +25,9 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * 初期ログイン時に現在日時の日記を表示する(showにredirect)
      *
-     * @return showメソッド(date->now)
+     * @return view
      */
     public function index()
     {
@@ -38,8 +37,11 @@ class HomeController extends Controller
     }
 
 
-
-    //showメソッド
+    /**
+     * 日記一覧を表示する
+     *
+     * @return view
+     */
     public function show($date)
     {
         $diary = Diary::where('diary_date', $date)->where('user_id', \Auth::id())->first();
@@ -78,7 +80,11 @@ class HomeController extends Controller
         );
     }
 
-    //createメソッド
+    /**
+     * 日記データ新規作成画面
+     *
+     * @return view
+     */
     public function create($date)
     {
         return view(
@@ -88,10 +94,13 @@ class HomeController extends Controller
     }
 
 
-    //編集画面
+    /**
+     * 日記データの編集画面
+     *
+     * @return view
+     */
     public function edit($date)
     {
-        //消す
         $diary = Diary::select('title', 'health_id', 'content')->where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
         return view(
@@ -100,7 +109,11 @@ class HomeController extends Controller
         );
     }
 
-    //編集アクション
+    /**
+     * 日記データの新規作成処理
+     * 画像データを受け取った場合は追加で画像処理も実行
+     * @return
+     */
     public function store(DiaryValidateRequest $request)
     {
 
@@ -126,10 +139,14 @@ class HomeController extends Controller
         ]);
 
         $diary_date = $validated["diary_date"];
-        return redirect()->route('show', ['date' => $diary_date]);
+        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の追加が完了しました。');
     }
 
-    //更新
+    /**
+     * 日記データの編集処理
+     *
+     * @return
+     */
     public function update(DiaryValidateRequest $request)
     {
         $validated = $request->validated();
@@ -154,10 +171,14 @@ class HomeController extends Controller
                 "content" => $validated["content"],
             ]);
 
-        return redirect()->route('show', ['date' => $diary_date]);
+        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の編集が完了しました。');
     }
 
-    //削除
+    /**
+     * 日記データの削除処理
+     *
+     * @return
+     */
     public function delete(Request $request)
     {
         $diary_date = $request->diary_date;

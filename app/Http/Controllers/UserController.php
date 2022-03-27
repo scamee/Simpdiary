@@ -9,6 +9,12 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+
+    /**
+     * ユーザー名の変更処理
+     *
+     * @return
+     */
     public function userUpdate(UserValidateRequest $request)
     {
         $validated = $request->validated();
@@ -22,6 +28,11 @@ class UserController extends Controller
         return redirect()->route('show', ['date' => $validated['date']])->with('success', 'アカウント情報を変更しました。');
     }
 
+    /**
+     * パスワードの変更処理
+     *
+     * @return
+     */
     public function passwordUpdate(PasswordValidateRequest $request)
     {
         $validated = $request->validated();
@@ -30,6 +41,6 @@ class UserController extends Controller
         $user->password = bcrypt($request->get('new_password'));
         $user->save();
 
-        return redirect()->route('show', ['date' => $validated['date']])->with('success', 'アカウント情報を変更しました。');
+        return redirect()->route('show', ['date' => $validated['date']])->with('success', 'パスワードを変更しました。');
     }
 }
