@@ -8,6 +8,12 @@ use App\Models\Image;
 
 class ImageController extends Controller
 {
+
+    /**
+     * 画像の変更処理(上書き)
+     *
+     * @return
+     */
     public function imageUpdate(Request $request)
     {
         $inputs = $request->all();
@@ -27,9 +33,15 @@ class ImageController extends Controller
                 ]);
         }
 
-        return redirect()->route('show', ['date' => $diary_date]);
+        return redirect()->route('show', ['date' => $diary_date])->with('success', '画像の変更が完了しました。');
     }
 
+
+    /**
+     * 画像の削除処理
+     *
+     * @return
+     */
     public function imageDelete(Request $request)
     {
         $inputs = $request->all();

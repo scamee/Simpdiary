@@ -5,6 +5,7 @@ namespace app\Services;
 
 use Carbon\Carbon;
 use App\Models\Tag;
+use App\Models\Diary;
 
 class CalendarService
 {
@@ -22,21 +23,28 @@ class CalendarService
         $day_of_week = $dt->dayOfWeek;     // 曜日
         $days_in_month = $dt->daysInMonth; // その月の日数
 
+
         // 第 1 週目に空のセルを追加
         $week .= str_repeat('<td></td>', $day_of_week);
 
         for ($day = 1; $day <= $days_in_month; $day++, $day_of_week++) {
+            $day = sprintf('%02d', $day);
             $date = self::getYm() . '-' . $day;
 
             if (self::getNow() === $date) {
                 $week .= '<td class="today"><a href="/show/' . $date . '">' . $day;
             } else {
                 $week .= '<td><a href="/show/' . $date . '">' . $day;
-                /* $week .= '<td><a data-bs-toggle="modal" data-bs-target="#MyListModel" href="/show/' . $date . '">' . $day; */
             }
-            $week .= '</a></td>';
 
+            $key = in_array($date, self::getDiary());
+            if ($key) {
+                $week .= '<i class="fa-regular fa-circle-check"></i></a></td>';
+            } else {
+                $week .= '</a></td>';
+            }
             // 週の終わり、または月末
+            $day = (int)$day;
             if (($day_of_week % 7 === 6) || ($day === $days_in_month)) {
                 if ($day === $days_in_month) {
                     $week .= str_repeat('<td></td>', 6 - ($day_of_week % 7));
@@ -65,7 +73,7 @@ class CalendarService
      */
     public function getPrev()
     {
-        return Carbon::parse(self::getYm_firstday())->subMonthsNoOverflow()->format('Y-m-j');
+        return Carbon::parse(self::getYm_firstday())->subMonthsNoOverflow()->format('Y-m-d');
     }
 
     /**
@@ -75,21 +83,21 @@ class CalendarService
      */
     public function getNext()
     {
-        return Carbon::parse(self::getYm_firstday())->addMonthNoOverflow()->format('Y-m-j');
+        return Carbon::parse(self::getYm_firstday())->addMonthNoOverflow()->format('Y-m-d');
     }
 
     /**
-     *
+     *　現在日時を返却する
      *
      * @return string
      */
     public function getNow()
     {
-        return Carbon::now()->format('Y-m-j');
+        return Carbon::now()->format('Y-m-d');
     }
 
     /**
-     * GET から Y-m フォーマットを返却する
+     * URL から Y-m フォーマットを返却する
      *
      * @return string
      */
@@ -101,24 +109,28 @@ class CalendarService
         foreach ($setroutes as $setroute) {
             if ($currentroute === $setroute) {
                 $url = $_SERVER['REQUEST_URI'];
-                //urlから日記の日付を取得
+                //urlから日記の日付を取得(例:2021-04-1)
                 $url = rtrim($url, '/');
                 $date = substr($url, strrpos($url, '/') + 1);
-                //日付($date)から年・月のみ取得
-                //2021-04-1 -> 2021-04
+                //日付($date)から年・月のみ取得(例:2021-04-1 -> 2021-04)
                 return substr($date, 0, 7);
             }
         }
         return Carbon::now()->format('Y-m');
     }
 
+    /**
+     * getYM()の判定で使うルートを設定
+     *
+     * @return array
+     */
     private static function set_routes()
     {
         return ['create', 'show', 'edit'];
     }
 
     /**
-     * 2019-09-01 のような月初めの文字列を返却する
+     * 2022-04-01 のような月初めの文字列を返却する
      *
      * @return string
      */
@@ -128,42 +140,43 @@ class CalendarService
     }
 
     /**
-     *今日の日付と$set_dayの日数差を取得する
+     * 今日の日付と$set_dayの日数差を取得する
      *
-     * @return string
-     */
-    /* public function diffDay1($set_day)
-    {
-
-        $set_day = new Carbon($set_day);
-        $today = new Carbon(self::getNow());
-
-        return $set_day->diffInDays($today);
-    } */
-
-    /**
-     *今日の日付と$set_dayの日数差を取得する
-     *
-     * @return string
+     * @return array
      */
     public function diffDay()
     {
-        $test = [];
+        $diff_days = [];
         $tagModel = new Tag();
         $tags =  $tagModel->where('user_id', \Auth::id())->get();
 
-        /* dd($tags); */
         if (isset($tags)) {
             foreach ($tags as $tag) {
-                /* var_dump($tag['set_day']); */
+
                 $set_day = new Carbon($tag['set_day']);
-                /* dd($set_day); */
                 $today = new Carbon(self::getNow());
 
-                $test[] = $set_day->diffInDays($today);
+                $diff_days[] = $set_day->diffInDays($today);
             }
-            /* dd($test); */
-            return $test;
+
+            return $diff_days;
         }
+    }
+
+    /**
+     *日記を入力済の日付を返す
+     *
+     * @return array
+     */
+    private static function getDiary()
+    {
+        $completed_diary = [];
+        $diaryModel = new Diary();
+        $diaries = $diaryModel->where('user_id', \Auth::id())->get(['diary_date']);
+
+        foreach ($diaries as $diary) {
+            $completed_diary[] = $diary['diary_date'];
+        }
+        return $completed_diary;
     }
 }

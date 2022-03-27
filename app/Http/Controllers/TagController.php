@@ -7,6 +7,12 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
+
+    /**
+     * ウィジェットの更新処理
+     *
+     * @return
+     */
     public function tagUpdate(TagValidateRequest $request)
     {
         $validated = $request->validated();
