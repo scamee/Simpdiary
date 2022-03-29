@@ -15,9 +15,36 @@
 }
 
 .slideshow {
+    height: 100vh;
     background-color: #EE827D;
 }
 
 .slideshow p {
     color: #ffff;
+}
+
+.carousel-caption{
+    background-color: #ffff;
+    right: 30%;
+    left: 30%;
+    border: 1px solid grey;
+}
+/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+.pc {
+    display: block !important;
+    max-height: 680px;
+}
+.sp { display: none !important; }
+
+/* スマートフォンで見たときは"sp"のclassがついた画像が表示される */
+@media only screen and (max-width: 750px) {
+    .pc { display: none !important; }
+    .sp {
+        display: block !important;
+        max-height: 500px;
+    }
+}
+
+footer{
+    background-color: rgba(201, 177, 112, 0.3);
 }

@@ -43,24 +43,27 @@
                     <h3 class="col-12 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
                 </div>
 
-                <div class="m-0">
-                    @php
-                        $i = 0;
-                    @endphp
-                    @foreach ($images as $image)
-                        <div class="rounded float-start img-thumbnail" style="width: 50%;">
-                            <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
-                                <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"
-                                    style="cursor:pointer;" />
-                            </a>
-                            <p class="m-0 text-center">{{ $image->file_name }}</p>
-                        </div>
-                        @include('modal.image_modal')
+                @if (!empty($images))
+                    <div class="m-0">
                         @php
-                            ++$i;
+                            $i = 0;
                         @endphp
-                    @endforeach
-                </div>
+                        <p>画像をクリックまたはタッチで変更・削除ができます</p>
+                        @foreach ($images as $image)
+                            <div class="rounded float-start img-thumbnail" style="width: 50%;">
+                                <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
+                                    <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"
+                                        style="cursor:pointer;" />
+                                </a>
+                                <p class="m-0 text-center">{{ $image->file_name }}</p>
+                            </div>
+                            @include('modal.image_modal')
+                            @php
+                                ++$i;
+                            @endphp
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     @else
@@ -71,6 +74,4 @@
         </div>
     @endif
     </div>
-    @if (!empty($image))
-    @endif
 @endsection

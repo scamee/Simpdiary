@@ -44,8 +44,6 @@
                             <a class="nav-link text-primary fs-5" href="{{ route('login') }}">ログイン</a>
                         </li>
                     </ul>
-                    <!-- <button type="button" class="btn btn-outline-primary me-2">ログイン</button>
-                        <button type="button" class="btn btn-primary">サインアップ</button> -->
                 </div>
             </div>
         </nav>
@@ -73,45 +71,60 @@
         <!-- slideshow -->
         <div class="slideshow">
             <div class="container">
-                <p class="fs-1 text-center">機能</p>
-                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <p class="fs-1 text-center">機能紹介</p>
+                <div id="slideshow" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        <button type="button" data-bs-target="#slideshow" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="10000">
-                            <img src="./attach/img/sample1.png" class="d-block w-100" alt="...">
+                        <div class="carousel-item active" data-bs-interval="5000">
+                            {{-- pc用画像 --}}
+                            <img src="{{ asset('img/slideshow-desktop1.png') }}" class="pc w-100"
+                                alt="desktop1">
+                            {{-- スマホ用画像 --}}
+                            <img src="{{ asset('img/slideshow-desktop1-sp.png') }}" class="sp w-100"
+                                alt="desktop1">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
+                                <h5>カレンダーで日記を管理</h5>
+                                <p style="color: grey;">カレンダー形式で日記を保存するのでシンプルで管理がしやすい！</p>
                             </div>
                         </div>
-                        <div class="carousel-item" data-bs-interval="2000">
-                            <img src="./attach/img/sample.jpeg" class="d-block w-100" alt="...">
+                        <div class="carousel-item" data-bs-interval="5000">
+                            {{-- pc用画像 --}}
+                            <img src="{{ asset('img/slideshow-desktop2.png') }}" class="pc w-100"
+                                alt="desktop2">
+                            {{-- スマホ用画像 --}}
+                            <img src="{{ asset('img/slideshow-desktop2-sp.png') }}" class="sp w-100"
+                                alt="desktop1">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Some representative placeholder content for the second slide.</p>
+                                <h5>日記表示画面</h5>
+                                <p style="color: grey;">その日の体調や画像を保存できて見返した時にわかりやすい！</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="./attach/img/600X300.gif" class="d-block w-100" alt="...">
+                        <div class="carousel-item" data-bs-interval="5000">
+                            {{-- pc用画像 --}}
+                            <img src="{{ asset('img/slideshow-desktop2.png') }}" class="pc w-100"
+                                alt="desktop2">
+                            {{-- スマホ用画像 --}}
+                            <img src="{{ asset('img/slideshow-desktop2-sp.png') }}" class="sp w-100"
+                                alt="desktop1">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Some representative placeholder content for the third slide.</p>
+                                <h5>ウィジェット搭載</h5>
+                                <p style="color: grey;">ウィジェット付きなので、記念日や予定日までの日付が一目でわかる！</p>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#slideshow"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    <button class="carousel-control-next" type="button" data-bs-target="#slideshow"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
@@ -121,15 +134,15 @@
         </div>
 
         <!-- footer -->
-        <footer class="card-footer fixed-bottom row">
-            <div class="col-sm-6" style="text-align: right;">
+        <footer class="row">
+            <div class="col-sm-6 pc" style="text-align: right;">
                 <a href="#" class="text-reset">規約</a>
             </div>
-            <div class="col-sm-4" style="text-align: left;">
+            <div class="col-sm-4 pc" style="text-align: left;">
                 <a href="#" class="text-reset">リリースノート</a>
             </div>
             <div class="col-sm-2" style="text-align: right;">
-                <small>&copy; 2021 うどんなん</small>
+                <small>&copy; 2021 まさき</small>
             </div>
         </footer>
     </div>
