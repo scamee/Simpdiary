@@ -33,10 +33,13 @@ class AppServiceProvider extends ServiceProvider
 
                 $user = \Auth::user();
 
+                //初期値
+                $date = Calendar::getNow();
+
                 $tagModel = new Tag();
                 $tags =  $tagModel->where('user_id', \Auth::id())->get();
 
-                $view->with('user', $user)->with('tags', $tags)->with(
+                $view->with('user', $user)->with('tags', $tags)->with('date', $date)->with(
                     [
                         'weeks'         => Calendar::getWeeks(),
                         'month'         => Calendar::getMonth(),

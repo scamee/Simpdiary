@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MailSendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,7 @@ Route::group(
 
         Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
         Route::post('/passwordUpdate', [UserController::class, 'passwordUpdate'])->name('passwordUpdate');
+
+        Route::get('/mail', [MailSendController::class, 'send']);
     }
 );
