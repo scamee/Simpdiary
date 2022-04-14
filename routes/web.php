@@ -42,6 +42,7 @@ Route::group(
         Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
         Route::post('/passwordUpdate', [UserController::class, 'passwordUpdate'])->name('passwordUpdate');
 
-        Route::get('/mail', [MailSendController::class, 'send']);
+        Route::post('/mail', [MailSendController::class, 'send']);
+        Route::get('/invitation/{token}', [MailSendController::class, 'invitation']);
     }
 );

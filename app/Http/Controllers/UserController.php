@@ -11,7 +11,7 @@ class UserController extends Controller
 {
 
     /**
-     * ユーザー名の変更処理
+     * ユーザー情報の変更処理
      *
      * @return
      */
@@ -19,9 +19,13 @@ class UserController extends Controller
     {
         $validated = $request->validated();
 
-        User::where('id', $validated['user_id'])->update(
+        User::where('id', Auth::id())->update(
             [
-                'name' => $validated['username']
+                'name' => $validated['username'],
+                'birthday' => $validated['birthday'],
+                'hobby' => $validated['hobby'],
+                'dream' => $validated['dream'],
+                'wanted' => $validated['wanted'],
             ]
         );
 

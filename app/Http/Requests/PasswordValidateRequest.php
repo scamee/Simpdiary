@@ -29,7 +29,7 @@ class PasswordValidateRequest extends FormRequest
         return [
             'current_password' => ['required', 'string', 'min:8'],
             'new_password' => ['required', 'string', 'min:8', 'confirmed'],
-            'date' => ['required', 'regex:/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/'],
+            'date' => ['required', 'date_format:Y-m-d'],
         ];
     }
 

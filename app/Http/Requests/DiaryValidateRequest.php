@@ -24,8 +24,7 @@ class DiaryValidateRequest extends FormRequest
     public function rules()
     {
         return [
-            'diary_date' => ['bail', 'required', 'regex:/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/'],
-            /* 'user_id' => ['bail', 'required', 'integer'], */
+            'diary_date' => ['bail', 'required', 'date_format:Y-m-d'],
             'title' => ['required', 'max:20'],
             'select' => ['bail', 'required', 'regex:/^[1-3]{1}$/'],
             'content' => ['required', 'max:1000'],

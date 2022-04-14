@@ -12,19 +12,37 @@
                             role="button" aria-expanded="false" aria-controls="collapseExample">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-                        <h4>ユーザー名</h4>
-                        <p>あなたのユーザー名:
-                            <span class="border-bottom border-primary border-2">{{ $user->name }}</span>
-                        </p>
+                        <h4>ユーザー情報変更</h4>
+                        <p>ログインユーザーの情報を変更します</p>
                         <div class="collapse" id="collapseExample">
                             <form method="POST" action="/userUpdate">
                                 @csrf
-                                <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <input type="hidden" name="date" value="{{ $date }}">
+                                {{-- ユーザ名 --}}
                                 <label class="form-label" for="username">新しいユーザー名<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="username" name="username"
                                     value="{{ $user->name }}">
+                                {{-- 誕生日 --}}
+                                <label class="form-label" for="birthday">新しい誕生日<span
+                                        class="attention">※yyyy-mm-dd</span></label>
+                                <input type="text" class="form-control" id="birthday" name="birthday"
+                                    value="{{ $user->birthday }}">
+                                {{-- 趣味・特技 --}}
+                                <label class="form-label" for="hobby">新しい趣味・特技<span
+                                        class="attention">※10文字以内</span></label>
+                                <input type="text" class="form-control" id="hobby" name="hobby"
+                                    value="{{ $user->hobby }}">
+                                {{-- 将来の夢 --}}
+                                <label class="form-label" for="username">新しい将来の夢<span
+                                        class="attention">※10文字以内</span></label>
+                                <input type="text" class="form-control" id="username" name="dream"
+                                    value="{{ $user->dream }}">
+                                {{-- 欲しいもの --}}
+                                <label class="form-label" for="username">新しい欲しいもの<span
+                                        class="attention">※10文字以内</span></label>
+                                <input type="text" class="form-control" id="username" name="wanted"
+                                    value="{{ $user->wanted }}">
                                 <button type="submit" class="btn btn-outline-primary">保存</button>
                             </form>
                         </div>

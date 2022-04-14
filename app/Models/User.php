@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'invitation_token',
+        'partner_id',
+        'birthday',
+        'hobby',
+        'dream',
+        'wanted',
     ];
 
     /**

@@ -25,8 +25,11 @@ class UserValidateRequest extends FormRequest
     {
         return [
             'username' => ['required', 'max:10'],
-            'user_id' => ['required', 'integer'],
-            'date' => ['required', 'regex:/^[0-9]{4}-[0-9]{2}-[0-9]{1,2}$/'],
+            'date' => ['required', 'date_format:Y-m-d'],
+            'birthday' => ['nullable', 'date_format:Y-m-d'],
+            'hobby' => ['max:10'],
+            'dream' => ['max:10'],
+            'wanted' => ['max:10'],
         ];
     }
 
@@ -37,7 +40,11 @@ class UserValidateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'username' => 'ユーザー名'
+            'username' => 'ユーザー名',
+            'birthday' => '誕生日',
+            'hobby' => '趣味・特技',
+            'dream' => '将来の夢',
+            'wanted' => '欲しいもの',
         ];
     }
 
@@ -48,7 +55,11 @@ class UserValidateRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.max' => ':attributeは10文字以内で入力してください。'
+            'username.max' => ':attributeは10文字以内で入力してください。',
+            'birthday.date_format' => ':attributeは正しく入力してください',
+            'hobby.max' => ':attributeは10文字以内で入力してください',
+            'dream.max' => ':attributeは10文字以内で入力してください',
+            'wanted.max' => ':attributeは10文字以内で入力してください',
         ];
     }
 }

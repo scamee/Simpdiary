@@ -22,3 +22,52 @@
     color:red;
     font-size: 0.5rem;
 }
+
+.profile-body{
+    background-color: rgba(201, 177, 112, 0.1);
+}
+
+.profile{
+    min-height: 500px;
+    text-align: center;
+}
+
+.profile-img{
+    margin:10px 0;
+    height: 200px;
+}
+
+.profile-img img{
+        left: 50%;
+        border-radius: 50%;
+        width: 200px;
+        height: auto;
+    }
+
+.profile-list{
+    height: 200px;
+}
+.profile-list h3{
+        left:auto;
+        color: black;
+        text-align: center;
+    }
+
+.profile-list table{
+    background-color: rgba(255, 232, 236, 0.3);
+    border-color: #FEEEED;
+    text-align: center;
+    margin:0 auto;
+}
+
+.td-title{
+    color:red;
+    width: 50px;
+}
+.td-title{
+    color:red;
+    width: 100px;
+}
+.td-answer{
+    width:200px;
+}
