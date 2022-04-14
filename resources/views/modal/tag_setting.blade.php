@@ -2,23 +2,23 @@
     <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content p-3">
             <div class="modal-header">
-                <h4 class="modal-title" id="Title">タグ設定</h4>
+                <h4 class="modal-title" id="Title">ウィジェット設定</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-0">
                 <ul class="setting-list p-2">
+                    <div class="m-2">
+                        <p>ウィジェットは2つまで設定が可能です</p>
+                        <p>思い出の日などを設定しましょう</p>
+                    </div>
+                    <hr>
                     <li>
                         <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseTag1"
                             role="button" aria-expanded="false" aria-controls="collapseTag1">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-
-                        <p>タイトル:
-                            <span class="border-bottom border-primary border-2">{{ $tag1->title }}</span>
-                        </p>
-                        <p>日付:
-                            <span class="border-bottom border-primary border-2">{{ $tag1->set_day }}</span>
-                        </p>
+                        <h4>ウィジェット１</h4>
+                        <p>ウィジェット１を変更します</p>
                         <div class="collapse" id="collapseTag1">
                             <form method='POST' action="/tagUpdate">
                                 @csrf
@@ -41,12 +41,8 @@
                             role="button" aria-expanded="false" aria-controls="collapseTag2">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-                        <p>タイトル:
-                            <span class="border-bottom border-primary border-2">{{ $tag2->title }}</span>
-                        </p>
-                        <p>日付:
-                            <span class="border-bottom border-primary border-2">{{ $tag2->set_day }}</span>
-                        </p>
+                        <h4>ウィジェット２</h4>
+                        <p>ウィジェット２を変更します</p>
                         <div class="collapse" id="collapseTag2">
                             <form method='POST' action="/tagUpdate">
                                 @csrf

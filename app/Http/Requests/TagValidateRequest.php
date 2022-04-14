@@ -25,7 +25,7 @@ class TagValidateRequest extends FormRequest
     {
         return [
             'tag-title' => ['required', 'max:10'],
-            'tag-setday' => ['required', 'regex:/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/']
+            'tag-setday' => ['required', 'date_format:Y-m-d']
         ];
     }
     /**
@@ -50,7 +50,7 @@ class TagValidateRequest extends FormRequest
             'tag-title.required' => ':attributeを入力してください。',
             'tag-title.max' => ':attributeは10文字以下で入力してください。',
             'tag-setday.required' => ':attributeを入力してください。',
-            'tag-setday.regex' => ':attributeを入力してください。'
+            'tag-setday.date_format' => ':attributeを入力してください。'
         ];
     }
 }

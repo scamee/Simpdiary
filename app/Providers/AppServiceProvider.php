@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Facades\Calendar;
 use app\Services\CalendarService;
 use Illuminate\Support\ServiceProvider;
+use App\Models\User;
 use App\Models\Tag;
 
 
@@ -33,13 +34,18 @@ class AppServiceProvider extends ServiceProvider
 
                 $user = \Auth::user();
 
-                //初期値
-                $date = Calendar::getNow();
+                //共有しているか
+                $partner = "";
+                if (isset($user['partner_id'])) {
+                    $partner_id = $user->partner_id;
+                    $partner = USER::where('id', $partner_id)->first();
+                }
 
+                //ウィジェット
                 $tagModel = new Tag();
                 $tags =  $tagModel->where('user_id', \Auth::id())->get();
 
-                $view->with('user', $user)->with('tags', $tags)->with('date', $date)->with(
+                $view->with('user', $user)->with('tags', $tags)->with('partner', $partner)->with(
                     [
                         'weeks'         => Calendar::getWeeks(),
                         'month'         => Calendar::getMonth(),

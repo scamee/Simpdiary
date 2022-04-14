@@ -46,8 +46,6 @@
                     <div class="card" style="min-height: 100vh;">
                         {{-- カレンダー --}}
                         @include('components.calendar')
-                        {{-- タグ --}}
-                        {{-- @include('components.tag') --}}
                     </div>
                     <div class="card">
                         @yield('content')
@@ -62,6 +60,15 @@
     @include('modal.user_setting')
     {{-- タグ設定 --}}
     @include('modal.tag_setting')
+    {{-- マイプロフィール --}}
+    @include('modal.my_profile')
+    @if (!isset($user['partner_id']))
+        {{-- パートナー招待 --}}
+        @include('modal.invitation_modal')
+    @else
+        {{-- パートナープロフィール --}}
+        @include('modal.partner_profile')
+    @endif
 
 </body>
 
