@@ -1,20 +1,29 @@
 /* header.css */
 
 .navbar {
-    background-color: rgba(201, 177, 112, 0.3);
+    background-color: var(--sub-color);
     padding-top: 0;
     padding-bottom: 0;
 }
 
 .navbar-brand{
     font-family: 'Lobster', cursive;
+    color:var(--font-color) !important;
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color:#EE827D;
+    color:var(--font-color) !important;
+}
+
+.nav-link i {
+    margin-left:5px;
+}
+
+.dropdown-menu {
+    background-color: var(--dropdown-menu-backgroundcolor);
 }
 
 .dropdown-item {
-    color:#EE827D;
+    color:var(--font-color) !important;
 }
 

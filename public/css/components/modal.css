@@ -3,10 +3,28 @@
     position: relative;
     margin:12px;
     padding: 10px 0;
+    color:var(--setting-list-color);
+}
+
+.setting-list-info {
+    color:var(--setting-list-color);
 }
 
 .setting-list li a {
     position: absolute;
     top:0px;
     right:0;
+}
+
+.modal-title{
+    color:var(--font-color);
+}
+
+.modal-content{
+    background-color: var(--modal-bacgroundcolor);
+    border: 1px solid white;
+}
+
+.modal-body .form-control{
+    margin-bottom: 10px;
 }

@@ -48,30 +48,28 @@
             </div>
         </nav>
         <!-- main -->
-        <div class="bg-image position-relative">
-            <div class="container-fluid text-center position-absolute top-50 start-50 translate-middle">
-                <p class="fs-2 mb-sm-2">カップル・夫婦のための交換日記</p>
-                <p class="fs-1 m-0" style="font-family: 'Lobster', cursive;">Love Diary</p>
-                <p class="fs-5 pb-sm-3">~愛するあの人と秘密の交換日記をしよう~</p>
+        <div class="top-main">
+            <div class="container">
+                <p class="title">シンプル<span>な</span>交換日記アプリ</p>
+                <p class="appname">{{ config('app.name', 'Laravel') }}</p>
+                <p class="sub-title">~2人だけの秘密の交換日記をしよう~</p>
                 <p>日記で日々を綴り</p>
                 <p>相手へ思いを紡ごう</p>
-                <p>少しのコミュニケーションで恋は変わる</p>
                 @guest
                     <a href="{{ route('register') }}">
-                        <button type="button" class="btn btn-lg btn-outline-primary">無料でサインアップ</button>
+                        <button type="button" class="btn btn-lg button">無料でサインアップ</button>
                     </a>
                 @else
                     <a href="{{ route('register') }}">
-                        <button type="button" class="btn btn-lg btn-outline-primary">ログイン</button>
+                        <button type="button" class="btn btn-lg button">{{ Auth::user()->name }}でログイン中</button>
                     </a>
-                    <p>{{ Auth::user()->name }}でログイン中</p>
                 @endguest
             </div>
         </div>
         <!-- slideshow -->
         <div class="slideshow">
             <div class="container">
-                <p class="fs-1 text-center">機能紹介</p>
+                <p class="introduction">機能紹介</p>
                 <div id="slideshow" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#slideshow" data-bs-slide-to="0" class="active"

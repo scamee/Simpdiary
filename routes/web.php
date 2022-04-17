@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\MailSendController;
 
 /*
@@ -40,6 +41,7 @@ Route::group(
         Route::post('/tagUpdate', [TagController::class, 'tagUpdate'])->name('tagUpdate');
 
         Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
+        Route::post('/themeUpdate', [ThemeController::class, 'update'])->name('themeUpdate');
         Route::post('/passwordUpdate', [UserController::class, 'passwordUpdate'])->name('passwordUpdate');
 
         Route::post('/mail', [MailSendController::class, 'send']);

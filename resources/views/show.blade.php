@@ -14,33 +14,33 @@
                 <form method='POST' action="/delete" id='delete-form'>
                     @csrf
                     <input type="hidden" name='diary_date' value="{{ $date }}">
-                    <button type="submit" class="btn btn-outline-primary ms-1"><i
-                            class="me-1 fa-solid fa-trash-can"></i>削除</button>
+                    <button type="submit" class="btn submit-btn ms-1"><i class="me-1 fa-solid fa-trash-can"></i>削除</button>
                 </form>
                 <div>
-                    <a href="{{ route('edit', ['date' => $date]) }}" class="btn btn-outline-primary">
+                    <a href="{{ route('edit', ['date' => $date]) }}" class="btn submit-btn">
                         <i class="me-1 fa-solid fa-pen"></i>編集
                     </a>
                 </div>
             </div>
             <div class="mx-auto col-10">
-                <div class="border-bottom border-primary mb-3">
-                    <h4 class="m-0 text-primary">タイトル</h4>
-                    <h3 class="col-8 mx-auto text-center">{{ $diary->title }}</h3>
+                <div class="show-list">
+                    <h4 class="show-title">タイトル</h4>
+                    <h3 class="show-item-center col-8 mx-auto">{{ $diary->title }}</h3>
                 </div>
-                <div class="border-bottom border-primary mb-3">
-                    <h4 class="m-0 text-primary">体調</h4>
+                <div class="show-list">
+                    <h4 class="show-title">体調</h4>
                     @if ($diary->health_id === 1)
-                        <h3 class="col-8 mx-auto text-center">良好<i class="fa-solid fa-face-smile-beam"></i></h3>
+                        <h3 class="show-item-center col-8 mx-auto">良好<i class="fa-solid fa-face-smile-beam"></i></h3>
                     @elseif ($diary->health_id === 2)
-                        <h3 class="col-8 mx-auto text-center">いつも通り<i class="fa-solid fa-face-smile"></i></h3>
+                        <h3 class="show-item-center col-8 mx-auto">いつも通り<i class="fa-solid fa-face-smile"></i></h3>
                     @else
-                        <h3 class="col-8 mx-auto text-center">調子悪かった<i class="fa-solid fa-face-sad-tear"></i></h3>
+                        <h3 class="show-item-center col-8 mx-auto">調子悪かった<i class="fa-solid fa-face-sad-tear"></i>
+                        </h3>
                     @endif
                 </div>
-                <div class="border-bottom border-primary mb-3">
-                    <h4 class="m-0 text-primary">日記本文</h4>
-                    <h3 class="col-12 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
+                <div class="show-list">
+                    <h4 class="show-title">日記本文</h4>
+                    <h3 class="show-item col-12 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
                 </div>
 
                 @if (!empty($images))
@@ -55,7 +55,7 @@
                                     <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"
                                         style="cursor:pointer;" />
                                 </a>
-                                <p class="m-0 text-center">{{ $image->file_name }}</p>
+                                <p class="show-img">{{ $image->file_name }}</p>
                             </div>
                             @include('modal.image_modal')
                             @php
@@ -68,7 +68,7 @@
         </div>
     @else
         <div class="card-body py-2 px-4 mx-auto align-items-center d-flex flex-wrap">
-            <a href="{{ route('create', ['date' => $date]) }}" class="btn btn-outline-primary btn-lg">
+            <a href="{{ route('create', ['date' => $date]) }}" class="btn submit-btn btn-lg">
                 <i class="me-1 fa-solid fa-pen"></i>日記を書く
             </a>
         </div>

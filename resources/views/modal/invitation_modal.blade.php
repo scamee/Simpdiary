@@ -11,7 +11,7 @@
                         @csrf
                         <input type='hidden' name='diary_date' value="{{ $date }}">
                         <input class="form-control" name="email" type="text" placeholder="相手のメールアドレスを入力">
-                        <input class="btn btn-outline-primary" type="submit" value="共有リンクを送信">
+                        <input class="btn submit-btn" type="submit" value="共有リンクを送信">
                     </form>
                 </ul>
             </div>

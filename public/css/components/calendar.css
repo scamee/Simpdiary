@@ -1,24 +1,27 @@
 /* calendar */
-/* td {
-    height: 100px;
-} */
-.card-header {
+
+.calendar .card-header {
     text-align: center;
 }
 
-th {
+.calendar .prev-btn,.calendar .next-btn{
+    color:var(--calendar-btn-color);
+    font-size: 1.0rem;
+}
+
+.calendar th {
     height: 50px;
     width: 50px;
     text-align: center;
 }
 
-td {
-    color: grey;
+.calendar td {
+    color: var(--calendar-font);
     height: 50px;
     width: 50px;
 }
 
-td a {
+.calendar td a {
     height: 100%;
     width: 100%;
     display: block;
@@ -26,39 +29,31 @@ td a {
     color:inherit;
 }
 
-th:nth-of-type(1),
-td:nth-of-type(1) {
-    color: red;
+/* 日曜日 */
+.calendar th:nth-of-type(1),
+.calendar td:nth-of-type(1) {
+    color: var(--calendar-sunday-color);
 }
 
-th:nth-of-type(7),
-td:nth-of-type(7) {
-    color: blue;
-}
-
-.month {
-    font-size: large;
-    font-weight: bolder;
-    width: 120px;
-    display: inline-block;
+/* 土曜日 */
+.calendar th:nth-of-type(7),
+.calendar td:nth-of-type(7) {
+    color: var( --calendar-saturday-color);
 }
 
 .card-header {
-    background-color: rgba(255, 232, 236, 0.3);
+    background-color: var(--main-color);
 }
 
 
 .table {
-    background-color: rgba(255, 232, 236, 0.3);
-    border-color: #FEEEED;
+    background-color: var(--main-color);
+    color:var(--table-color);
+    border-color: var(--table-border-color);
 }
 
 .table .today {
     background-color: rgba(255, 255, 0, 0.3);
-}
-
-.card {
-    color:grey;
 }
 
 /* modal */

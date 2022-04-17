@@ -1,22 +1,73 @@
 /* top */
-.bg-image{
+
+/* top-main */
+.top-main{
     height: 100vh;
     min-height: 300px;
 
     background-image: url("../../img/top-background-pc.jpg");
     background-color:rgba(200, 180, 110, 0.6);
     background-size: cover;
-
     background-blend-mode:lighten;
+
+    position:relative;
 }
 
-.bg-image p {
+.top-main .container{
+    text-align: center;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) !important;
+
+}
+
+.top-main p {
     color: #ffff;
 }
 
+.top-main .title{
+    font-size: 1.8rem !important;
+    margin-bottom:18px;
+}
+
+.top-main .title span{
+    font-size: 1.4rem !important;
+}
+
+.top-main .appname{
+    font-size: 2.25rem !important;
+    margin:0;
+    font-family: 'Lobster', cursive;
+}
+
+.top-main .sub-title{
+    font-size: 1.125rem !important;
+    margin-bottom:28px;
+}
+
+.top-main .button{
+    color: #ffff;
+    background-color: #EE827D;
+    border-color: #EE827D;
+    margin-top:12px;
+}
+
+.top-main button:hover {
+    color: #EE827D;
+    background-color: #ffff;
+    border-color: #EE827D;
+}
+
+/* slideshow */
 .slideshow {
     height: 100vh;
     background-color: #EE827D;
+}
+
+.slideshow .introduction{
+    text-align: center;
+    font-size: 2.25rem !important;
 }
 
 .slideshow p {
@@ -29,14 +80,16 @@
     left: 30%;
     border: 1px solid grey;
 }
-/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+
+/* slideshow画像 */
+/* "pc"表示 */
 .pc {
     display: block !important;
     max-height: 680px;
 }
 .sp { display: none !important; }
 
-/* スマートフォンで見たときは"sp"のclassがついた画像が表示される */
+/* "sp"表示 */
 @media only screen and (max-width: 750px) {
     .pc { display: none !important; }
     .sp {
@@ -45,6 +98,7 @@
     }
 }
 
+/* footer */
 footer{
-    background-color: rgba(201, 177, 112, 0.3);
+    background-color: var(--sub-color);
 }

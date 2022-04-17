@@ -1,0 +1,53 @@
+.profile-body{
+    background-color: rgba(201, 177, 112, 0.1);
+}
+
+.profile{
+    min-height: 500px;
+    text-align: center;
+}
+
+.profile-img{
+    margin:20px 0;
+    height: 200px;
+}
+
+.profile-img img{
+        left: 50%;
+        border-radius: 50%;
+        width: 200px;
+        height: auto;
+    }
+
+.profile-list{
+    height: 200px;
+}
+
+.profile-username{
+        left:auto;
+        color: var(--profile-username-color);
+        text-align: center;
+    }
+
+.profile-list table{
+    background-color: var(--main-color);
+    border-color: #FEEEED;
+    text-align: center;
+    margin:20px auto 0;
+}
+
+.td-icon{
+    color:red;
+    width: 50px;
+    height: 50px;
+}
+.td-title{
+    color:red;
+    width: 100px;
+    height: 50px;
+}
+.td-answer{
+    width:200px;
+    height: 50px;
+    color:var(--profile-td-answer-color);
+}

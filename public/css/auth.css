@@ -1,9 +1,6 @@
 @import url(components/color.css);
 
 .navbar {
-    /* position: sticky;
-    top:0;
-    z-index:10; */
     background-color: rgba(201, 177, 112, 0.4);
 
     padding-top: 0;

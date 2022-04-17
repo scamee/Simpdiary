@@ -1,7 +1,7 @@
 <div class="card-header">
-    <a href="{{ $prev }}">&lt;</a>
+    <a class="prev-btn" href="{{ $prev }}">&lt;</a>
     <span class="month">{{ $month }}</span>
-    <a href="{{ $next }}">&gt;</a>
+    <a class="next-btn" href="{{ $next }}">&gt;</a>
 </div>
 <div class="card-body py-2 px-4">
     <table class="table table-bordered">
