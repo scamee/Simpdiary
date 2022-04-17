@@ -8,7 +8,7 @@
             <div class="modal-body p-0 profile-body">
                 <div class="profile">
                     <div class="profile-img">
-                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Jhon Doe" />
+                        <img src="{{ Storage::url($user->file_path) }}" alt="{{ $user->file_name }}" />
                     </div>
                     <div class="profile-list">
                         <h3 class="profile-username">{{ $user->name }}</h3>

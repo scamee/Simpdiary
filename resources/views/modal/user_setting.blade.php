@@ -15,9 +15,14 @@
                         <h4>ユーザー情報変更</h4>
                         <p>ログインユーザーの情報を変更します</p>
                         <div class="collapse" id="collapseExample">
-                            <form method="POST" action="/userUpdate">
+                            <form method="POST" action="/userUpdate" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="date" value="{{ $date }}">
+                                {{-- ユーザー画像 --}}
+                                <label class="form-label" for="user_img">新しいユーザー画像<span
+                                        class="attention">※png/jpeg</span></label>
+                                <input type="file" class="form-control" id="user_img" name="user_img"
+                                    accept="image/png, image/jpeg">
                                 {{-- ユーザ名 --}}
                                 <label class="form-label" for="username">新しいユーザー名<span
                                         class="attention">※10文字以内</span></label>

@@ -30,6 +30,7 @@ class UserValidateRequest extends FormRequest
             'hobby' => ['max:10'],
             'dream' => ['max:10'],
             'wanted' => ['max:10'],
+            'user_img' => ['file', 'image', 'mimes:png,jpeg'],
         ];
     }
 
