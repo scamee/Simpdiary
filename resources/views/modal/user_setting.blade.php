@@ -8,7 +8,7 @@
             <div class="modal-body p-0">
                 <ul class="setting-list p-2">
                     <li>
-                        <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseExample"
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseExample"
                             role="button" aria-expanded="false" aria-controls="collapseExample">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
@@ -43,13 +43,39 @@
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="username" name="wanted"
                                     value="{{ $user->wanted }}">
-                                <button type="submit" class="btn btn-outline-primary">保存</button>
+                                <button type="submit" class="btn submit-btn">保存</button>
                             </form>
                         </div>
                     </li>
                     <hr>
                     <li>
-                        <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseExample2"
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTheme"
+                            role="button" aria-expanded="false" aria-controls="collapseTheme">
+                            <i class="me-1 fa-solid fa-pen"></i>
+                        </a>
+                        <h4>テーマ変更</h4>
+                        <p>デザインカラーを変更します</p>
+                        <div class="collapse" id="collapseTheme">
+                            <form method="POST" action="{{ route('themeUpdate') }}">
+                                @csrf
+                                <input type="hidden" name="date" value="{{ $date }}">
+                                {{-- テーマ --}}
+                                <label for="themeform" class='form-label'>テーマ</label>
+                                <select id='themeform' class='form-control' name='theme'>
+                                    <option value="normal" {{ $user->theme == 'normal' ? 'selected' : '' }}>
+                                        ノーマルテーマ
+                                    </option>
+                                    <option value="dark" {{ $user->theme == 'dark' ? 'selected' : '' }}>
+                                        ダークテーマ
+                                    </option>
+                                </select>
+                                <button type="submit" class="btn submit-btn">保存</button>
+                            </form>
+                        </div>
+                    </li>
+                    <hr>
+                    <li>
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseExample2"
                             role="button" aria-expanded="false" aria-controls="collapseExample2">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
@@ -62,13 +88,14 @@
                                 <label class="form-label" for="currentPassword">現在のパスワード</label>
                                 <input type="password" class="form-control" id="currentPassword"
                                     name="current_password">
-                                <label class="form-label" for="newPassword">新しいパスワード</label>
+                                <label class="form-label" for="newPassword">新しいパスワード<span
+                                        class="attention">※8文字以上</span></label>
                                 <input type="password" class="form-control" id="newPassword" name="new_password">
                                 <label class="form-label" for="newPasswordAgain">新しいパスワード<span
                                         class="attention">再度入力</span></label>
                                 <input type="password" class="form-control" id="newPasswordAgain"
                                     name="new_password_confirmation">
-                                <button type="submit" class="btn btn-outline-primary">保存</button>
+                                <button type="submit" class="btn submit-btn">保存</button>
                             </form>
                         </div>
                     </li>

@@ -1,0 +1,55 @@
+:root{
+    /* all */
+    --main-color:rgba(73, 51, 54, 0.3);
+    --sub-color:black;
+    --font-color:#FFFFCF;
+    --hr-color:white;
+
+    /* header */
+    --dropdown-menu-backgroundcolor:black;
+
+    /* form */
+    --form-label-color:#FFFFCF;
+    --form-control-color:#FFFF;
+    --form-control-color-focus:#FFFF;
+    --form-control-border:3px solid #FFFFCF;
+    --form-control-backgroundcolor:black;
+    --form-control-backgroundcolor-focus:gray;
+    --submit-btn-color:black;
+    --submit-btn-backgroundcolor:#FFFFCF;
+    --submit-btn-bordercolor:#FFFFCF;
+    --submit-btn-color-hover:#FFFFCF;
+    --submit-btn-backgroundcolor-hover:black;
+    --submit-btn-bordercolor-hover:#FFFFCF;
+
+    /* list */
+    --show-list-color:3px solid #FFFFCF;
+    --show-title-color:#FFFFCF;
+    --show-item-color:#ffff;
+    --show-img-color:black;
+
+
+    --card-background:black;
+    --card-color:#FFFF;
+
+    --calendar-font:#FFFF;
+    --calendar-btn-color:white;
+    --calendar-saturday-color:rgb(131, 131, 245);
+    --calendar-sunday-color:rgb(255, 104, 104);
+    --table-color:#FFFF;
+    --table-border-color:#FEEEED;
+
+    /* modal */
+    --modal-bacgroundcolor:black;
+    --modal-header-border-bottom:black;
+    --setting-list-color:white;
+
+    /* profile */
+    --profile-username-color:#FFFFCF;
+    --profile-td-answer-color:#FFFFCF;
+
+    /* tag */
+    --tag-background:none;
+    --tag-color:white;
+    --tag-border:3px solid white;
+}

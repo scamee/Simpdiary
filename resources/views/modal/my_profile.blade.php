@@ -11,7 +11,7 @@
                         <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Jhon Doe" />
                     </div>
                     <div class="profile-list">
-                        <h3>{{ $user->name }}</h3>
+                        <h3 class="profile-username">{{ $user->name }}</h3>
                         <table>
                             <tr>
                                 <td class="td-icon"><i class="fa-solid fa-cake-candles"></i></td>

@@ -7,14 +7,14 @@
             </div>
             <div class="modal-body p-0">
                 <ul class="setting-list p-2">
-                    <div class="m-2">
+                    <div class="setting-list-info m-2">
                         <p>ウィジェットは2つまで設定が可能です</p>
                         <p>思い出の日などを設定しましょう</p>
                     </div>
                     <hr>
                     <li>
-                        <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseTag1"
-                            role="button" aria-expanded="false" aria-controls="collapseTag1">
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTag1" role="button"
+                            aria-expanded="false" aria-controls="collapseTag1">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
                         <h4>ウィジェット１</h4>
@@ -31,14 +31,14 @@
                                         class="attention">※yyyy-mm-dd</span></label>
                                 <input type="text" class="form-control" id="tag1-setday" name="tag-setday"
                                     value="{{ $tag1->set_day }}">
-                                <button type="submit" class="btn btn-outline-primary">保存</button>
+                                <button type="submit" class="btn submit-btn">保存</button>
                             </form>
                         </div>
                     </li>
                     <hr>
                     <li>
-                        <a class="btn btn-outline-primary float-end" data-bs-toggle="collapse" href="#collapseTag2"
-                            role="button" aria-expanded="false" aria-controls="collapseTag2">
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTag2" role="button"
+                            aria-expanded="false" aria-controls="collapseTag2">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
                         <h4>ウィジェット２</h4>
@@ -55,7 +55,7 @@
                                         class="attention">※yyyy-mm-dd</span></label>
                                 <input type="text" class="form-control" id="tag2-setday" name="tag-setday"
                                     value="{{ $tag2->set_day }}">
-                                <button type="submit" class="btn btn-outline-primary">保存</button>
+                                <button type="submit" class="btn submit-btn">保存</button>
                             </form>
                         </div>
                     </li>

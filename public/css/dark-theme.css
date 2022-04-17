@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 
 /* rootfile */
-@import url(root-color/default-color.css);
+@import url(root-color/dark-color.css);
 
 /* 全体 */
 @import url(components/whole.css);
@@ -27,3 +27,7 @@
 
 /* myprofile/partnerprofile */
 @import url(components/profile.css);
+
+.btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}

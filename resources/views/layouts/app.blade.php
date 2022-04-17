@@ -24,9 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/reset.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{!! asset("css/$theme_css") !!}" rel="stylesheet">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
 
             <div class="row">
                 <div class="card-group">
-                    <div class="card" style="min-height: 100vh;">
+                    <div class="card calendar" style="min-height: 100vh;">
                         {{-- カレンダー --}}
                         @include('components.calendar')
                     </div>

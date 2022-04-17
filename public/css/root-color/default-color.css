@@ -1,0 +1,55 @@
+:root{
+    /* 全体 */
+    --main-color:rgba(255, 232, 236, 0.3);
+    --sub-color:rgba(201, 177, 112, 0.3);
+    --font-color:#EE827D !important;
+    --hr-color:inherit;
+
+    /* header */
+    --dropdown-menu-backgroundcolor:white;
+
+    /* form */
+    --form-label-color:#EE827D;
+    --form-control-color:inherit;
+    --form-control-color-focus:inherit;
+    --form-control-border:3px solid pink;
+    --form-control-backgroundcolor:inherit;
+    --form-control-backgroundcolor-focus:inherit;
+    --submit-btn-color:#ffff;
+    --submit-btn-backgroundcolor:#EE827D;
+    --submit-btn-bordercolor:#EE827D;
+    --submit-btn-color-hover:#EE827D;
+    --submit-btn-backgroundcolor-hover:#ffff;
+    --submit-btn-bordercolor-hover:#EE827D;
+
+    /*show list */
+    --show-list-color:3px solid #EE827D;
+    --show-title-color:#EE827D;
+    --show-item-color:gray;
+    --show-img-color:inherit;
+
+    /* card全体 */
+    --card-background:inherit;
+    --card-color:gray;
+    --calendar-saturday-color:blue;
+    --calendar-sunday-color:red;
+
+    /* calendar */
+    --calendar-font:gray;
+    --table-color:gray;
+    --table-border-color:#FEEEED;
+
+    /* modal */
+    --modal-bacgroundcolor:white;
+    --modal-header-border-bottom:inherit;
+    --setting-list-color:inherit;
+
+    /* profile list*/
+    --profile-username-color:black;
+    --profile-td-answer-color:inherit;
+
+    /* tag */
+    --tag-background:linear-gradient(-135deg, #a371c7,#E4A972);
+    --tag-color:white;
+    --tag-border:none;
+}

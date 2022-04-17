@@ -1,0 +1,86 @@
+.attention{
+    color:red;
+    font-size: 0.5rem;
+}
+.alert-success {
+    margin:0;
+}
+body{
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
+hr{
+    color:var(--hr-color);
+}
+
+.card{
+    background-color: var(--card-background);
+    color:var(--card-color);
+}
+
+.card-header .month{
+    font-size: large;
+    font-weight: bolder;
+    width: 120px;
+    display: inline-block;
+}
+
+/* 入力フォーム */
+.form-group{
+    margin-bottom: 20px;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.form-label{
+    color:var(--form-label-color);
+}
+
+.form-control{
+    background-color: var(--form-control-backgroundcolor);
+    color:var(--form-control-color);
+    border:var(--form-control-border);
+}
+
+.form-control:focus {
+    color: var(--form-control-color-focus);
+    background-color: var(--form-control-backgroundcolor-focus);
+    border-color: #86b7fe;
+}
+
+.submit-btn{
+    color: var(--submit-btn-color);
+    background-color: var(--submit-btn-backgroundcolor);
+    border-color: var(--submit-btn-bordercolor);
+}
+
+.submit-btn:hover{
+    color: var(--submit-btn-color-hover);
+    background-color: var(--submit-btn-backgroundcolor-hover);
+    border-color: var(--submit-btn-bordercolor-hover);
+}
+
+.show-list{
+    margin-bottom:25px;
+    border-bottom:var(--show-list-color);
+}
+
+.show-title{
+    margin-bottom: 10px;
+    color:var(--show-title-color);
+}
+
+.show-item-center{
+    color:var(--show-item-color);
+    text-align: center;
+}
+
+.show-item{
+    color:var(--show-item-color);
+}
+
+.show-img{
+    margin:0;
+    text-align: center;
+    color:var(--show-img-color);
+}

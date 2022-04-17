@@ -12,6 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const THEME_NORMAL = 'normal';
+    const THEME_DARK = 'dark';
+    const THEMES = [
+        self::THEME_NORMAL => 'ノーマル',
+        self::THEME_DARK => 'ダークモード'
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -27,6 +34,7 @@ class User extends Authenticatable
         'hobby',
         'dream',
         'wanted',
+        'theme',
     ];
 
     /**
