@@ -126,7 +126,7 @@ class CalendarService
      */
     private static function set_routes()
     {
-        return ['create', 'show', 'edit'];
+        return ['create', 'show', 'edit', 'partnerShow'];
     }
 
     /**

@@ -4,6 +4,8 @@
     --sub-color:black;
     --font-color:#FFFFCF;
     --hr-color:white;
+    --card-background-image:repeating-linear-gradient(black 0px, black 24px, gray 25px);
+    --card-border:1px solid rgba(255,255,255,0.5);
 
     /* header */
     --dropdown-menu-backgroundcolor:black;
@@ -27,10 +29,12 @@
     --show-title-color:#FFFFCF;
     --show-item-color:#ffff;
     --show-img-color:black;
+    --diary-link-background:linear-gradient(transparent 60%, #FFFFCF 0%) ;
 
 
     --card-background:black;
     --card-color:#FFFF;
+    --diary-info-border:3px double #FFFFCF;
 
     --calendar-font:#FFFF;
     --calendar-btn-color:white;

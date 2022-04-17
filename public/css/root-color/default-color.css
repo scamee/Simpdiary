@@ -4,6 +4,8 @@
     --sub-color:rgba(201, 177, 112, 0.3);
     --font-color:#EE827D !important;
     --hr-color:inherit;
+    --card-background-image:repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+    --card-border:1px solid rgba(0, 0, 0, 0.125);
 
     /* header */
     --dropdown-menu-backgroundcolor:white;
@@ -27,14 +29,16 @@
     --show-title-color:#EE827D;
     --show-item-color:gray;
     --show-img-color:inherit;
+    --diary-link-background:linear-gradient(transparent 60%, #EE827D 0%) ;
 
     /* card全体 */
     --card-background:inherit;
     --card-color:gray;
-    --calendar-saturday-color:blue;
-    --calendar-sunday-color:red;
+    --diary-info-border:10px double #EE827D;
 
     /* calendar */
+    --calendar-saturday-color:blue;
+    --calendar-sunday-color:red;
     --calendar-font:gray;
     --table-color:gray;
     --table-border-color:#FEEEED;

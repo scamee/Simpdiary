@@ -30,6 +30,7 @@ Route::group(
     function () {
         Route::get('/show', [HomeController::class, 'index'])->name('home');
         Route::get('/show/{date}', [HomeController::class, 'show'])->name('show');
+        Route::get('/show/partner/{date}', [HomeController::class, 'partnerShow'])->name('partnerShow');
         Route::get('/create/{date}', [HomeController::class, 'create'])->name('create');
         Route::get('/edit/{date}', [HomeController::class, 'edit'])->name('edit');
         Route::post('/store', [HomeController::class, 'store'])->name('store');

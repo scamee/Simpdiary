@@ -16,13 +16,36 @@ hr{
 .card{
     background-color: var(--card-background);
     color:var(--card-color);
+    background-image: var(--card-background-image);
+    border: var(--card-border);
 }
 
-.card-header .month{
-    font-size: large;
-    font-weight: bolder;
-    width: 120px;
+.card-body {
+    margin-top: 20px;
+}
+
+.diary-info{
     display: inline-block;
+    text-align: center;
+    color: var(--show-item-color);
+    border-bottom: var(--diary-info-border);
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.diary-info span{
+    margin-left: 20px;
+    font-size: 0.9rem;
+}
+.diary-link{
+    float: right;
+    /* font-size: 1.0rem;
+    background:var(--diary-link-background) */;
+}
+
+.menu-list{
+    height:100px;
+	overflow:hidden;
 }
 
 /* 入力フォーム */
