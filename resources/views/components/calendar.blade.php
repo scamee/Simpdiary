@@ -1,9 +1,9 @@
-<div class="card-header">
-    <a class="prev-btn" href="{{ $prev }}">&lt;</a>
-    <span class="month">{{ $month }}</span>
-    <a class="next-btn" href="{{ $next }}">&gt;</a>
-</div>
 <div class="card-body py-2 px-4">
+    <div class="diary-info">
+        <a class="prev-btn" href="{{ $prev }}">&lt;</a>
+        <h2 style="display:inline-block; margin: 0 10px;">{{ $month }}</h2>
+        <a class="next-btn" href="{{ $next }}">&gt;</a>
+    </div>
     <table class="table table-bordered">
         <tr>
             <th>日</th>

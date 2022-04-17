@@ -38,7 +38,7 @@ class HomeController extends Controller
 
 
     /**
-     * 日記一覧を表示する
+     * ログインユーザーの日記一覧を表示する
      *
      * @return view
      */
@@ -46,10 +46,10 @@ class HomeController extends Controller
     {
         $diary = Diary::where('diary_date', $date)->where('user_id', \Auth::id())->first();
 
+        $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
+
         $tagModel = new Tag();
         $tags =  $tagModel->where('user_id', \Auth::id())->first();
-
-        $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
 
         if (!isset($tags)) {
             $title_01 = '付き合ってから';
@@ -77,6 +77,29 @@ class HomeController extends Controller
                 "images" => $images
             ],
             compact('date', 'diary')
+        );
+    }
+
+    /**
+     * ログインユーザーの日記一覧を表示する
+     *
+     * @return view
+     */
+    public function partnerShow($date)
+    {
+        $user = \Auth::user();
+        $partner = $user->partner_id;
+
+        $diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
+
+        $images = Image::where('user_id', $partner)->where('diary_date', $date)->get();
+
+        return view(
+            'partner-show',
+            [
+                "images" => $images
+            ],
+            compact('date', 'diary', 'partner')
         );
     }
 

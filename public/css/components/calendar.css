@@ -1,24 +1,22 @@
 /* calendar */
 
-.calendar .card-header {
-    text-align: center;
-}
-
 .calendar .prev-btn,.calendar .next-btn{
     color:var(--calendar-btn-color);
-    font-size: 1.0rem;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.calendar th,.calendar td {
+    border: 1px solid #EE827D;
+    /* border-right: none !important;
+    border-left: none !important; */
+    height: 50px;
+    width: 50px;
+    color: var(--calendar-font);
 }
 
 .calendar th {
-    height: 50px;
-    width: 50px;
     text-align: center;
-}
-
-.calendar td {
-    color: var(--calendar-font);
-    height: 50px;
-    width: 50px;
 }
 
 .calendar td a {
@@ -40,11 +38,6 @@
 .calendar td:nth-of-type(7) {
     color: var( --calendar-saturday-color);
 }
-
-.card-header {
-    background-color: var(--main-color);
-}
-
 
 .table {
     background-color: var(--main-color);
