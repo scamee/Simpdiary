@@ -29,6 +29,17 @@ class UserController extends Controller
             ]
         );
 
+        if ($request->hasFile('user_img')) {
+            $upload_image = $validated['user_img'];
+            $path = $upload_image->store('user_img', "public");
+            User::where('id', Auth::id())->update(
+                [
+                    "file_name" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path
+                ]
+            );
+        }
+
         return redirect()->route('show', ['date' => $validated['date']])->with('success', 'アカウント情報を変更しました。');
     }
 

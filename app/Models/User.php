@@ -35,6 +35,8 @@ class User extends Authenticatable
         'dream',
         'wanted',
         'theme',
+        'file_path',
+        'file_name',
     ];
 
     /**
