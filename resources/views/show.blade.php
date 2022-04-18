@@ -38,7 +38,9 @@
                     </ul>
                 </div>
                 @include('modal.danger')
-                <a class="btn submit-btn diary-link" href="{{ route('partnerShow', ['date' => $date]) }}">相手の日記を見る</a>
+                @if (isset($user['partner_id']))
+                    <a class="btn submit-btn diary-link" href="{{ route('partnerShow', ['date' => $date]) }}">相手の日記を見る</a>
+                @endif
             </div>
 
             <div class="show-list">

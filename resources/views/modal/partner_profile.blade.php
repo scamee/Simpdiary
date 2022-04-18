@@ -1,5 +1,5 @@
 <div class="modal fade" id="PatnerProfileModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content p-0">
             <div class="modal-header">
                 <h4 class="modal-title" id="Title">パートナープロフィール</h4>
@@ -11,7 +11,7 @@
                         <img src="{{ Storage::url($partner->file_path) }}" alt="{{ $partner->file_name }}" />
                     </div>
                     <div class="profile-list">
-                        <h3>{{ $partner->name }}</h3>
+                        <h3 class="profile-username">{{ $partner->name }}</h3>
                         <table>
                             <tr>
                                 <td class="td-icon"><i class="fa-solid fa-cake-candles"></i></td>

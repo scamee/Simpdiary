@@ -1,5 +1,5 @@
 <div class="modal fade" id="MyProfileModel" tabindex="-1" aria-labelledby="Title" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content p-0">
             <div class="modal-header">
                 <h4 class="modal-title" id="Title">マイプロフィール</h4>
@@ -14,23 +14,23 @@
                         <h3 class="profile-username">{{ $user->name }}</h3>
                         <table>
                             <tr>
-                                <td class="td-icon"><i class="fa-solid fa-cake-candles"></i></td>
-                                <td class="td-title">誕生日</td>
+                                <th class="td-icon"><i class="fa-solid fa-cake-candles"></i></th>
+                                <th class="td-title">誕生日</th>
                                 <td class="td-answer">{{ $user->birthday }}</td>
                             </tr>
                             <tr>
-                                <td class="td-icon"><i class="fa-solid fa-heart"></i></td>
-                                <td class="td-title">趣味＆特技</td>
+                                <th class="td-icon"><i class="fa-solid fa-heart"></i></th>
+                                <th class="td-title">趣味＆特技</th>
                                 <td class="td-answer">{{ $user->hobby }}</td>
                             </tr>
                             <tr>
-                                <td class="td-icon"><i class="fa-solid fa-arrow-trend-up"></i></td>
-                                <td class="td-title">将来の目標</td>
+                                <th class="td-icon"><i class="fa-solid fa-arrow-trend-up"></i></th>
+                                <th class="td-title">将来の目標</th>
                                 <td class="td-answer">{{ $user->dream }}</td>
                             </tr>
                             <tr>
-                                <td class="td-icon"><i class="fa-solid fa-cart-shopping"></i></td>
-                                <td class="td-title">欲しいもの</td>
+                                <th class="td-icon"><i class="fa-solid fa-cart-shopping"></i></th>
+                                <th class="td-title">欲しいもの</th>
                                 <td class="td-answer">{{ $user->wanted }}</td>
                             </tr>
                         </table>

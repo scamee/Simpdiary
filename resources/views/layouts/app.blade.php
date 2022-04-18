@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
+
     {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/ac133b1636.js" crossorigin="anonymous"></script>
 
@@ -24,7 +25,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    {{-- <link href="{{ asset('css/reset.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{!! asset("css/$theme_css") !!}" rel="stylesheet">
 </head>

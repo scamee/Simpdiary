@@ -15,7 +15,8 @@
                             role="button" aria-expanded="false" aria-controls="collapseImageUpdate">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-                        <h4>画像を変更する</h4>
+                        <h4>変更</h4>
+                        <p>画像を変更します</p>
                         <div class="collapse" id="collapseImageUpdate">
                             <form method='POST' action="/imageUpdate" enctype="multipart/form-data">
                                 @csrf
@@ -36,7 +37,8 @@
                             role="button" aria-expanded="false" aria-controls="collapseImageDelete">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-                        <h4>画像を削除する</h4>
+                        <h4>削除</h4>
+                        <p>画像を削除する</p>
                         <div class="collapse" id="collapseImageDelete">
                             <form method='POST' action="/imageDelete">
                                 @csrf

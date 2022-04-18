@@ -37,9 +37,15 @@ class CalendarService
                 $week .= '<td><a href="/show/' . $date . '">' . $day;
             }
 
-            $key = in_array($date, self::getDiary());
-            if ($key) {
-                $week .= '<i class="fa-regular fa-circle-check"></i></a></td>';
+            //ログインユーザーの記入済み日記一覧
+            $completed_my_diaries = in_array($date, self::getDiary());
+            //パートナーユーザーの記入済み日記一覧
+            $completed_partner_diaries = in_array($date, self::getPartnerDiary());
+            if ($completed_my_diaries) {
+                $week .= '<i class="my-check fa-regular fa-circle-check"></i>';
+            }
+            if ($completed_partner_diaries) {
+                $week .= '<i class="partner-check fa-regular fa-circle-check"></i></a></td>';
             } else {
                 $week .= '</a></td>';
             }
@@ -164,7 +170,7 @@ class CalendarService
     }
 
     /**
-     *日記を入力済の日付を返す
+     *ログインユーザーの日記を入力済の日付を返す
      *
      * @return array
      */
@@ -176,6 +182,26 @@ class CalendarService
 
         foreach ($diaries as $diary) {
             $completed_diary[] = $diary['diary_date'];
+        }
+        return $completed_diary;
+    }
+
+    /**
+     *ログインユーザーの日記を入力済の日付を返す
+     *
+     * @return array
+     */
+    private static function getPartnerDiary()
+    {
+        $completed_diary = [];
+        $user = \Auth::user();
+        if (isset($user['partner_id'])) {
+            $diaryModel = new Diary();
+            $diaries = $diaryModel->where('user_id', $user['partner_id'])->get(['diary_date']);
+
+            foreach ($diaries as $diary) {
+                $completed_diary[] = $diary['diary_date'];
+            }
         }
         return $completed_diary;
     }
