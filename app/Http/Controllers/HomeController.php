@@ -46,6 +46,10 @@ class HomeController extends Controller
     {
         $diary = Diary::where('diary_date', $date)->where('user_id', \Auth::id())->first();
 
+        $user = \Auth::user();
+        $partner = $user->partner_id;
+        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
+
         $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
 
         $tagModel = new Tag();
@@ -76,7 +80,7 @@ class HomeController extends Controller
             [
                 "images" => $images
             ],
-            compact('date', 'diary')
+            compact('date', 'diary', 'partner_diary')
         );
     }
 

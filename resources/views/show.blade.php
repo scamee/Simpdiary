@@ -86,10 +86,21 @@
             @endif
         </div>
     @else
-        <div class="card-body py-2 px-4 mx-auto align-items-center d-flex flex-wrap">
-            <a href="{{ route('create', ['date' => $date]) }}" class="btn submit-btn btn-lg">
-                <i class="me-1 fa-solid fa-pen"></i>日記を書く
-            </a>
+        <div class="card-body py-2 px-4 mx-auto col-10" style="text-align:center;">
+            <div style="margin: 50px 0;">
+                <h3 class="diary-info">{{ $date }}の日記が記入されていません</h3>
+                <a href="{{ route('create', ['date' => $date]) }}" class="btn submit-btn btn-lg d-block">
+                    <i class="me-1 fa-solid fa-pen"></i>日記を書く
+                </a>
+            </div>
+            @if (isset($partner_diary))
+                <div style="margin-top:30px;">
+                    <h3 class="diary-info">あなたのパートナーの日記が見つかりました</h3>
+                    <a href="{{ route('partnerShow', ['date' => $date]) }}" class="btn submit-btn btn-lg d-block">
+                        相手の日記を見る
+                    </a>
+                </div>
+            @endif
         </div>
     @endif
     </div>
