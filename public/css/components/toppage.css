@@ -101,4 +101,5 @@
 /* footer */
 footer{
     background-color: var(--sub-color);
+    text-align: center;
 }

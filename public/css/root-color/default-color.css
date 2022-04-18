@@ -37,11 +37,15 @@
     --diary-info-border:10px double #EE827D;
 
     /* calendar */
+    --calendar-backgroundcolor:var(--main-color);
     --calendar-saturday-color:blue;
     --calendar-sunday-color:red;
     --calendar-font:gray;
+    --calendar-border:1px solid #EE827D;
     --table-color:gray;
     --table-border-color:#FEEEED;
+    --my-check-color:blue;
+    --partner-check-color:red;
 
     /* modal */
     --modal-bacgroundcolor:white;
@@ -51,6 +55,9 @@
     /* profile list*/
     --profile-username-color:black;
     --profile-td-answer-color:inherit;
+    --profile-table-backgroundcolor:white;
+    --profile-backgroundline:#EE827D;
+    --profile-borderbottom:1px solid red;
 
     /* tag */
     --tag-background:linear-gradient(-135deg, #a371c7,#E4A972);

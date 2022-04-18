@@ -110,10 +110,16 @@ class HomeController extends Controller
      */
     public function create($date)
     {
-        return view(
-            'create',
-            compact('date')
-        );
+        $diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
+        //記入済みならeditにredirect
+        if ($diary) {
+            return redirect()->route('edit', ['date' => $date]);
+        } else {
+            return view(
+                'create',
+                compact('date')
+            );
+        }
     }
 
 
@@ -124,7 +130,7 @@ class HomeController extends Controller
      */
     public function edit($date)
     {
-        $diary = Diary::select('title', 'health_id', 'content')->where('user_id', \Auth::id())->where('diary_date', $date)->first();
+        $diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
         return view(
             'edit',

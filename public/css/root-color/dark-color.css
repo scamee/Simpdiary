@@ -36,12 +36,17 @@
     --card-color:#FFFF;
     --diary-info-border:3px double #FFFFCF;
 
+    /* カレンダー */
+    --calendar-backgroundcolor:none;
     --calendar-font:#FFFF;
+    --calendar-border:1px solid #FFFFCF;
     --calendar-btn-color:white;
     --calendar-saturday-color:rgb(131, 131, 245);
     --calendar-sunday-color:rgb(255, 104, 104);
     --table-color:#FFFF;
     --table-border-color:#FEEEED;
+    --my-check-color:#FFFFCF;
+    --partner-check-color:red;
 
     /* modal */
     --modal-bacgroundcolor:black;
@@ -51,9 +56,12 @@
     /* profile */
     --profile-username-color:#FFFFCF;
     --profile-td-answer-color:#FFFFCF;
+    --profile-table-backgroundcolor:black;
+    --profile-backgroundline:#FFFFCF;
+    --profile-borderbottom:1px solid #FFFFCF;
 
     /* tag */
     --tag-background:none;
     --tag-color:white;
-    --tag-border:3px solid white;
+    --tag-border:3px solid #FFFFCF;
 }

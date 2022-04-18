@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}" defer></script>
+
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +22,6 @@
     <!-- styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
@@ -132,22 +135,15 @@
         </div>
 
         <!-- footer -->
-        <footer class="row">
-            <div class="col-sm-6 pc" style="text-align: right;">
-                <a href="#" class="text-reset">規約</a>
+        <footer>
+            <div class="pc">
+                <a href="https://github.com/scamee/Proto_diary" class="text-reset">Github</a>
             </div>
-            <div class="col-sm-4 pc" style="text-align: left;">
-                <a href="#" class="text-reset">リリースノート</a>
-            </div>
-            <div class="col-sm-2" style="text-align: right;">
-                <small>&copy; 2021 まさき</small>
+            <div>
+                <small>&copy; 2021 まきまき</small>
             </div>
         </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="attach/js/script.js"></script>
 </body>
 
 </html>
