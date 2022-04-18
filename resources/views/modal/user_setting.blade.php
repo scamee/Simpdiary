@@ -39,14 +39,14 @@
                                 <input type="text" class="form-control" id="hobby" name="hobby"
                                     value="{{ $user->hobby }}">
                                 {{-- 将来の夢 --}}
-                                <label class="form-label" for="username">新しい将来の夢<span
+                                <label class="form-label" for="dream">新しい将来の夢<span
                                         class="attention">※10文字以内</span></label>
-                                <input type="text" class="form-control" id="username" name="dream"
+                                <input type="text" class="form-control" id="dream" name="dream"
                                     value="{{ $user->dream }}">
                                 {{-- 欲しいもの --}}
-                                <label class="form-label" for="username">新しい欲しいもの<span
+                                <label class="form-label" for="wanted">新しい欲しいもの<span
                                         class="attention">※10文字以内</span></label>
-                                <input type="text" class="form-control" id="username" name="wanted"
+                                <input type="text" class="form-control" id="wanted" name="wanted"
                                     value="{{ $user->wanted }}">
                                 <button type="submit" class="btn submit-btn">保存</button>
                             </form>
