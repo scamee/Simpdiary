@@ -13,11 +13,17 @@ hr{
     color:var(--hr-color);
 }
 
+.card-group{
+    padding:0;
+    margin:0;
+}
+
 .card{
     background-color: var(--card-background);
     color:var(--card-color);
     background-image: var(--card-background-image);
     border: var(--card-border);
+    margin-bottom:0 !important;
 }
 
 .card-body {
