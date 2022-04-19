@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body col-10 mx-auto">
+            <div class="modal-body form-container mx-auto">
                 <img class="d-block mx-auto" src="{{ Storage::url($image->file_path) }}" width="80%" />
                 <p class="m-0 text-center">{{ $image->file_name }}</p>
                 <hr>
@@ -23,11 +23,13 @@
                                 <input type="hidden" name='file_path' value="{{ $image->file_path }}">
                                 <input type="hidden" name='diary_date' value="{{ $date }}">
                                 <input type="hidden" name='id' value="{{ $image->id }}">
-                                <div class="form-group col-10 mx-auto">
-                                    <input type="file" class="form-control m-2" name="diary_img"
+                                <div class="form-group form-container mx-auto">
+                                    <label class="form-label" for="diary_img">新しい画像を選択<span
+                                            class="attention">※.png / .jpeg</span></label>
+                                    <input type="file" class="form-control" id="diary_img" name="diary_img"
                                         accept="image/png, image/jpeg">
                                 </div>
-                                <input type='submit' class="btn submit-btn" value="画像を変更">
+                                <input type='submit' class="btn submit-btn modal-btn" value="画像を変更">
                             </form>
                         </div>
                     </li>
@@ -45,7 +47,8 @@
                                 <input type="hidden" name='id' value="{{ $image->id }}">
                                 <input type="hidden" name='file_path' value="{{ $image->file_path }}">
                                 <input type="hidden" name='diary_date' value="{{ $date }}">
-                                <button type="submit" class="btn submit-btn ms-1"><i
+                                <span class="attention">1度削除すると復元できません</span>
+                                <button type="submit" class="btn submit-btn modal-btn"><i
                                         class="me-1 fa-solid fa-trash-can"></i>画像を削除</button>
                             </form>
                         </div>
