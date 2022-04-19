@@ -44,7 +44,7 @@ hr{
     text-align: center;
     color: var(--show-item-color);
     border-bottom: var(--diary-info-border);
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-bottom: 20px;
 }
 
@@ -126,6 +126,7 @@ hr{
 /* PCはcol-10 */
 .form-container{
     width: 83.33333333% !important;
+    margin-top: 34px !important;
 }
 
 /* spはcol-12 */

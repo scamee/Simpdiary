@@ -19,19 +19,17 @@
                 @csrf
                 <input type='hidden' name='diary_date' value="{{ $date }}">
                 <div class="form-group">
-                    <label for="titleform" class="form-label fs-4 m-0">タイトル</label>
+                    <label for="titleform" class="form-label fs-4 m-0">タイトル(必須)<span
+                            class="attention">20文字以下</span></label>
                     <input type="text" class="form-control" id="titleform" name="title"
-                        value="{{ old('title', $diary->title) }}">
+                        value="{{ old('title', $diary->title) }}" placeholder="〜タイトルを入力してください〜">
                     @error('title')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="selectform" class='form-label fs-4 m-0'>体調</label>
+                    <label for="selectform" class='form-label fs-4 m-0'>体調(必須)</label>
                     <select id='selectform' class='form-control' name='select'>
-                        <option style="display: none;">
-                            --選択してください--
-                        </option>
                         <option value="1" {{ old('select', $diary->health_id) == 1 ? 'selected' : '' }}>
                             良い
                         </option>
@@ -47,17 +45,19 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="content" class="form-label fs-4 m-0">本文</label>
-                    <textarea name='content' class="form-control" rows="10"
-                        id="content">{{ old('content', $diary->content) }}</textarea>
+                    <label for="content" class="form-label fs-4 m-0">本文(必須)<span
+                            class="attention">500文字以内</span></label>
+                    <textarea name='content' class="form-control" rows="10" id="content"
+                        placeholder="〜本文を入力してください〜">{{ old('content', $diary->content) }}</textarea>
                     @error('content')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="imageform" class="form-label fs-4 m-0">画像を追加</label>
-                    <input type="file" id="imageform" class="form-control" name="diary_img"
-                        accept="image/png, image/jpeg">
+                    <label for="imageform" class="form-label fs-4 m-0">画像を追加(任意)<span
+                            class="attention">10MB以下</span></label>
+                    <input type="file" id="imageform" class="form-control" name="diary_imgs[]"
+                        accept="image/png, image/jpeg" multiple>
                 </div>
                 <input type='submit' class="col-12 mx-auto d-block btn btn-lg submit-btn" value="保存">
             </form>

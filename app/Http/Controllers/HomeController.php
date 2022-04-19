@@ -109,14 +109,15 @@ class HomeController extends Controller
 
     /**
      * 日記データ新規作成画面
+     * 既に記入済みならeditにredirect
      *
      * @return view
      */
     public function create($date)
     {
-        $diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
-        //記入済みならeditにredirect
-        if ($diary) {
+        $completed = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
+
+        if ($completed) {
             return redirect()->route('edit', ['date' => $date]);
         } else {
             return view(
@@ -152,15 +153,17 @@ class HomeController extends Controller
 
         $validated = $request->validated();
 
-        if ($request->hasFile('diary_img')) {
-            $upload_image = $validated['diary_img'];
-            $path = $upload_image->store('uploads', "public");
-            Image::create([
-                "user_id" => \Auth::id(),
-                "diary_date" => $validated["diary_date"],
-                "file_name" => $upload_image->getClientOriginalName(),
-                "file_path" => $path
-            ]);
+        if ($request->hasFile('diary_imgs')) {
+            $files = $request->file('diary_imgs');
+            foreach ($files as $upload_image) {
+                $path = $upload_image->store('uploads', "public");
+                Image::create([
+                    "user_id" => \Auth::id(),
+                    "diary_date" => $validated["diary_date"],
+                    "file_name" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path
+                ]);
+            }
         }
 
         Diary::create([
@@ -171,8 +174,7 @@ class HomeController extends Controller
             "content" => $validated["content"],
         ]);
 
-        $diary_date = $validated["diary_date"];
-        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の追加が完了しました。');
+        return redirect()->route('show', ['date' => $validated["diary_date"]])->with('success', '日記の追加が完了しました。');
     }
 
     /**
@@ -184,27 +186,28 @@ class HomeController extends Controller
     {
         $validated = $request->validated();
 
-        $diary_date = $validated["diary_date"];
 
-        if ($request->hasFile('diary_img')) {
-            $upload_image = $validated['diary_img'];
-            $path = $upload_image->store('uploads', "public");
-            Image::create([
-                "user_id" => \Auth::id(),
-                "diary_date" => $validated["diary_date"],
-                "file_name" => $upload_image->getClientOriginalName(),
-                "file_path" => $path
-            ]);
+        if ($request->hasFile('diary_imgs')) {
+            $files = $request->file('diary_imgs');
+            foreach ($files as $upload_image) {
+                $path = $upload_image->store('uploads', "public");
+                Image::create([
+                    "user_id" => \Auth::id(),
+                    "diary_date" => $validated["diary_date"],
+                    "file_name" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path
+                ]);
+            }
         }
 
-        Diary::where("user_id", \Auth::id())->where("diary_date", $diary_date)
+        Diary::where("user_id", \Auth::id())->where("diary_date", $validated["diary_date"])
             ->update([
                 "title" => $validated["title"],
                 "health_id" => $validated["select"],
                 "content" => $validated["content"],
             ]);
 
-        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の編集が完了しました。');
+        return redirect()->route('show', ['date' => $validated["diary_date"]])->with('success', '日記の編集が完了しました。');
     }
 
     /**

@@ -41,11 +41,13 @@ class CalendarService
             $completed_my_diaries = in_array($date, self::getDiary());
             //パートナーユーザーの記入済み日記一覧
             $completed_partner_diaries = in_array($date, self::getPartnerDiary());
+
             if ($completed_my_diaries) {
-                $week .= '<i class="my-check fa-regular fa-circle-check"></i>';
+                $week .= '<span class="my-check">自分</span>';
             }
             if ($completed_partner_diaries) {
-                $week .= '<i class="partner-check fa-regular fa-circle-check"></i></a></td>';
+                $week .= '<span class="partner-check">相手</span></a></td>';
+                //<i class="partner-check fa-regular fa-circle-check">
             } else {
                 $week .= '</a></td>';
             }

@@ -7,13 +7,14 @@
 
 .calendar th,.calendar td {
     border: var(--calendar-border);
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     color: var(--calendar-font);
 }
 
 .calendar th {
     text-align: center;
+    height: 50px;
 }
 
 .calendar td a {
@@ -51,10 +52,21 @@
 
 .calendar .my-check {
     color:var(--my-check-color);
+    display: block;
+    text-align: center;
+    border:solid 1px var(--my-check-bordercolor);
+    border-radius: 20%;
+    background-color: var(--my-check-bordercolor);
+    margin-bottom: 5px;
 }
 
 .calendar .partner-check{
     color: var(--partner-check-color);
+    display: block;
+    text-align: center;
+    border:solid 1px var(--partner-check-bordercolor);
+    border-radius: 20%;
+    background-color: var(--partner-check-bordercolor);
 }
 
 .calendar-btn{
@@ -63,4 +75,3 @@
     border-bottom: var(--diary-info-border);
     margin-bottom: 20px;
 }
-

@@ -15,8 +15,8 @@
     --form-control-color:inherit;
     --form-control-color-focus:inherit;
     --form-control-border:3px solid pink;
-    --form-control-backgroundcolor:inherit;
-    --form-control-backgroundcolor-focus:inherit;
+    --form-control-backgroundcolor:white;
+    --form-control-backgroundcolor-focus:white;
     --submit-btn-color:#ffff;
     --submit-btn-backgroundcolor:#EE827D;
     --submit-btn-bordercolor:#EE827D;
@@ -44,8 +44,10 @@
     --calendar-border:1px solid #EE827D;
     --table-color:gray;
     --table-border-color:#FEEEED;
-    --my-check-color:blue;
-    --partner-check-color:red;
+    --my-check-color:white;
+    --my-check-bordercolor:blue;
+    --partner-check-color:white;
+    --partner-check-bordercolor:red;
 
     /* modal */
     --modal-bacgroundcolor:white;
