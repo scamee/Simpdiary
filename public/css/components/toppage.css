@@ -90,7 +90,7 @@
 .sp { display: none !important; }
 
 /* "sp"表示 */
-@media only screen and (max-width: 750px) {
+@media(max-width: 576px) {
     .pc { display: none !important; }
     .sp {
         display: block !important;

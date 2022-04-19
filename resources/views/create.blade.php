@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card-body col-10 mx-auto">
+    <div class="card-body form-container mx-auto">
         <h2 class="diary-info" style="display: block;">
             作成画面
         </h2>

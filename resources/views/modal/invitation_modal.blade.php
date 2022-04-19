@@ -7,11 +7,19 @@
             </div>
             <div class="modal-body p-0">
                 <ul class="setting-list p-2">
+                    <div class="setting-list-info m-2">
+                        <p>当アプリには、日記を別アカウントと共有できる機能があります</p>
+                        <p>指定したメールアドレスに日記を共有するリンクを送信できます</p>
+                        <p>共有すると、お互いに全ての日記が閲覧できます</p>
+                    </div>
+                    <hr>
                     <form action="/mail" method="post">
                         @csrf
                         <input type='hidden' name='diary_date' value="{{ $date }}">
-                        <input class="form-control" name="email" type="text" placeholder="相手のメールアドレスを入力">
-                        <input class="btn submit-btn" type="submit" value="共有リンクを送信">
+                        <label class="form-label" for="invitation_email">相手のメールアドレスを入力してください</label>
+                        <input class="form-control" type="email" id="invitation_email" name="email"
+                            placeholder="メールアドレス">
+                        <input class="btn submit-btn modal-btn" type="submit" value="共有リンクを送信">
                     </form>
                 </ul>
             </div>

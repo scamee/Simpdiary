@@ -3,7 +3,7 @@
 @section('content')
     {{-- 日記が登録されていれば表示。そうでなければ「日記書こう」 --}}
     @if (!empty($diary))
-        <div class="card-body py-2 px-4 col-10 mx-auto">
+        <div class="card-body py-2 px-4 form-container mx-auto">
             <h2 class="diary-info" style="display: block;">
                 編集画面
             </h2>

@@ -27,28 +27,28 @@
                                 <label class="form-label" for="username">新しいユーザー名<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="username" name="username"
-                                    value="{{ $user->name }}">
+                                    value="{{ $user->name }}" placeholder="ユーザー名">
                                 {{-- 誕生日 --}}
                                 <label class="form-label" for="birthday">新しい誕生日<span
                                         class="attention">※yyyy-mm-dd</span></label>
-                                <input type="text" class="form-control" id="birthday" name="birthday"
-                                    value="{{ $user->birthday }}">
+                                <input type="date" class="form-control" id="birthday" name="birthday"
+                                    value="{{ $user->birthday }}" placeholder="例)2000-04-01">
                                 {{-- 趣味・特技 --}}
                                 <label class="form-label" for="hobby">新しい趣味・特技<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="hobby" name="hobby"
-                                    value="{{ $user->hobby }}">
+                                    value="{{ $user->hobby }}" placeholder="趣味・特技">
                                 {{-- 将来の夢 --}}
                                 <label class="form-label" for="dream">新しい将来の夢<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="dream" name="dream"
-                                    value="{{ $user->dream }}">
+                                    value="{{ $user->dream }}" placeholder="将来の夢">
                                 {{-- 欲しいもの --}}
                                 <label class="form-label" for="wanted">新しい欲しいもの<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="wanted" name="wanted"
-                                    value="{{ $user->wanted }}">
-                                <button type="submit" class="btn submit-btn">保存</button>
+                                    value="{{ $user->wanted }}" placeholder="欲しいもの">
+                                <button type="submit" class="btn submit-btn modal-btn">ユーザー情報を変更する</button>
                             </form>
                         </div>
                     </li>
@@ -65,7 +65,7 @@
                                 @csrf
                                 <input type="hidden" name="date" value="{{ $date }}">
                                 {{-- テーマ --}}
-                                <label for="themeform" class='form-label'>テーマ</label>
+                                <label for="themeform" class='form-label'>テーマを選択してください</label>
                                 <select id='themeform' class='form-control' name='theme'>
                                     <option value="normal" {{ $user->theme == 'normal' ? 'selected' : '' }}>
                                         ノーマルテーマ
@@ -74,7 +74,7 @@
                                         ダークテーマ
                                     </option>
                                 </select>
-                                <button type="submit" class="btn submit-btn">保存</button>
+                                <button type="submit" class="btn submit-btn modal-btn">テーマを変更する</button>
                             </form>
                         </div>
                     </li>
@@ -100,7 +100,7 @@
                                         class="attention">再度入力</span></label>
                                 <input type="password" class="form-control" id="newPasswordAgain"
                                     name="new_password_confirmation">
-                                <button type="submit" class="btn submit-btn">保存</button>
+                                <button type="submit" class="btn submit-btn modal-btn">パスワードを変更する</button>
                             </form>
                         </div>
                     </li>

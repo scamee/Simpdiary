@@ -57,3 +57,10 @@
     color: var(--partner-check-color);
 }
 
+.calendar-btn{
+    text-align: center;
+    color: var(--show-item-color);
+    border-bottom: var(--diary-info-border);
+    margin-bottom: 20px;
+}
+

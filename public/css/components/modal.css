@@ -28,3 +28,12 @@
 .modal-body .form-control{
     margin-bottom: 10px;
 }
+
+.modal-btn{
+    display:block;
+    width:100%;
+}
+
+.modal .form-control{
+    margin-bottom: 20px;
+}

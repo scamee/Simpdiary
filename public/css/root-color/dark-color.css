@@ -37,7 +37,7 @@
     --diary-info-border:3px double #FFFFCF;
 
     /* カレンダー */
-    --calendar-backgroundcolor:none;
+    --calendar-backgroundcolor:rgba(0, 0, 0, 0.5);
     --calendar-font:#FFFF;
     --calendar-border:1px solid #FFFFCF;
     --calendar-btn-color:white;
@@ -61,7 +61,7 @@
     --profile-borderbottom:1px solid #FFFFCF;
 
     /* tag */
-    --tag-background:none;
+    --tag-background:rgba(0, 0, 0, 0.5);
     --tag-color:white;
     --tag-border:3px solid #FFFFCF;
 }

@@ -1,5 +1,5 @@
 <div class="card-body py-2 px-4">
-    <div class="diary-info">
+    <div class="calendar-btn">
         <a class="prev-btn" href="{{ $prev }}">&lt;</a>
         <h2 style="display:inline-block; margin: 0 10px;">{{ $month }}</h2>
         <a class="next-btn" href="{{ $next }}">&gt;</a>
