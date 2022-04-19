@@ -33,28 +33,9 @@ class HomeController extends Controller
     {
         $date = Calendar::getNow();
 
-        return redirect()->route('show', ['date' => $date]);
-    }
-
-
-    /**
-     * ログインユーザーの日記一覧を表示する
-     *
-     * @return view
-     */
-    public function show($date)
-    {
-        $diary = Diary::where('diary_date', $date)->where('user_id', \Auth::id())->first();
-
-        $user = \Auth::user();
-        $partner = $user->partner_id;
-        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
-
-        $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
-
+        /* 初期ログイン時はタグがないため、作成 */
         $tagModel = new Tag();
         $tags =  $tagModel->where('user_id', \Auth::id())->first();
-
         if (!isset($tags)) {
             $title_01 = '付き合ってから';
             $now = Carbon::now();
@@ -75,6 +56,34 @@ class HomeController extends Controller
                 );
         }
 
+        return redirect()->route('show', ['date' => $date]);
+    }
+
+
+    /**
+     * ログインユーザーの日記一覧を表示する
+     * 未記入ならcreateにredirect
+     *
+     * @return view
+     */
+    public function show($date)
+    {
+
+        /* 未記入ならcreateにredirect */
+        $diary = Diary::where('diary_date', $date)->where('user_id', \Auth::id())->first();
+
+        $user = \Auth::user();
+        $partner = $user->partner_id;
+        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
+
+        $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
+
+        if (!isset($diary)) {
+            if (!isset($partner_diary)) {
+                return redirect()->route('create', ['date' => $date]);
+            }
+            return redirect()->route('partnerShow', ['date' => $date]);
+        }
         return view(
             'show',
             [
@@ -93,8 +102,9 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
         $partner = $user->partner_id;
+        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
 
-        $diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
+        $my_diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
         $images = Image::where('user_id', $partner)->where('diary_date', $date)->get();
 
@@ -103,7 +113,7 @@ class HomeController extends Controller
             [
                 "images" => $images
             ],
-            compact('date', 'diary', 'partner')
+            compact('date', 'partner_diary', 'my_diary', 'partner')
         );
     }
 
@@ -222,6 +232,6 @@ class HomeController extends Controller
         Diary::where("diary_date", $diary_date)->where("user_id", \Auth::id())->delete();
         Image::where("diary_date", $diary_date)->where("user_id", \Auth::id())->delete();
 
-        return redirect()->route('show', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
+        return redirect()->route('create', ['date' => $diary_date])->with('success', '日記の削除が完了しました。');
     }
 }
