@@ -52,6 +52,6 @@ class ImageController extends Controller
         /* storageファイル削除 */
         Storage::delete('public/' . $request->file_path);
 
-        return redirect()->route('show', ['date' => $diary_date])->with('success', '画像の削除が完了しました。');
+        return redirect()->route('edit', ['date' => $diary_date])->with('success', '画像の削除が完了しました。');
     }
 }

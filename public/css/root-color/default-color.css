@@ -37,7 +37,7 @@
     --diary-info-border:10px double #EE827D;
 
     /* calendar */
-    --calendar-backgroundcolor:var(--main-color);
+    --calendar-backgroundcolor:rgba(255,255,255);
     --calendar-saturday-color:blue;
     --calendar-sunday-color:red;
     --calendar-font:gray;

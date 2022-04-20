@@ -3,18 +3,6 @@
 @section('content')
     <div class="card-body py-2 px-4 form-container mx-auto">
 
-        <h2 class="diary-info" style="display: block;">
-            {{ $user->name }}の日記
-        </h2>
-        <h4 class="diary-info" style="display: block;">
-            日付：{{ $diary->diary_date }}
-            <br>
-            <span>
-                記入日：{{ $diary->created_at->format('Y-m-d') }}
-                更新日：{{ $diary->updated_at->format('Y-m-d') }}
-            </span>
-        </h4>
-
         <div class="menu-list">
             <div class="dropdown dropend float-start">
                 <a class="btn submit-btn dropdown-toggle" href="#" role="button" id="dropdownDiary" data-bs-toggle="dropdown"
@@ -41,6 +29,20 @@
             @endif
         </div>
 
+
+        <h2 class="diary-info" style="display: block;">
+            {{ $user->name }}の日記
+        </h2>
+        <h4 class="diary-info" style="display: block;">
+            日付：{{ $diary->diary_date }}
+            <br>
+            <span>
+                記入日：{{ $diary->created_at->format('Y-m-d') }}
+                更新日：{{ $diary->updated_at->format('Y-m-d') }}
+            </span>
+        </h4>
+
+
         <div class="show-list">
             <h4 class="show-title">タイトル</h4>
             <h3 class="show-item-center col-8 mx-auto">{{ $diary->title }}</h3>
@@ -66,14 +68,13 @@
                 @php
                     $i = 0;
                 @endphp
-                <p>画像をクリックまたはタッチで変更・削除ができます</p>
+                <h4 class="show-title">画像</h4>
+                <p>画像をクリックまたはタッチで拡大できます</p>
                 @foreach ($images as $image)
-                    <div class="rounded float-start img-thumbnail" style="width: 50%;">
-                        <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
-                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"
-                                style="cursor:pointer;" />
-                        </a>
-                        <p class="show-img">{{ $image->file_name }}</p>
+                    <div class="img-thumbnail show-img-container" data-bs-target="#image_Modal<?php echo $i; ?>"
+                        data-bs-toggle="modal">
+                        <img class="show-img" src="{{ Storage::url($image->file_path) }}" />
+                        {{-- <p class="show-img-name">{{ $image->file_name }}</p> --}}
                     </div>
                     @include('modal.image_modal')
                     @php

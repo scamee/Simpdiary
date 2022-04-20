@@ -147,8 +147,11 @@ class HomeController extends Controller
     {
         $diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
+        $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
+
         return view(
             'edit',
+            ['images' => $images],
             compact('date', 'diary')
         );
     }
