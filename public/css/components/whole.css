@@ -117,7 +117,21 @@ hr{
     color:var(--show-item-color);
 }
 
+.show-img-container{
+    width: 50%;
+    height: 10rem;
+    float: left;
+}
+
 .show-img{
+    max-width:100%;
+    max-height: 100%;
+    display: block;
+    cursor:pointer;
+    margin:0 auto;
+}
+
+.show-img-name{
     margin:0;
     text-align: center;
     color:var(--show-img-color);
@@ -127,6 +141,9 @@ hr{
 .form-container{
     width: 83.33333333% !important;
     margin-top: 34px !important;
+
+    background-color: var(--form-control-backgroundcolor);
+    border: var(--form-control-border);
 }
 
 /* spはcol-12 */
@@ -134,4 +151,8 @@ hr{
     .form-container{
     width: 100% !important;
 }
+}
+
+.images{
+    margin-top: 20px;
 }

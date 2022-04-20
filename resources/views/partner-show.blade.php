@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="card-body py-2 px-4 form-container mx-auto">
+        <div class="menu-list">
+            @if (isset($my_diary))
+                <a class="btn submit-btn diary-link" href="{{ route('show', ['date' => $date]) }}">自分の日記を見る</a>
+            @else
+                <p style="width:100%;text-align:center;">自分の日記が見つかりませんでした</p>
+                <a class="btn submit-btn diary-link" href="{{ route('create', ['date' => $date]) }}"
+                    style="display:block;width:100%;margin-bottom:20px;">自分の日記を書く</a>
+            @endif
+        </div>
+
         <h2 class="diary-info" style="display: block;">
             {{ $partner->name }}の日記
         </h2>
@@ -13,13 +23,6 @@
                 更新日：{{ $partner_diary->updated_at->format('Y-m-d') }}
             </span>
         </h4>
-        <div class="menu-list">
-            @if (isset($my_diary))
-                <a class="btn submit-btn diary-link" href="{{ route('show', ['date' => $date]) }}">自分の日記を見る</a>
-            @else
-                <a class="btn submit-btn diary-link" href="{{ route('create', ['date' => $date]) }}">自分の日記を書く</a>
-            @endif
-        </div>
         <div class="show-list">
             <h4 class="show-title">タイトル</h4>
             <h3 class="show-item-center col-8 mx-auto">{{ $partner_diary->title }}</h3>
@@ -45,14 +48,14 @@
                 @php
                     $i = 0;
                 @endphp
-                <p>画像をクリックまたはタッチで変更・削除ができます</p>
+                <h4 class="show-title">画像</h4>
+                <p>画像をクリックまたはタッチで拡大できます</p>
                 @foreach ($images as $image)
                     <div class="rounded float-start img-thumbnail" style="width: 50%;">
                         <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
-                            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"
-                                style="cursor:pointer;" />
+                            <img class="show-img" src="{{ Storage::url($image->file_path) }}" />
                         </a>
-                        <p class="show-img">{{ $image->file_name }}</p>
+                        <p class="show-img-name">{{ $image->file_name }}</p>
                     </div>
                     @include('modal.image_modal')
                     @php

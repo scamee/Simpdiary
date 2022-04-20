@@ -59,8 +59,40 @@
                     <input type="file" id="imageform" class="form-control" name="diary_imgs[]"
                         accept="image/png, image/jpeg" multiple>
                 </div>
-                <input type='submit' class="col-12 mx-auto d-block btn btn-lg submit-btn" value="保存">
+                <input type='submit' class="col-12 mx-auto d-block btn btn-lg submit-btn" style="margin-bottom:20px;"
+                    value="保存">
             </form>
+            @if (!empty($images))
+                <div class="images">
+                    @php
+                        $i = 0;
+                    @endphp
+                    <hr>
+                    <label for="imageform" class="form-label fs-4 m-0">画像を削除<span
+                            class="attention">1度削除すると復元できません</span></label>
+                    <p style="margin-top:1rem;">クリック・タッチをすると画像が表示されます</p>
+                    @foreach ($images as $image)
+                        <div class="rounded float-start img-thumbnail" style="width: 100%; margin-bottom:5px;">
+                            <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
+                                <p class="d-inline-block">{{ $image->file_name }}</p>
+                            </a>
+                            <form method='POST' action="/imageDelete" style="display:inline-block; float:right;">
+                                @csrf
+                                <input type="hidden" name='id' value="{{ $image->id }}">
+                                <input type="hidden" name='file_path' value="{{ $image->file_path }}">
+                                <input type="hidden" name='diary_date' value="{{ $date }}">
+                                <button type="submit" class="btn submit-btn" style="width: 100%;">
+                                    <i class="me-1 fa-solid fa-trash-can"></i>
+                                </button>
+                            </form>
+                        </div>
+                        @include('modal.image_modal')
+                        @php
+                            ++$i;
+                        @endphp
+                    @endforeach
+                </div>
+            @endif
         </div>
     @else
         <div class="card-body py-2 px-4 mx-auto text-center align-middle">

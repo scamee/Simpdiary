@@ -37,7 +37,7 @@
     --diary-info-border:3px double #FFFFCF;
 
     /* カレンダー */
-    --calendar-backgroundcolor:rgba(0, 0, 0, 0.5);
+    --calendar-backgroundcolor:rgba(0, 0, 0);
     --calendar-font:#FFFF;
     --calendar-border:1px solid #FFFFCF;
     --calendar-btn-color:white;
