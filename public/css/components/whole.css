@@ -1,3 +1,11 @@
+.navbar-light .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image:var(--navbar-toggler-icon);
+}
+
 .attention{
     color:red;
     font-size: 0.5rem;
@@ -140,7 +148,7 @@ hr{
 /* PCはcol-10 */
 .form-container{
     width: 83.33333333% !important;
-    margin-top: 34px !important;
+    margin-top: 30px !important;
 
     background-color: var(--form-control-backgroundcolor);
     border: var(--form-control-border);
@@ -155,4 +163,10 @@ hr{
 
 .images{
     margin-top: 20px;
+}
+
+/* edit */
+.image-name{
+    color:var(--image-name-color);
+    display: inline-block;
 }

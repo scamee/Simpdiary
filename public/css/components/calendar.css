@@ -1,8 +1,13 @@
 /* calendar */
+/* .calendar .card-body{
+    border: var(--form-control-border);
+} */
+
 .calendar .table {
     background-color: var(--calendar-backgroundcolor);
     color:var(--table-color);
-    border-color: var(--table-border-color);
+    /* border-color: var(--table-border-color); */
+    border: var(--calender-table-border);
 }
 
 .calendar th,.calendar td {

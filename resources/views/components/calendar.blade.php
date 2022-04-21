@@ -1,10 +1,19 @@
 <div class="card-body py-2 px-4">
-    <div class="calendar-btn">
+    {{-- <div class="calendar-btn">
         <a class="prev-btn" href="{{ $prev }}">&lt;</a>
         <h2 style="display:inline-block; margin: 0 10px;">{{ $month }}</h2>
         <a class="next-btn" href="{{ $next }}">&gt;</a>
-    </div>
+    </div> --}}
     <table class="table table-bordered">
+        <tr>
+            <th colspan="7">
+                <div class="calendar-btn">
+                    <a class="prev-btn" href="{{ $prev }}">&lt;</a>
+                    <h2 style="display:inline-block; margin: 0 10px;">{{ $month }}</h2>
+                    <a class="next-btn" href="{{ $next }}">&gt;</a>
+                </div>
+            </th>
+        </tr>
         <tr>
             <th>日</th>
             <th>月</th>
