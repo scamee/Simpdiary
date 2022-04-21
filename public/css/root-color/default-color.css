@@ -9,6 +9,7 @@
 
     /* header */
     --dropdown-menu-backgroundcolor:white;
+    --navbar-toggler-icon:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 
     /* form */
     --form-label-color:#EE827D;
@@ -37,6 +38,7 @@
     --diary-info-border:10px double #EE827D;
 
     /* calendar */
+    --calender-table-border:var(--form-control-border);
     --calendar-backgroundcolor:rgba(255,255,255);
     --calendar-saturday-color:blue;
     --calendar-sunday-color:red;
@@ -65,4 +67,7 @@
     --tag-background:linear-gradient(-135deg, #a371c7,#E4A972);
     --tag-color:white;
     --tag-border:none;
+
+    /* edit */
+    --image-name-color:inherit;
 }

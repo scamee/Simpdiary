@@ -9,6 +9,7 @@
 
     /* header */
     --dropdown-menu-backgroundcolor:black;
+    --navbar-toggler-icon:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 
     /* form */
     --form-label-color:#FFFFCF;
@@ -37,6 +38,7 @@
     --diary-info-border:3px double #FFFFCF;
 
     /* カレンダー */
+    --calender-table-border:3px #FFFFCF solid;
     --calendar-backgroundcolor:rgba(0, 0, 0);
     --calendar-font:#FFFF;
     --calendar-border:1px solid #FFFFCF;
@@ -63,7 +65,10 @@
     --profile-borderbottom:1px solid #FFFFCF;
 
     /* tag */
-    --tag-background:rgba(0, 0, 0, 0.5);
+    --tag-background:rgba(0, 0, 0);
     --tag-color:white;
     --tag-border:3px solid #FFFFCF;
+
+    /* edit */
+    --image-name-color:black;
 }

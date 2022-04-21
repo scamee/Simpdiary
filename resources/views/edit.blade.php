@@ -49,6 +49,7 @@
                             class="attention">500文字以内</span></label>
                     <textarea name='content' class="form-control" rows="10" id="content"
                         placeholder="〜本文を入力してください〜">{{ old('content', $diary->content) }}</textarea>
+                    <span class="show-count">500文字まで</span>
                     @error('content')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -74,7 +75,7 @@
                     @foreach ($images as $image)
                         <div class="rounded float-start img-thumbnail" style="width: 100%; margin-bottom:5px;">
                             <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
-                                <p class="d-inline-block">{{ $image->file_name }}</p>
+                                <p class="image-name">{{ $image->file_name }}</p>
                             </a>
                             <form method='POST' action="/imageDelete" style="display:inline-block; float:right;">
                                 @csrf

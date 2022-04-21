@@ -78,12 +78,15 @@ class HomeController extends Controller
 
         $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
 
+        //ログインユーザー・パートナー双方が未記入->create
         if (!isset($diary)) {
             if (!isset($partner_diary)) {
                 return redirect()->route('create', ['date' => $date]);
             }
+            //パートナーのみ記入->partnerShow
             return redirect()->route('partnerShow', ['date' => $date]);
         }
+        //ログインユーザーが記入->show
         return view(
             'show',
             [
@@ -108,6 +111,15 @@ class HomeController extends Controller
 
         $images = Image::where('user_id', $partner)->where('diary_date', $date)->get();
 
+        //ログインユーザー・パートナーが未記入
+        if (!isset($partner_diary)) {
+            if (!isset($my_diary)) {
+                return redirect()->route('create', ['date' => $date]);
+            }
+            //ログインユーザーのみ記入->partnerShow
+            return redirect()->route('show', ['date' => $date]);
+        }
+        //パートナーが記入->view(partner-show)
         return view(
             'partner-show',
             [
