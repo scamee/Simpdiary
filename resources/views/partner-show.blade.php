@@ -11,56 +11,78 @@
                     style="display:block;width:100%;margin-bottom:20px;">自分の日記を書く</a>
             @endif
         </div>
-
-        <h2 class="diary-info" style="display: block;">
-            {{ $partner->name }}の日記
+        {{-- 日記のユーザーの名前 --}}
+        <h2 class="diary-info" style="display:block;morgin:0 auto;">
+            {{ $user->name }}の日記
         </h2>
-        <h4 class="diary-info" style="display: block;">
+        {{-- 日付 --}}
+        <h4 class="diary-info" style="display:block;border:none;margin-bottom:50px;">
             日付：{{ $partner_diary->diary_date }}
             <br>
-            <span>
+            <span style="border-bottom: var(--diary-info-border);padding:0 15px">
                 記入日：{{ $partner_diary->created_at->format('Y-m-d') }}
                 更新日：{{ $partner_diary->updated_at->format('Y-m-d') }}
             </span>
         </h4>
-        <div class="show-list">
-            <h4 class="show-title">タイトル</h4>
-            <h3 class="show-item-center col-8 mx-auto">{{ $partner_diary->title }}</h3>
-        </div>
-        <div class="show-list">
-            <h4 class="show-title">体調</h4>
-            @if ($partner_diary->health_id === 1)
-                <h3 class="show-item-center col-8 mx-auto">良好<i class="fa-solid fa-face-smile-beam"></i></h3>
-            @elseif ($partner_diary->health_id === 2)
-                <h3 class="show-item-center col-8 mx-auto">いつも通り<i class="fa-solid fa-face-smile"></i></h3>
-            @else
-                <h3 class="show-item-center col-8 mx-auto">調子悪かった<i class="fa-solid fa-face-sad-tear"></i>
-                </h3>
-            @endif
-        </div>
-        <div class="show-list">
-            <h4 class="show-title">日記本文</h4>
-            <h3 class="show-item col-12 mx-auto">{!! nl2br(e($partner_diary->content)) !!}</h3>
-        </div>
 
+        <div class="show-list-container">
+            {{-- タイトル --}}
+            <div class="show-list" style="width:60%;display:inline-block;">
+                <h4 class="show-title">タイトル
+                    <span>{{ $partner_diary->title }}</span>
+                </h4>
+            </div>
+            {{-- 天気 --}}
+            <div class="show-list" style="width:35%;display:inline-block;">
+                <h4 class="show-title">天気
+                    @foreach (ConstList::WEATHER_LIST as $name => $number)
+                        @if ($partner_diary->weather_id == $number)
+                            <span>{{ $name }}</span>
+                        @endif
+                    @endforeach
+                </h4>
+            </div>
+        </div>
+        <div class="show-list-container">
+            {{-- 体調 --}}
+            <div class="show-list" style="width:45%;display:inline-block;">
+                <h4 class="show-title">体調
+                    @foreach (ConstList::HEALTH_LIST as $name => $number)
+                        @if ($partner_diary->health_id === $number)
+                            <span>{{ $name }}</span>
+                        @endif
+                    @endforeach
+                </h4>
+            </div>
+            {{-- 気分 --}}
+            <div class="show-list" style="width:45%;display:inline-block;">
+                <h4 class="show-title">気分
+                    @foreach (ConstList::MOOD_LIST as $name => $number)
+                        @if ($partner_diary->mood_id === $number)
+                            <span>{{ $name }}</span>
+                        @endif
+                    @endforeach
+                </h4>
+            </div>
+        </div>
+        {{-- 本文 --}}
+        <div class="show-list-container">
+            <div class="show-list" style="width:100%;">
+                <h4 class="show-title">日記本文</h4>
+                <h3 class="show-item col-12 mx-auto">{!! nl2br(e($partner_diary->content)) !!}</h3>
+            </div>
+        </div>
+        {{-- 画像 --}}
         @if (!empty($images))
             <div class="m-0">
-                @php
-                    $i = 0;
-                @endphp
                 <h4 class="show-title">画像</h4>
                 <p>画像をクリックまたはタッチで拡大できます</p>
                 @foreach ($images as $image)
-                    <div class="rounded float-start img-thumbnail" style="width: 50%;">
-                        <a data-bs-target="#image_Modal<?php echo $i; ?>" data-bs-toggle="modal">
-                            <img class="show-img" src="{{ Storage::url($image->file_path) }}" />
-                        </a>
-                        <p class="show-img-name">{{ $image->file_name }}</p>
+                    <div class="img-thumbnail show-img-container" data-bs-target="#image_Modal{{ $image->id }}"
+                        data-bs-toggle="modal">
+                        <img class="show-img" src="{{ Storage::url($image->file_path) }}" />
                     </div>
                     @include('modal.image_modal')
-                    @php
-                        ++$i;
-                    @endphp
                 @endforeach
             </div>
         @endif

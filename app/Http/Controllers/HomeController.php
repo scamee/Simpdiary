@@ -74,7 +74,7 @@ class HomeController extends Controller
 
         $user = \Auth::user();
         $partner = $user->partner_id;
-        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
+        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->where('status', 1)->first();
 
         $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
 
@@ -105,7 +105,7 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
         $partner = $user->partner_id;
-        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->first();
+        $partner_diary = Diary::where('user_id', $partner)->where('diary_date', $date)->where('status', 1)->first();
 
         $my_diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
@@ -159,6 +159,10 @@ class HomeController extends Controller
     {
         $diary = Diary::where('user_id', \Auth::id())->where('diary_date', $date)->first();
 
+        if (!isset($diary)) {
+            return redirect()->route('create', ['date' => $date]);
+        }
+
         $images = Image::where('user_id', \Auth::id())->where('diary_date', $date)->get();
 
         return view(
@@ -175,7 +179,6 @@ class HomeController extends Controller
      */
     public function store(DiaryValidateRequest $request)
     {
-
         $validated = $request->validated();
 
         if ($request->hasFile('diary_imgs')) {
@@ -195,8 +198,11 @@ class HomeController extends Controller
             "diary_date" => $validated["diary_date"],
             "user_id" => \Auth::id(),
             "title" => $validated["title"],
-            "health_id" => $validated["select"],
+            "health_id" => $validated["health_id"],
+            "weather_id" => $validated["weather_id"],
+            "mood_id" => $validated["mood_id"],
             "content" => $validated["content"],
+            "status" => $validated["status"],
         ]);
 
         return redirect()->route('show', ['date' => $validated["diary_date"]])->with('success', '日記の追加が完了しました。');
@@ -228,7 +234,9 @@ class HomeController extends Controller
         Diary::where("user_id", \Auth::id())->where("diary_date", $validated["diary_date"])
             ->update([
                 "title" => $validated["title"],
-                "health_id" => $validated["select"],
+                "weather_id" => $validated["weather_id"],
+                "health_id" => $validated["health_id"],
+                "mood_id" => $validated["mood_id"],
                 "content" => $validated["content"],
             ]);
 

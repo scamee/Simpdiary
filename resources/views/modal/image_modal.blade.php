@@ -1,4 +1,4 @@
-<div class="modal fade" id="image_Modal<?php echo $i; ?>" tabindex="-1" role="dialog"
+<div class="modal fade" id="image_Modal{{ $image->id }}" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg modal-middle">
         <div class="modal-content">
