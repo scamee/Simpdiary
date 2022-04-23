@@ -18,7 +18,9 @@ class Diary extends Model
         "diary_date",
         "user_id",
         "title",
+        "weather_id",
         "health_id",
+        "mood_id",
         "content",
         "status",
     ];
