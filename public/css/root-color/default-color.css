@@ -31,6 +31,8 @@
     --show-item-color:gray;
     --show-img-color:inherit;
     --diary-link-background:linear-gradient(transparent 60%, #EE827D 0%) ;
+    --draught-backgroundcolor:#EE827D;
+    --draught-color:#ffff;
 
     /* card全体 */
     --card-background:inherit;

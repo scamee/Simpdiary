@@ -1,11 +1,20 @@
+//textarea残り文字数カウント
 $(function () {
+    const MAX_COUNT = 500; //最大文字数500
     $("textarea#content").on("keyup", function () {
         var count = $(this).val().replace(/\n/g, "改行").length;
-        var now_count = 500 - count;
+        var now_count = MAX_COUNT - count;
 
-        if (count > 500) {
+        if (count > MAX_COUNT) {
             $(".show-count").css("color", "red");
         }
         $('.show-count').text("残り" + now_count + "文字");
     });
 });
+
+/* $(function () {
+    $(".mood-btn").on("click", function () {
+        $(".mood-btn").removeClass("mood-btn-active");
+        $(this).addClass("mood-btn-active");
+    })
+}) */

@@ -180,7 +180,7 @@ class CalendarService
     {
         $completed_diary = [];
         $diaryModel = new Diary();
-        $diaries = $diaryModel->where('user_id', \Auth::id())->get(['diary_date']);
+        $diaries = $diaryModel->where('user_id', \Auth::id())->where('status', 1)->get(['diary_date']);
 
         foreach ($diaries as $diary) {
             $completed_diary[] = $diary['diary_date'];
@@ -199,7 +199,7 @@ class CalendarService
         $user = \Auth::user();
         if (isset($user['partner_id'])) {
             $diaryModel = new Diary();
-            $diaries = $diaryModel->where('user_id', $user['partner_id'])->get(['diary_date']);
+            $diaries = $diaryModel->where('user_id', $user['partner_id'])->where('status', 1)->get(['diary_date']);
 
             foreach ($diaries as $diary) {
                 $completed_diary[] = $diary['diary_date'];

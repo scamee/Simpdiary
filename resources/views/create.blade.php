@@ -12,7 +12,7 @@
             @csrf
             <input type='hidden' name='diary_date' value="{{ $date }}">
             <input type='hidden' name='user_id' value="{{ $user['id'] }}">
-            <div class="form-group">
+            <div class="form-group" style="width:70%;display:inline-block;">
                 <label for="titleform" class="form-label fs-4 m-0">タイトル(必須)<span class="attention">20文字以下</span></label>
                 <input type="text" class="form-control" id="titleform" name="title" value="{{ old('title') }}"
                     placeholder="〜タイトルを入力してください〜">
@@ -20,23 +20,42 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="selectform" class='form-label fs-4 m-0'>体調(必須)</label>
-                <select id='selectform' class='form-control' name='select'>
-                    <option style="display: none;">
-                        〜当日の体調を選択してください〜
-                    </option>
-                    <option value="1" @if (1 === (int) old('select')) selected @endif>
-                        良い
-                    </option>
-                    <option value="2" @if (2 === (int) old('select')) selected @endif>
-                        普通
-                    </option>
-                    <option value="3" @if (3 === (int) old('select')) selected @endif>
-                        悪い
-                    </option>
+            {{-- 天気 weather_id --}}
+            <div class="form-group" style="width:25%;display:inline-block;">
+                <label for=" selectform" class='form-label fs-4 m-0'>天気<span class="attention">必須</span></label>
+                <select id='selectform' class='form-control' name='weather_id'>
+                    @foreach (ConstList::WEATHER_LIST as $name => $number)
+                        <option value="{{ $number }}" {{ old('weather_id') == $number ? 'selected' : '' }}>
+                            {{ $name }}
+                        </option>
+                    @endforeach
                 </select>
-                @error('select')
+                @error('weather_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            {{-- 気分 mood_id --}}
+            <div class="form-group">
+                <label class='form-label fs-4 m-0'>気分<span class="attention">必須</span></label>
+                @foreach (ConstList::MOOD_LIST as $name => $number)
+                    <input type="radio" class="btn-check" name="mood_id" id="{{ $number }}"
+                        value="{{ $number }}" {{ old('mood_id') == $number ? 'checked' : '' }} autocomplete="off">
+                    <label class="btn mood-btn" for="{{ $number }}">{{ $name }}</label>
+                @endforeach
+                @error('mood_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            {{-- 体調 health_id --}}
+            <div class="form-group">
+                <label class='form-label fs-4 m-0'>体調<span class="attention">必須</span></label>
+                @foreach (ConstList::HEALTH_LIST as $name => $number)
+                    <input type="radio" class="btn-check" name="health_id" id="{{ $number }}"
+                        value="{{ $number }}" {{ old('health_id') == $number ? 'checked' : '' }}
+                        autocomplete="off">
+                    <label class="btn health-btn" for="{{ $number }}">{{ $name }}</label>
+                @endforeach
+                @error('heath_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -58,7 +77,11 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <input type='submit' class="col-12 mx-auto d-block btn submit-btn btn-lg" value="保存">
+            {{-- 送信ボタン status --}}
+            <button type='submit' name='status' value='1' class="col-12 mx-auto d-block btn btn-lg submit-btn"
+                style="margin-bottom:20px;">投稿する</button>
+            <button type='submit' name='status' value='2' class="col-12 mx-auto d-block btn btn-lg submit-btn"
+                style="margin-bottom:20px;">下書き保存</button>
         </form>
     </div>
 @endsection
