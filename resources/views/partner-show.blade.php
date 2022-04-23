@@ -13,7 +13,7 @@
         </div>
         {{-- 日記のユーザーの名前 --}}
         <h2 class="diary-info" style="display:block;morgin:0 auto;">
-            {{ $user->name }}の日記
+            {{ $partner->name }}の日記
         </h2>
         {{-- 日付 --}}
         <h4 class="diary-info" style="display:block;border:none;margin-bottom:50px;">
