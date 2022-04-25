@@ -36,9 +36,9 @@ hr{
 }
 
 .card{
-    background-color: var(--card-background);
+    /* background-color: var(--card-background); */
     color:var(--card-color);
-    background-image: var(--card-background-image);
+    /* background-image: var(--card-background-image); */
     border: var(--card-border);
     margin-bottom:0 !important;
 }
@@ -213,7 +213,6 @@ hr{
     margin-top: 30px !important;
 
     background-color: var(--form-control-backgroundcolor);
-    border: var(--form-control-border);
 }
 
 /* spはcol-12 */

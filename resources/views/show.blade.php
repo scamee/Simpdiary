@@ -63,7 +63,7 @@
 
         <hr>
         {{-- タイトル --}}
-        <div class="show-list-container">
+        <div class="show-list-container" style="margin-top:10px;">
             <div class="show-list" style="width:100%;">
                 <h4 class="show-title">タイトル :
                     <span>{{ $diary->title }}</span>
@@ -96,7 +96,7 @@
         <div class="show-list-container">
             <div class="show-list" style="width:100%;">
                 <h4 class="show-title">日記本文</h4>
-                <h3 class="show-item col-10 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
+                <h3 class="show-item col-11 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
             </div>
         </div>
         {{-- 画像 --}}
