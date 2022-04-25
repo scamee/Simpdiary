@@ -25,6 +25,7 @@
                             class="attention">必須・20文字以下</span></label>
                     <input type="text" class="form-control" id="titleform" name="title"
                         value="{{ old('title', $diary->title) }}" placeholder="〜タイトルを入力してください〜">
+                    <span class="show-count-title">20文字まで</span>
                     @error('title')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -77,7 +78,7 @@
             </div>
             {{-- 本文 content --}}
             <div class="form-group">
-                <label for="content" class="form-label fs-4 m-0">本文<span class="attention">必須・500文字以内</span></label>
+                <label for="content" class="form-label fs-4 m-0">日記本文<span class="attention">必須・500文字以内</span></label>
                 <textarea name='content' class="form-control" rows="10" id="content"
                     placeholder="〜本文を入力してください〜">{{ old('content', $diary->content) }}</textarea>
                 <span class="show-count">500文字まで</span>
