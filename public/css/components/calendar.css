@@ -7,6 +7,10 @@
     background-color: var(--calendar-backgroundcolor);
     color:var(--table-color);
     border: var(--calender-table-border);
+    border-radius: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
 }
 
 .calendar th,.calendar td {
