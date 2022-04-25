@@ -18,39 +18,44 @@
         <form method='POST' action="/update" enctype="multipart/form-data">
             @csrf
             <input type='hidden' name='diary_date' value="{{ $date }}">
-            {{-- タイトル title --}}
-            <div class="form-group" style="width:70%; display:inline-block;">
-                <label for="titleform" class="form-label fs-4 m-0">タイトル<span class="attention">必須・20文字以下</span></label>
-                <input type="text" class="form-control" id="titleform" name="title"
-                    value="{{ old('title', $diary->title) }}" placeholder="〜タイトルを入力してください〜">
-                @error('title')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            {{-- 天気 weather_id --}}
-            <div class="form-group" style="width:25%;display:inline-block;">
-                <label for=" selectform" class='form-label fs-4 m-0'>天気<span class="attention">必須</span></label>
-                <select id='selectform' class='form-control' name='weather_id'>
-                    @foreach (ConstList::WEATHER_LIST as $name => $number)
-                        <option value="{{ $number }}"
-                            {{ old('weather_id', $diary->weather_id) == $number ? 'selected' : '' }}>
-                            {{ $name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('weather_id')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+            <div style="display:flex;justify-content: space-between;">
+                {{-- タイトル title --}}
+                <div class="form-group" style="width:70%; display:inline-block;">
+                    <label for="titleform" class="form-label fs-4 m-0">タイトル<span
+                            class="attention">必須・20文字以下</span></label>
+                    <input type="text" class="form-control" id="titleform" name="title"
+                        value="{{ old('title', $diary->title) }}" placeholder="〜タイトルを入力してください〜">
+                    @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                {{-- 天気 weather_id --}}
+                <div class="form-group" style="width:25%;display:inline-block;">
+                    <label for=" selectform" class='form-label fs-4 m-0'>天気<span class="attention">必須</span></label>
+                    <select id='selectform' class='form-control' name='weather_id'>
+                        @foreach (ConstList::WEATHER_LIST as $name => $number)
+                            <option value="{{ $number }}"
+                                {{ old('weather_id', $diary->weather_id) == $number ? 'selected' : '' }}>
+                                {{ $name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('weather_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
             {{-- 気分 mood_id --}}
             <div class="form-group">
                 <label class='form-label fs-4 m-0'>気分<span class="attention">必須</span></label>
-                @foreach (ConstList::MOOD_LIST as $name => $number)
-                    <input type="radio" class="btn-check" name="mood_id" id="{{ $number }}"
-                        value="{{ $number }}" {{ old('mood_id', $diary->mood_id) == $number ? 'checked' : '' }}
-                        autocomplete="off">
-                    <label class="btn mood-btn" for="{{ $number }}">{{ $name }}</label>
-                @endforeach
+                <div style="display:flex;justify-content: space-between;">
+                    @foreach (ConstList::MOOD_LIST as $name => $number)
+                        <input type="radio" class="btn-check" name="mood_id" id="{{ $number }}"
+                            value="{{ $number }}"
+                            {{ old('mood_id', $diary->mood_id) == $number ? 'checked' : '' }} autocomplete="off">
+                        <label class="btn mood-btn" for="{{ $number }}">{{ $name }}</label>
+                    @endforeach
+                </div>
                 @error('mood_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -58,12 +63,14 @@
             {{-- 体調 health_id --}}
             <div class="form-group">
                 <label class='form-label fs-4 m-0'>体調<span class="attention">必須</span></label>
-                @foreach (ConstList::HEALTH_LIST as $name => $number)
-                    <input type="radio" class="btn-check" name="health_id" id="{{ $number }}"
-                        value="{{ $number }}"
-                        {{ old('health_id', $diary->health_id) == $number ? 'checked' : '' }} autocomplete="off">
-                    <label class="btn health-btn" for="{{ $number }}">{{ $name }}</label>
-                @endforeach
+                <div style="display:flex;justify-content: space-between;">
+                    @foreach (ConstList::HEALTH_LIST as $name => $number)
+                        <input type="radio" class="btn-check" name="health_id" id="{{ $number }}"
+                            value="{{ $number }}"
+                            {{ old('health_id', $diary->health_id) == $number ? 'checked' : '' }} autocomplete="off">
+                        <label class="btn health-btn" for="{{ $number }}">{{ $name }}</label>
+                    @endforeach
+                </div>
                 @error('heath_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

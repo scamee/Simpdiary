@@ -72,8 +72,6 @@ hr{
 }
 .diary-link{
     float: right;
-    /* font-size: 1.0rem;
-    background:var(--diary-link-background) */;
 }
 
 .menu-list{
@@ -85,8 +83,6 @@ hr{
 /* 入力フォーム */
 .form-group{
     margin-bottom: 20px;
-    margin-right: auto !important;
-    margin-left: auto !important;
 }
 
 .form-label{
@@ -134,6 +130,7 @@ hr{
     color: var(--submit-btn-color-hover);
     background-color: var(--submit-btn-backgroundcolor-hover);
     border-color: var(--submit-btn-bordercolor-hover);
+    width:30%;
 }
 .mood-btn-active{
     color: var(--submit-btn-color);
@@ -151,7 +148,9 @@ hr{
     color: var(--submit-btn-color-hover);
     background-color: var(--submit-btn-backgroundcolor-hover);
     border-color: var(--submit-btn-bordercolor-hover);
+    width:30%;
 }
+
 .health-btn-active{
     color: var(--submit-btn-color);
     background-color: var(--submit-btn-backgroundcolor);
