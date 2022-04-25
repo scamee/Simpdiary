@@ -238,6 +238,7 @@ class HomeController extends Controller
                 "health_id" => $validated["health_id"],
                 "mood_id" => $validated["mood_id"],
                 "content" => $validated["content"],
+                "status" => $validated["status"],
             ]);
 
         return redirect()->route('show', ['date' => $validated["diary_date"]])->with('success', '日記の編集が完了しました。');

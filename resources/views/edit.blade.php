@@ -89,10 +89,10 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             {{-- 送信ボタン status --}}
+            <button type='submit' name='status' value='2' class="col-12 mx-auto d-block btn btn-lg submit-btn"
+                style="margin-bottom:20px;">下書きとして保存する</button>
             <button type='submit' name='status' value='1' class="col-12 mx-auto d-block btn btn-lg submit-btn"
                 style="margin-bottom:20px;">投稿する</button>
-            <button type='submit' name='status' value='2' class="col-12 mx-auto d-block btn btn-lg submit-btn"
-                style="margin-bottom:20px;">下書き保存</button>
         </form>
         {{-- 画像を削除modal --}}
         @if (!empty($images))
