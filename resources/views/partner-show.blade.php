@@ -16,30 +16,34 @@
             {{ $partner->name }}の日記
         </h2>
         {{-- 日付 --}}
-        <h4 class="diary-info" style="display:block;border:none;margin-bottom:50px;">
-            日付：{{ $partner_diary->diary_date }}
-            <br>
-            <span style="border-bottom: var(--diary-info-border);padding:0 15px">
-                記入日：{{ $partner_diary->created_at->format('Y-m-d') }}
-                更新日：{{ $partner_diary->updated_at->format('Y-m-d') }}
-            </span>
-        </h4>
 
-        <div class="show-list-container">
+        <div style="display:flex;justify-content:space-between;">
+            <h4 style="display:inline-block;">
+                日付：{{ $partner_diary->diary_date }}
+                <br>
+                <span style="font-size:0.8rem;">
+                    記入日：{{ $partner_diary->created_at->format('Y-m-d') }}
+                    <br>
+                    更新日：{{ $partner_diary->updated_at->format('Y-m-d') }} </span>
+            </h4>
+            {{-- 天気 --}}
+            <h4 style="display:inline-block;">
+                天気 :
+                @foreach (ConstList::WEATHER_LIST as $name => $number)
+                    @if ($partner_diary->weather_id == $number)
+                        <span>{{ $name }}</span>
+                    @endif
+                @endforeach
+            </h4>
+        </div>
+
+        <hr>
+
+        <div class="show-list-container" style="margin-top:10px;">
             {{-- タイトル --}}
-            <div class="show-list" style="width:60%;display:inline-block;">
+            <div class="show-list" style="width:100%;">
                 <h4 class="show-title">タイトル
                     <span>{{ $partner_diary->title }}</span>
-                </h4>
-            </div>
-            {{-- 天気 --}}
-            <div class="show-list" style="width:35%;display:inline-block;">
-                <h4 class="show-title">天気
-                    @foreach (ConstList::WEATHER_LIST as $name => $number)
-                        @if ($partner_diary->weather_id == $number)
-                            <span>{{ $name }}</span>
-                        @endif
-                    @endforeach
                 </h4>
             </div>
         </div>
