@@ -40,30 +40,33 @@
             {{ $user->name }}の日記
         </h2>
         {{-- 日付 --}}
-        <h4 class="diary-info" style="display:block;border:none;margin-bottom:50px;">
-            日付：{{ $diary->diary_date }}
-            <br>
-            <span style="border-bottom: var(--diary-info-border);padding:0 15px">
-                記入日：{{ $diary->created_at->format('Y-m-d') }}
-                更新日：{{ $diary->updated_at->format('Y-m-d') }}
-            </span>
-        </h4>
 
+        <div style="display:flex;justify-content:space-between;">
+            <h4 style="display:inline-block;">
+                日付：{{ $diary->diary_date }}
+                <br>
+                <span style="font-size:0.8rem;">
+                    記入日：{{ $diary->created_at->format('Y-m-d') }}
+                    <br>
+                    更新日：{{ $diary->updated_at->format('Y-m-d') }} </span>
+            </h4>
+            {{-- 天気 --}}
+            <h4 style="display:inline-block;">
+                天気 :
+                @foreach (ConstList::WEATHER_LIST as $name => $number)
+                    @if ($diary->weather_id == $number)
+                        <span>{{ $name }}</span>
+                    @endif
+                @endforeach
+            </h4>
+        </div>
+
+        <hr>
+        {{-- タイトル --}}
         <div class="show-list-container">
-            {{-- タイトル --}}
-            <div class="show-list" style="width:60%;display:inline-block;">
+            <div class="show-list" style="width:100%;">
                 <h4 class="show-title">タイトル :
                     <span>{{ $diary->title }}</span>
-                </h4>
-            </div>
-            {{-- 天気 --}}
-            <div class="show-list" style="width:35%;display:inline-block;">
-                <h4 class="show-title">天気 :
-                    @foreach (ConstList::WEATHER_LIST as $name => $number)
-                        @if ($diary->weather_id == $number)
-                            <span>{{ $name }}</span>
-                        @endif
-                    @endforeach
                 </h4>
             </div>
         </div>
@@ -93,7 +96,7 @@
         <div class="show-list-container">
             <div class="show-list" style="width:100%;">
                 <h4 class="show-title">日記本文</h4>
-                <h3 class="show-item col-12 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
+                <h3 class="show-item col-10 mx-auto">{!! nl2br(e($diary->content)) !!}</h3>
             </div>
         </div>
         {{-- 画像 --}}
