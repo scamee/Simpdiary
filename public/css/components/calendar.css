@@ -6,7 +6,6 @@
 .calendar .table {
     background-color: var(--calendar-backgroundcolor);
     color:var(--table-color);
-    /* border-color: var(--table-border-color); */
     border: var(--calender-table-border);
 }
 
@@ -59,9 +58,19 @@
     color:var(--my-check-color);
     display: block;
     text-align: center;
-    border:solid 1px var(--my-check-bordercolor);
+    border:solid 1px var(--my-check-backcolor);
     border-radius: 20%;
-    background-color: var(--my-check-bordercolor);
+    background-color: var(--my-check-backcolor);
+    margin-bottom: 5px;
+}
+
+.calendar .my-check-draft {
+    color:var(--my-check-draft-color);
+    display: block;
+    text-align: center;
+    border:solid 1px var(--my-check-draft-backcolor);
+    border-radius: 20%;
+    background-color: var(--my-check-draft-backcolor);
     margin-bottom: 5px;
 }
 
@@ -69,9 +78,9 @@
     color: var(--partner-check-color);
     display: block;
     text-align: center;
-    border:solid 1px var(--partner-check-bordercolor);
+    border:solid 1px var(--partner-check-backcolor);
     border-radius: 20%;
-    background-color: var(--partner-check-bordercolor);
+    background-color: var(--partner-check-backcolor);
 }
 
 .calendar-btn{

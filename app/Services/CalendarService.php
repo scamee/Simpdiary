@@ -39,15 +39,19 @@ class CalendarService
 
             //ログインユーザーの記入済み日記一覧
             $completed_my_diaries = in_array($date, self::getDiary());
+            //ログインユーザーの記入済み日記一覧(下書き)
+            $completed_my_draft_diaries = in_array($date, self::getDraftDiary());
             //パートナーユーザーの記入済み日記一覧
             $completed_partner_diaries = in_array($date, self::getPartnerDiary());
 
             if ($completed_my_diaries) {
                 $week .= '<span class="my-check">自分</span>';
+            } elseif ($completed_my_draft_diaries) {
+                $week .= '<span class="my-check-draft">下書</span>';
             }
+
             if ($completed_partner_diaries) {
                 $week .= '<span class="partner-check">相手</span></a></td>';
-                //<i class="partner-check fa-regular fa-circle-check">
             } else {
                 $week .= '</a></td>';
             }
@@ -69,7 +73,7 @@ class CalendarService
      *
      * @return string
      */
-    public function getMonth()
+    public function getMonth(): string
     {
         return Carbon::parse(self::getYm_firstday())->format('Y年n月');
     }
@@ -79,7 +83,7 @@ class CalendarService
      *
      * @return string
      */
-    public function getPrev()
+    public function getPrev(): string
     {
         return Carbon::parse(self::getYm_firstday())->subMonthsNoOverflow()->format('Y-m-d');
     }
@@ -89,7 +93,7 @@ class CalendarService
      *
      * @return string
      */
-    public function getNext()
+    public function getNext(): string
     {
         return Carbon::parse(self::getYm_firstday())->addMonthNoOverflow()->format('Y-m-d');
     }
@@ -99,9 +103,19 @@ class CalendarService
      *
      * @return string
      */
-    public function getNow()
+    public function getNow(): string
     {
         return Carbon::now()->format('Y-m-d');
+    }
+
+    /**
+     * getYM()の判定で使うルートを設定
+     *
+     * @return array
+     */
+    private static function set_routes(): array
+    {
+        return ['create', 'show', 'edit', 'partnerShow'];
     }
 
     /**
@@ -109,7 +123,7 @@ class CalendarService
      *
      * @return string
      */
-    private static function getYm()
+    private static function getYm(): string
     {
         $currentroute = \Route::currentRouteName();
         $setroutes = self::set_routes();
@@ -128,21 +142,11 @@ class CalendarService
     }
 
     /**
-     * getYM()の判定で使うルートを設定
-     *
-     * @return array
-     */
-    private static function set_routes()
-    {
-        return ['create', 'show', 'edit', 'partnerShow'];
-    }
-
-    /**
      * 2022-04-01 のような月初めの文字列を返却する
      *
      * @return string
      */
-    private static function getYm_firstday()
+    private static function getYm_firstday(): string
     {
         return self::getYm() . '-01';
     }
@@ -152,7 +156,7 @@ class CalendarService
      *
      * @return array
      */
-    public function diffDay()
+    public function diffDay(): array
     {
         $diff_days = [];
         $tagModel = new Tag();
@@ -172,15 +176,15 @@ class CalendarService
     }
 
     /**
-     *ログインユーザーの日記を入力済の日付を返す
+     *ログインユーザーの日記:入力済andStatus=1の日付を返す
      *
      * @return array
      */
-    private static function getDiary()
+    private static function getDiary(): array
     {
         $completed_diary = [];
         $diaryModel = new Diary();
-        $diaries = $diaryModel->where('user_id', \Auth::id())->get(['diary_date']);
+        $diaries = $diaryModel->where('user_id', \Auth::id())->where('status', 1)->get(['diary_date']);
 
         foreach ($diaries as $diary) {
             $completed_diary[] = $diary['diary_date'];
@@ -189,11 +193,28 @@ class CalendarService
     }
 
     /**
-     *ログインユーザーの日記を入力済の日付を返す
+     *ログインユーザーの日記:入力済andStatus=2(下書き)の日付を返す
      *
      * @return array
      */
-    private static function getPartnerDiary()
+    private static function getDraftDiary(): array
+    {
+        $completed_diary = [];
+        $diaryModel = new Diary();
+        $diaries = $diaryModel->where('user_id', \Auth::id())->where('status', 2)->get(['diary_date']);
+
+        foreach ($diaries as $diary) {
+            $completed_diary[] = $diary['diary_date'];
+        }
+        return $completed_diary;
+    }
+
+    /**
+     *パートナーユーザーの日記:入力済andStatus=1の日付を返す
+     *
+     * @return array
+     */
+    private static function getPartnerDiary(): array
     {
         $completed_diary = [];
         $user = \Auth::user();

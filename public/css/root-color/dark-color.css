@@ -50,9 +50,11 @@
     --table-color:#FFFF;
     --table-border-color:#FEEEED;
     --my-check-color:#FFFFCF;
-    --my-check-bordercolor:blue;
+    --my-check-backcolor:blue;
+    --my-check-draft-color:black;
+    --my-check-draft-backcolor:#FEEEED;
     --partner-check-color:#FFFFCF;
-    --partner-check-bordercolor:red;
+    --partner-check-backcolor:red;
 
     /* modal */
     --modal-bacgroundcolor:black;

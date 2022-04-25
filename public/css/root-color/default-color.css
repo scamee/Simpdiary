@@ -49,9 +49,11 @@
     --table-color:gray;
     --table-border-color:#FEEEED;
     --my-check-color:white;
-    --my-check-bordercolor:blue;
+    --my-check-backcolor:blue;
+    --my-check-draft-color:white;
+    --my-check-draft-backcolor:#EE827D;
     --partner-check-color:white;
-    --partner-check-bordercolor:red;
+    --partner-check-backcolor:red;
 
     /* modal */
     --modal-bacgroundcolor:white;
