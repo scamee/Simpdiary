@@ -49,9 +49,11 @@
 
 /* 前の月へ・次の月へ */
 .calendar .prev-btn,.calendar .next-btn{
-    color:var(--calendar-btn-color);
+    /* color:var(--calendar-btn-color); */
+    padding: 5px 10px;
     font-size: 30px;
     text-decoration: none;
+    border-radius: 20%;
 }
 
 .calendar .my-check {
@@ -86,6 +88,6 @@
 .calendar-btn{
     text-align: center;
     color: var(--show-item-color);
-    border-bottom: var(--diary-info-border);
-    margin-bottom: 20px;
+    /* border-bottom: var(--diary-info-border);
+    margin-bottom: 20px; */
 }

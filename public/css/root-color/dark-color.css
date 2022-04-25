@@ -49,12 +49,12 @@
     --calendar-sunday-color:rgb(255, 104, 104);
     --table-color:#FFFF;
     --table-border-color:#FEEEED;
-    --my-check-color:#FFFFCF;
-    --my-check-backcolor:blue;
+    --my-check-color:black;
+    --my-check-backcolor:rgb(131, 131, 245);
     --my-check-draft-color:black;
     --my-check-draft-backcolor:#FEEEED;
-    --partner-check-color:#FFFFCF;
-    --partner-check-backcolor:red;
+    --partner-check-color:black;
+    --partner-check-backcolor:rgb(255, 104, 104);
 
     /* modal */
     --modal-bacgroundcolor:black;
