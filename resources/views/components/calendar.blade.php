@@ -8,9 +8,9 @@
         <tr>
             <th colspan="7">
                 <div class="calendar-btn">
-                    <a class="prev-btn" href="{{ $prev }}">&lt;</a>
+                    <a class="prev-btn submit-btn" href="{{ $prev }}">&lt;</a>
                     <h2 style="display:inline-block; margin: 0 10px;">{{ $month }}</h2>
-                    <a class="next-btn" href="{{ $next }}">&gt;</a>
+                    <a class="next-btn submit-btn" href="{{ $next }}">&gt;</a>
                 </div>
             </th>
         </tr>

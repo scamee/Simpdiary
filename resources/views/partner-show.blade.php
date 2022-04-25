@@ -18,8 +18,9 @@
         {{-- 日付 --}}
 
         <div style="display:flex;justify-content:space-between;">
-            <h4 style="display:inline-block;">
-                日付：{{ $partner_diary->diary_date }}
+            <h4 style="display:inline-block; width:60%;">
+                日付:
+                {{ $partner_diary->diary_date }}
                 <br>
                 <span style="font-size:0.8rem;">
                     記入日：{{ $partner_diary->created_at->format('Y-m-d') }}
@@ -27,8 +28,8 @@
                     更新日：{{ $partner_diary->updated_at->format('Y-m-d') }} </span>
             </h4>
             {{-- 天気 --}}
-            <h4 style="display:inline-block;">
-                天気 :
+            <h4 style="display:inline-block; width:40%;">
+                天気:
                 @foreach (ConstList::WEATHER_LIST as $name => $number)
                     @if ($partner_diary->weather_id == $number)
                         <span>{{ $name }}</span>

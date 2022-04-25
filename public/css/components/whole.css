@@ -36,7 +36,7 @@ hr{
 }
 
 .card{
-    /* background-color: var(--card-background); */
+    background-color: var(--card-background);
     color:var(--card-color);
     /* background-image: var(--card-background-image); */
     border: var(--card-border);
