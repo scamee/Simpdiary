@@ -15,10 +15,11 @@
             <div style="display:flex;justify-content: space-between;">
                 {{-- タイトル --}}
                 <div class="form-group" style="width:70%;display:inline-block;">
-                    <label for="titleform" class="form-label fs-4 m-0">タイトル(必須)<span
-                            class="attention">20文字以下</span></label>
+                    <label for="titleform" class="form-label fs-4 m-0">タイトル<span
+                            class="attention">必須・20文字以下</span></label>
                     <input type="text" class="form-control" id="titleform" name="title" value="{{ old('title') }}"
                         placeholder="〜タイトルを入力してください〜">
+                    <span class="show-count-title">残り20文字</span>
                     @error('title')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -75,7 +76,7 @@
 
             {{-- 本文 --}}
             <div class="form-group">
-                <label for="content" class="form-label fs-4 m-0">本文(必須)<span class="attention">500文字以内</span></label>
+                <label for="content" class="form-label fs-4 m-0">日記本文<span class="attention">必須・500文字以内</span></label>
                 <textarea name='content' class="form-control" rows="10" id="content"
                     placeholder="〜本文を入力してください〜">{{ old('content') }}</textarea>
                 <span class="show-count">残り500文字</span>
