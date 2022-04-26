@@ -94,7 +94,7 @@
     .pc { display: none !important; }
     .sp {
         display: block !important;
-        max-height: 500px;
+        max-height: 800px;
     }
     .top-main{
         background-image: url("../../img/top-background-sp.jpg");
