@@ -4,7 +4,7 @@
 
     <div class="card-body py-2 px-4 form-container mx-auto">
         @if ($diary->status == 2)
-            <h2 class="draught" style="display:block;background-color:">
+            <h2 class="draught">
                 下書き
             </h2>
         @endif
@@ -42,7 +42,7 @@
         {{-- 日付 --}}
 
         <div style="display:flex;justify-content:space-between;">
-            <h4 style="display:inline-block;">
+            <h4 style="display:inline-block; width:60%;">
                 日付：{{ $diary->diary_date }}
                 <br>
                 <span style="font-size:0.8rem;">
@@ -51,7 +51,7 @@
                     更新日：{{ $diary->updated_at->format('Y-m-d') }} </span>
             </h4>
             {{-- 天気 --}}
-            <h4 style="display:inline-block;">
+            <h4 style="display:inline-block; width:40%;">
                 天気 :
                 @foreach (ConstList::WEATHER_LIST as $name => $number)
                     @if ($diary->weather_id == $number)
@@ -63,7 +63,7 @@
 
         <hr>
         {{-- タイトル --}}
-        <div class="show-list-container" style="margin-top:10px;">
+        <div class="show-list-container" style="margin-top:30px;">
             <div class="show-list" style="width:100%;">
                 <h4 class="show-title">タイトル :
                     <span>{{ $diary->title }}</span>
