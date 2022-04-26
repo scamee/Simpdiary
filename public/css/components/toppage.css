@@ -96,6 +96,9 @@
         display: block !important;
         max-height: 500px;
     }
+    .top-main{
+        background-image: url("../../img/top-background-sp.jpg");
+    }
 }
 
 /* footer */

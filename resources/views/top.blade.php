@@ -84,7 +84,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="5000">
                             {{-- pc用画像 --}}
-                            <img src="{{ asset('img/slideshow-desktop1.png') }}" class="pc w-100"
+                            <img src="{{ asset('img/slideshow-desktop1-pc.png') }}" class="pc w-100"
                                 alt="desktop1">
                             {{-- スマホ用画像 --}}
                             <img src="{{ asset('img/slideshow-desktop1-sp.png') }}" class="sp w-100"
@@ -96,7 +96,7 @@
                         </div>
                         <div class="carousel-item" data-bs-interval="5000">
                             {{-- pc用画像 --}}
-                            <img src="{{ asset('img/slideshow-desktop2.png') }}" class="pc w-100"
+                            <img src="{{ asset('img/slideshow-desktop2-pc.png') }}" class="pc w-100"
                                 alt="desktop2">
                             {{-- スマホ用画像 --}}
                             <img src="{{ asset('img/slideshow-desktop2-sp.png') }}" class="sp w-100"
@@ -108,10 +108,10 @@
                         </div>
                         <div class="carousel-item" data-bs-interval="5000">
                             {{-- pc用画像 --}}
-                            <img src="{{ asset('img/slideshow-desktop2.png') }}" class="pc w-100"
+                            <img src="{{ asset('img/slideshow-desktop3-pc.png') }}" class="pc w-100"
                                 alt="desktop2">
                             {{-- スマホ用画像 --}}
-                            <img src="{{ asset('img/slideshow-desktop2-sp.png') }}" class="sp w-100"
+                            <img src="{{ asset('img/slideshow-desktop3-sp.png') }}" class="sp w-100"
                                 alt="desktop1">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>ウィジェット搭載</h5>
@@ -139,7 +139,7 @@
                 <a href="https://github.com/scamee/Proto_diary" class="text-reset">Github</a>
             </div>
             <div>
-                <small>&copy; 2021 まきまき</small>
+                <small>&copy; 2022 まきまき</small>
             </div>
         </footer>
     </div>
