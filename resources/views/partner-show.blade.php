@@ -16,7 +16,6 @@
             {{ $partner->name }}の日記
         </h2>
         {{-- 日付 --}}
-
         <div style="display:flex;justify-content:space-between;">
             <h4 style="display:inline-block; width:60%;">
                 日付:
@@ -40,7 +39,7 @@
 
         <hr>
 
-        <div class="show-list-container" style="margin-top:10px;">
+        <div class="show-list-container" style="margin-top:30px;">
             {{-- タイトル --}}
             <div class="show-list" style="width:100%;">
                 <h4 class="show-title">タイトル
