@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\WidgetController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ThemeController;
@@ -39,8 +39,8 @@ Route::group(
 
         Route::post('/imageUpdate', [ImageController::class, 'imageUpdate'])->name('imageUpdate');
         Route::post('/imageDelete', [ImageController::class, 'imageDelete'])->name('iamgeDelete');
-        Route::post('/tag1Update', [TagController::class, 'tag1Update'])->name('tag1Update');
-        Route::post('/tag2Update', [TagController::class, 'tag2Update'])->name('tag2Update');
+        Route::post('/widget1Update', [WidgetController::class, 'widget1Update'])->name('widget1Update');
+        Route::post('/widget2Update', [WidgetController::class, 'widget2Update'])->name('widget2Update');
 
         Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
         Route::post('/themeUpdate', [ThemeController::class, 'update'])->name('themeUpdate');

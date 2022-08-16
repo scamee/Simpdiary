@@ -21,9 +21,8 @@
                         <h4>{{ $user->tag1_title }}</h4>
                         <p>ウィジェット１を変更します</p>
                         <div class="collapse" id="collapseTag1">
-                            <form method='POST' action="/tag1Update">
+                            <form method='POST' action="/widget1Update">
                                 @csrf
-                                {{-- <input type="hidden" name="id" value="{{ $tag1->id }}"> --}}
                                 <label class="form-label" for="tag-title">タイトル<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="tag1-title" name="tag-title"
@@ -45,9 +44,8 @@
                         <h4>{{ $user->tag2_title }}</h4>
                         <p>ウィジェット２を変更します</p>
                         <div class="collapse" id="collapseTag2">
-                            <form method='POST' action="/tag2Update">
+                            <form method='POST' action="/widget2Update">
                                 @csrf
-                                {{-- <input type="hidden" name="id" value="{{ $tag2->id }}"> --}}
                                 <label class="form-label" for="tag-title">タイトル<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="tag2-title" name="tag-title"
