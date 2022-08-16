@@ -159,20 +159,18 @@ class CalendarService
     public function diffDay(): array
     {
         $diff_days = [];
-        $tagModel = new Tag();
-        $tags =  $tagModel->where('user_id', \Auth::id())->get();
+        $user = \Auth::user();
 
-        if (isset($tags)) {
-            foreach ($tags as $tag) {
 
-                $set_day = new Carbon($tag['set_day']);
-                $today = new Carbon(self::getNow());
+        $set_day1 = new Carbon($user['tag1_date']);
+        $set_day2 = new Carbon($user['tag2_date']);
+        $today = new Carbon(self::getNow());
 
-                $diff_days[] = $set_day->diffInDays($today);
-            }
+        $diff_days[] = $set_day1->diffInDays($today);
+        $diff_days[] = $set_day2->diffInDays($today);
 
-            return $diff_days;
-        }
+
+        return $diff_days;
     }
 
     /**

@@ -39,7 +39,8 @@ Route::group(
 
         Route::post('/imageUpdate', [ImageController::class, 'imageUpdate'])->name('imageUpdate');
         Route::post('/imageDelete', [ImageController::class, 'imageDelete'])->name('iamgeDelete');
-        Route::post('/tagUpdate', [TagController::class, 'tagUpdate'])->name('tagUpdate');
+        Route::post('/tag1Update', [TagController::class, 'tag1Update'])->name('tag1Update');
+        Route::post('/tag2Update', [TagController::class, 'tag2Update'])->name('tag2Update');
 
         Route::post('/userUpdate', [UserController::class, 'userUpdate'])->name('userUpdate');
         Route::post('/themeUpdate', [ThemeController::class, 'update'])->name('themeUpdate');

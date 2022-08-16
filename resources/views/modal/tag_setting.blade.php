@@ -14,48 +14,48 @@
                     </div>
                     <hr>
                     <li>
-                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTag1" role="button"
-                            aria-expanded="false" aria-controls="collapseTag1">
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTag1"
+                            role="button" aria-expanded="false" aria-controls="collapseTag1">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-                        <h4>{{ $tag1->title }}</h4>
+                        <h4>{{ $user->tag1_title }}</h4>
                         <p>ウィジェット１を変更します</p>
                         <div class="collapse" id="collapseTag1">
-                            <form method='POST' action="/tagUpdate">
+                            <form method='POST' action="/tag1Update">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $tag1->id }}">
-                                <label class="form-label" for="tag1-title">タイトル<span
+                                {{-- <input type="hidden" name="id" value="{{ $tag1->id }}"> --}}
+                                <label class="form-label" for="tag-title">タイトル<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="tag1-title" name="tag-title"
-                                    value="{{ $tag1->title }}" placeholder="タイトル">
-                                <label class="form-label" for="tag1-setday">日付<span
+                                    value="{{ $user->tag1_title }}" placeholder="タイトル">
+                                <label class="form-label" for="tag-setday">日付<span
                                         class="attention">※yyyy-mm-dd</span></label>
                                 <input type="date" class="form-control" id="tag1-setday" name="tag-setday"
-                                    value="{{ $tag1->set_day }}" placeholder="例)2020-04-01">
+                                    value="{{ $user->tag1_date }}" placeholder="例)2020-04-01">
                                 <button type="submit" class="btn submit-btn modal-btn">ウィジェット1を変更する</button>
                             </form>
                         </div>
                     </li>
                     <hr>
                     <li>
-                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTag2" role="button"
-                            aria-expanded="false" aria-controls="collapseTag2">
+                        <a class="btn submit-btn float-end" data-bs-toggle="collapse" href="#collapseTag2"
+                            role="button" aria-expanded="false" aria-controls="collapseTag2">
                             <i class="me-1 fa-solid fa-pen"></i>
                         </a>
-                        <h4>{{ $tag2->title }}</h4>
+                        <h4>{{ $user->tag2_title }}</h4>
                         <p>ウィジェット２を変更します</p>
                         <div class="collapse" id="collapseTag2">
-                            <form method='POST' action="/tagUpdate">
+                            <form method='POST' action="/tag2Update">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $tag2->id }}">
-                                <label class="form-label" for="tag2-title">タイトル<span
+                                {{-- <input type="hidden" name="id" value="{{ $tag2->id }}"> --}}
+                                <label class="form-label" for="tag-title">タイトル<span
                                         class="attention">※10文字以内</span></label>
                                 <input type="text" class="form-control" id="tag2-title" name="tag-title"
-                                    value="{{ $tag2->title }}" placeholder="タイトル">
-                                <label class="form-label" for="tag2-setday">日付<span
+                                    value="{{ $user->tag2_title }}" placeholder="タイトル">
+                                <label class="form-label" for="tag-setday">日付<span
                                         class="attention">※yyyy-mm-dd</span></label>
                                 <input type="date" class="form-control" id="tag2-setday" name="tag-setday"
-                                    value="{{ old('tag2-setday', $tag2->set_day) }}" placeholder="例)2020-04-01">
+                                    value="{{ old('tag2-setday', $user->tag2_date) }}" placeholder="例)2020-04-01">
                                 <button type="submit" class="btn submit-btn modal-btn">ウィジェット2を変更する</button>
                             </form>
                         </div>

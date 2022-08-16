@@ -37,6 +37,11 @@ class User extends Authenticatable
         'theme',
         'file_path',
         'file_name',
+        //Widgets(1,2)
+        'tag1_title',
+        'tag1_date',
+        'tag2_title',
+        'tag2_date'
     ];
 
     /**
