@@ -6,7 +6,6 @@ use App\Facades\Calendar;
 use app\Services\CalendarService;
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
-use App\Models\Tag;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -43,21 +42,18 @@ class AppServiceProvider extends ServiceProvider
                         $partner = USER::where('id', $partner_id)->first();
                     }
 
-                    //ウィジェット
-                    $tagModel = new Tag();
-                    $tags =  $tagModel->where('user_id', \Auth::id())->get();
-
-
                     //カラーテーマ
+                    //デフォルトカラーstyle.css
                     $theme_css = 'style.css';
 
                     $theme = $user->theme;
+                    //ダークカラーdark-theme.css
                     if ($theme === User::THEME_DARK) {
 
                         $theme_css = 'dark-theme.css';
                     }
 
-                    $view->with('user', $user)->with('tags', $tags)->with('partner', $partner)->with('theme_css', $theme_css)->with(
+                    $view->with('user', $user)->with('partner', $partner)->with('theme_css', $theme_css)->with(
                         [
                             'weeks'         => Calendar::getWeeks(),
                             'month'         => Calendar::getMonth(),

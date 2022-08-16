@@ -35,8 +35,8 @@ class TagValidateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'tag-title' => 'タイトル',
-            'tag-setday' => '日付'
+            'tag1-title' => 'タイトル',
+            'tag1-setday' => '日付'
         ];
     }
 
@@ -47,10 +47,10 @@ class TagValidateRequest extends FormRequest
     public function messages()
     {
         return [
-            'tag-title.required' => ':attributeを入力してください。',
-            'tag-title.max' => ':attributeは10文字以下で入力してください。',
-            'tag-setday.required' => ':attributeを入力してください。',
-            'tag-setday.date_format' => ':attributeを入力してください。'
+            'tag1-title.required' => ':attributeを入力してください。',
+            'tag1-title.max' => ':attributeは10文字以下で入力してください。',
+            'tag1-setday.required' => ':attributeを入力してください。',
+            'tag1-setday.date_format' => ':attributeを入力してください。'
         ];
     }
 }

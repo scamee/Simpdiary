@@ -31,10 +31,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //DB変更したので不要になる。
+        //理由：Userアカウント作成時にデフォルト値が入る
         $date = Calendar::getNow();
 
         /* 初期ログイン時はタグがないため、作成 */
-        $tagModel = new Tag();
+        /* $tagModel = new Tag();
         $tags =  $tagModel->where('user_id', \Auth::id())->first();
         if (!isset($tags)) {
             $title_01 = '付き合ってから';
@@ -54,7 +56,7 @@ class HomeController extends Controller
                 ->insert(
                     $datum
                 );
-        }
+        } */
 
         return redirect()->route('show', ['date' => $date]);
     }

@@ -30,10 +30,10 @@
 </head>
 
 <body>
-    @php
+    {{-- @php
         $tag1 = $tags[0];
         $tag2 = $tags[1];
-    @endphp
+    @endphp --}}
     <div id="app">
         @include('components.header')
 
