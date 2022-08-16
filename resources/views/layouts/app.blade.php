@@ -58,8 +58,8 @@
     {{-- モーダル --}}
     {{-- アカウント設定 --}}
     @include('modal.user_setting')
-    {{-- タグ設定 --}}
-    @include('modal.tag_setting')
+    {{-- ウィジェット設定 --}}
+    @include('modal.widgets_setting')
     {{-- マイプロフィール --}}
     @include('modal.my_profile')
     @if (!isset($user['partner_id']))

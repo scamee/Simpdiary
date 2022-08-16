@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TagValidateRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\WidgetValidateRequest;
 use App\Models\User;
 
-class TagController extends Controller
+class WidgetController extends Controller
 {
 
     /**
@@ -14,7 +13,7 @@ class TagController extends Controller
      *
      * @return
      */
-    public function tag1Update(TagValidateRequest $request)
+    public function widget1Update(WidgetValidateRequest $request)
     {
         $validated = $request->validated();
 
@@ -33,7 +32,7 @@ class TagController extends Controller
      *
      * @return
      */
-    public function tag2Update(TagValidateRequest $request)
+    public function widget2Update(WidgetValidateRequest $request)
     {
         $validated = $request->validated();
 
